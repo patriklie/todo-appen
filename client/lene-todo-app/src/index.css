@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+/* Icons */
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.checkmark {
+    cursor: pointer;
+    user-select: none;
+}
+
+.icons {
+    cursor: pointer;
+    user-select: none;
+    transition: transform .2s ease-in-out;
+}
+
+.icons:hover {
+    transform: scale(1.2);
+}
+
+/* About */ 
+
+.container.about {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 20px 40px;
+    box-shadow: rgba(149, 157, 165, 0.5) 0px 2px 5px;
+    border-radius: 10px;
+}
+
+/* Navbar */
+
+nav.navbar {
+    max-width: 100%;
+    background: rgb(245, 245, 245);
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(220, 220, 220);
+}
+
+.navbar .logo {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar .logo span {
+    color: red;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.navbar-ul {
+    display: flex;
+    list-style: none;
+    font-weight: 400;   
+}
+
+.navbar-ul li {
+    margin-left: 20px;
+}
+
+.navbar-ul a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-ul a.active {
+    text-decoration: underline;
+}
+
+/* TODO */
+
+.todos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.single-todo-container {
+    background: rgb(255, 255, 255);
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
+    position: relative;
+    border-bottom: 2px solid transparent;
+}
+
+#close {
+    color: red;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.single-todo-container .date {
+    color: rgb(197, 197, 197);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+.single-todo-container.todo-active {
+    border-bottom: 2px solid rgb(0, 255, 81);
+}
+
+.icons-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Add Todo Form */ 
+
+form.add-todo-form {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form.add-todo-form button {
+    width: 50%;
+    margin: 20px auto;
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 16px;
+    color: rgb(57, 57, 57);
+    background: rgb(0, 255, 81);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
+    cursor: pointer;
+}
+
+form.add-todo-form label:nth-of-type(2) {
+    margin-top: 20px;
+}

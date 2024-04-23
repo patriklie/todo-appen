@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo } from '../features/todo/todoSlice';
+import { addTodo, loadTodos } from '../features/todo/todoSlice';
 import SingleTodo from './SingleTodo';
 import axios from 'axios';
+
 
 const AddTodo = () => {
 
@@ -11,7 +11,12 @@ const AddTodo = () => {
     const [todoDescription, setTodoDescription] = useState("");
 
     const dispatch = useDispatch();
-    const todoState = useSelector(state => state.todo);
+    const todoState = useSelector(state => state.todo.todos);
+
+    useEffect(() => {
+        dispatch(loadTodos());
+    }, [dispatch]);
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -22,13 +27,13 @@ const AddTodo = () => {
             description: todoDescription,
             completed: false,
         })
-
+        console.log(response)
         const savedTodo = response.data;
 
         dispatch(addTodo(savedTodo))
 
     } catch(error) {
-        console.log(error);
+        console.log("Inni handle Submit", error);
     }
         setTodoName("");
         setTodoDescription("");
@@ -37,7 +42,7 @@ const AddTodo = () => {
   return (
     <>
     <div className="todos-container">
-        {todoState.length > 0 && todoState.map(todo => {
+        {todoState && todoState.length > 0 && todoState.map(todo => {
             return <SingleTodo key={todo._id} todo={todo} />
         }) }
     </div>

@@ -3,6 +3,7 @@ const Joi = require('joi');
 const todoSchema = Joi.object({
     name: Joi.string().min(3).required(),
     description: Joi.string().required(),
+    completed: Joi.boolean().required(),
 })
 
 const validateTodo = (todo) => {

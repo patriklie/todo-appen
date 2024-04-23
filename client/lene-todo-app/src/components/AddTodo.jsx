@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../features/todo/todoSlice';
 import SingleTodo from './SingleTodo';
+import axios from 'axios';
 
 const AddTodo = () => {
 
@@ -12,17 +13,23 @@ const AddTodo = () => {
     const dispatch = useDispatch();
     const todoState = useSelector(state => state.todo);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        dispatch(addTodo({
+    try {
+        const response = await axios.post('http://localhost:5000/todos', {
             name: todoName,
             description: todoDescription,
-            id: uuidv4(),
-            created_at: new Date().toISOString(),
             completed: false,
-        }))
+        })
 
+        const savedTodo = response.data;
+
+        dispatch(addTodo(savedTodo))
+
+    } catch(error) {
+        console.log(error);
+    }
         setTodoName("");
         setTodoDescription("");
     }
@@ -31,7 +38,7 @@ const AddTodo = () => {
     <>
     <div className="todos-container">
         {todoState.length > 0 && todoState.map(todo => {
-            return <SingleTodo key={todo.id} todo={todo} />
+            return <SingleTodo key={todo._id} todo={todo} />
         }) }
     </div>
    

@@ -9,6 +9,8 @@ import Home from './routes/Home';
 import About from './routes/About';
 import Register from './routes/Register';
 import Login from './routes/Login';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -35,12 +37,14 @@ const router = createBrowserRouter([
   }
 ])
 
+// jeg skjønner ikke helt hvor jeg skal plassere ToastContainer med react-router-dom
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} ></RouterProvider>
+      <ToastContainer />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );

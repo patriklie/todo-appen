@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { removeTodo, toggleComplete, moveUp, moveDown } from '../features/todo/todoSlice';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 const SingleTodo = memo(function SingleTodo ({ todo }) {
@@ -27,6 +28,11 @@ const SingleTodo = memo(function SingleTodo ({ todo }) {
             await axios.delete(`http://localhost:5000/todos/${todo._id}`)
 
             dispatch(removeTodo({ id: todo._id  }))
+            toast.error(`Slettet Todo: ${todo.name}`, {
+                position: "bottom-left",
+                autoClose: 2000,
+            });
+
         } catch(error) {
             console.log("Feil ved sletting av todo:", error)
         }

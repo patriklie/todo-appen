@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, loadTodos } from '../features/todo/todoSlice';
 import SingleTodo from './SingleTodo';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 const AddTodo = () => {
@@ -31,6 +32,10 @@ const AddTodo = () => {
         const savedTodo = response.data;
 
         dispatch(addTodo(savedTodo))
+        toast.success(`Lagt til ny TODO: ${todoName}`, { 
+            position: "bottom-left",
+            autoClose: 2000,
+        })
 
     } catch(error) {
         console.log("Inni handle Submit", error);

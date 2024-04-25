@@ -49,9 +49,9 @@ const AddTodo = () => {
    
     <form className='add-todo-form' onSubmit={handleSubmit}>
         <label htmlFor="todo-name">Navn på oppgave:</label>
-        <input type="text" id="todo-name" value={todoName} onChange={(e) => setTodoName(e.target.value)} />
+        <input type="text" id="todo-name" value={todoName} onChange={(e) => setTodoName(e.target.value)} required />
         <label htmlFor="todo-description">Oppgavebeskrivelse:</label>
-        <textarea type="text" id="todo-description" value={todoDescription} onChange={(e) => setTodoDescription(e.target.value) }></textarea>
+        <textarea type="text" id="todo-description" value={todoDescription} onChange={(e) => setTodoDescription(e.target.value) } required ></textarea>
         <button>Ny Oppgave</button>
     </form>
     </>

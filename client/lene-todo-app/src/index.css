@@ -131,15 +131,17 @@ nav.navbar {
 
 /* Add Todo Form */ 
 
-form.add-todo-form {
-    max-width: 90%;
+form.add-todo-form, form.register-form {
+    width: 90%;
+    max-width: 800px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
-form.add-todo-form button {
+form.add-todo-form button,
+form.register-form button {
     width: 50%;
     margin: 20px auto;
     border-radius: 30px;
@@ -153,6 +155,12 @@ form.add-todo-form button {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
     cursor: pointer;
     outline: none;
+    transition: box-shadow .4s ease;
+}
+
+form.add-todo-form button:hover,
+form.register-form button:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 10px;
 }
 
 form.add-todo-form label:nth-of-type(2) {

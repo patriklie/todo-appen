@@ -30,9 +30,17 @@ export const todoSlice = createSlice({
             })
         },
         toggleComplete: (state, action) => {
-            const { id, completed } = action.payload;
-            const todoToUpdate = state.todos.find(todo => todo.id === id);
-            todoToUpdate.completed = !completed;
+            const { _id } = action.payload;
+            console.log(action.payload);
+            const updatedTodo = action.payload;
+
+            state.todos = state.todos.map(todo => {
+                if(todo._id === _id) {
+                    return updatedTodo;
+                } else {
+                    return todo;
+                }
+            } );
         },
         moveUp: (state, action) => {
             const { id } = action.payload;

@@ -8,8 +8,17 @@ const SingleTodo = memo(function SingleTodo ({ todo }) {
 
     const dispatch = useDispatch();
 
-    const handleToggle = () => {
-        dispatch(toggleComplete(todo))
+    const handleToggle = async () => {
+        
+        try {
+            const updatedTodo = await axios.put(`http://localhost:5000/todos/${todo._id}/toggle`, {
+                completed: todo.completed
+            })
+            dispatch(toggleComplete(updatedTodo.data))
+
+        } catch(error) {
+            console.error("Feil ved oppdatering av toggle complete:", error)
+        }
     }
 
     const handleDelete = async () => {

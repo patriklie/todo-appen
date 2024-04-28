@@ -32,6 +32,7 @@ const AddTodo = () => {
         const savedTodo = response.data;
 
         dispatch(addTodo(savedTodo))
+        
         toast.success(`Lagt til ny TODO: ${todoName}`, { 
             position: "bottom-left",
             autoClose: 2000,

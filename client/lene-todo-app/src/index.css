@@ -131,7 +131,9 @@ nav.navbar {
 
 /* Add Todo Form */ 
 
-form.add-todo-form, form.register-form {
+form.add-todo-form,
+form.register-form,
+form.login-form {
     width: 90%;
     max-width: 800px;
     margin: 0 auto;
@@ -141,7 +143,8 @@ form.add-todo-form, form.register-form {
 }
 
 form.add-todo-form button,
-form.register-form button {
+form.register-form button,
+form.login-form button {
     width: 50%;
     margin: 20px auto;
     border-radius: 30px;
@@ -159,7 +162,8 @@ form.register-form button {
 }
 
 form.add-todo-form button:hover,
-form.register-form button:hover {
+form.register-form button:hover,
+form.login-form button:hover {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 10px;
 }
 

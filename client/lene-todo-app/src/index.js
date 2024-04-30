@@ -12,11 +12,14 @@ import Login from './routes/Login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Profile from './routes/Profile';
+import RouteProtector from './components/RouteProtector';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <RouteProtector>
+        <Layout />
+      </RouteProtector>,
     children: [
       {
         index: true,
@@ -27,22 +30,20 @@ const router = createBrowserRouter([
         element: <About />
       },
       {
-        path: "register",
-        element: <Register />
-      },
-      {
-        path: "login",
-        element: <Login />
-      },
-      {
         path: "profile",
         element: <Profile />
       }
     ]
-  }
+  },
+  {
+    path: "register",
+    element: <Register />
+  },
+  {
+    path: "login",
+    element: <Login />
+  },
 ])
-
-// jeg skjønner ikke helt hvor jeg skal plassere ToastContainer med react-router-dom
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

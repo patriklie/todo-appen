@@ -11,22 +11,23 @@ const Profile = () => {
     const fetchProfile = async () => {
 
       try {
-        const response = await axios.get('http://localhost:5000/users/profile', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
-        setProfileData(response.data);
-        console.log('Dette er info som kom tilbake fra API: ', response)
+        if (token) {
+          const response = await axios.get('http://localhost:5000/users/profile', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          })
+          setProfileData(response.data);
+          console.log('Dette er info som kom tilbake fra API: ', response)
+        }
       } catch(error) {
         console.log("Error fetching profile: ", error);
       }
-      
     }
 
   fetchProfile();
     
-  },[])
+  },[token])
 
   return (
     <>

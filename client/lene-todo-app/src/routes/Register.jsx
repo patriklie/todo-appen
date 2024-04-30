@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
 
 const Register = () => {
 
@@ -35,6 +36,7 @@ const Register = () => {
 
   return (
     <>
+    <Navbar />
     <div style={{ textAlign: "center", marginTop: "40px" }}>Registrer en ny bruker til TODOappen:</div>
 
     <form onSubmit={handleRegister} className="register-form">

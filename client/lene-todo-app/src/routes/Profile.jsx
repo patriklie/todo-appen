@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 const Profile = () => {
 
   const [profileData, setProfileData] = useState(null);
-  const token = useSelector(state => state.auth.userToken)
+  const token = localStorage.getItem("userToken");
 
   useEffect(() => {
 

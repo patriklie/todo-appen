@@ -10,6 +10,7 @@ const Navbar = () => {
   const isAuthenticated = useSelector(state => state.auth.isAuth);
   
   const logoutUser = () => {  
+    localStorage.removeItem("userToken");
     dispatch(logout());
     navigate("/login")
 }

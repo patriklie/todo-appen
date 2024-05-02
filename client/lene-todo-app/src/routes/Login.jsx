@@ -27,7 +27,8 @@ const Login = () => {
         setEmail("");
         setPassword("");
 
-        dispatch(login(response.data));
+        dispatch(login());
+        localStorage.setItem("userToken", token);
         navigate("/");
 
       } catch (error) {

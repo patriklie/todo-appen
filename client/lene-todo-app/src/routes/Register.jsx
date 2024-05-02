@@ -27,7 +27,8 @@ const Register = () => {
         console.log("Dette er response etter axios: ", response)
         const token = response.data;
 
-        dispatch(login(token));
+        dispatch(login());
+        localStorage.setItem('userToken', token);
 
         setName("");
         setEmail("");

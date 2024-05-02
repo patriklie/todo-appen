@@ -70,6 +70,7 @@ router.post("/login", async (req, res) => {
 router.get("/profile", authenticateToken, async (req, res) => {
 
     const foundUser = await User.findById(req.userId);
+    console.log(foundUser);
     const userData = {
         username: foundUser.username,
         email: foundUser.email,
@@ -78,6 +79,9 @@ router.get("/profile", authenticateToken, async (req, res) => {
 })
 
 router.get("/authtoken", authenticateToken, (req, res) => {
+
+    const token = req.token;
+    
     return res.status(200).json({ message: "Valid token" })
 })
 

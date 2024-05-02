@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
 
-  const token = localStorage.getItem('jsonwebtoken')
   const [profileData, setProfileData] = useState(null);
+  const token = useSelector(state => state.auth.userToken)
 
   useEffect(() => {
 
@@ -12,6 +13,7 @@ const Profile = () => {
 
       try {
         if (token) {
+          console.log("Token inside profile: ", token);
           const response = await axios.get('http://localhost:5000/users/profile', {
             headers: {
               Authorization: `Bearer ${token}`

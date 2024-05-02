@@ -25,10 +25,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/todos", todoRoutes);
 app.use("/users", userRoutes);
 
-app.get("/", (req, res) => {
-    res.send("Hello World!")
-})
-
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 });

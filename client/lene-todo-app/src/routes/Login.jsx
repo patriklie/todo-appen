@@ -23,15 +23,11 @@ const Login = () => {
   
         console.log("Dette er response etter axios: ", response)
         const token = response.data;
-        localStorage.setItem('jsonwebtoken', token);
-
-        console.log("HER ER token fra local storage: ", localStorage.getItem("jsonwebtoken"))
 
         setEmail("");
         setPassword("");
 
         dispatch(login(response.data));
-
         navigate("/");
 
       } catch (error) {

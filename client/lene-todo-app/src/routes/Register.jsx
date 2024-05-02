@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
+import { login } from '../features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
     const [username, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleRegister = async (e) => {
       e.preventDefault();
@@ -21,13 +26,14 @@ const Register = () => {
   
         console.log("Dette er response etter axios: ", response)
         const token = response.data;
-        localStorage.setItem('jsonwebtoken', token);
 
-        console.log("HER ER token fra local storage: ", localStorage.getItem("jsonwebtoken"))
+        dispatch(login(token));
 
         setName("");
         setEmail("");
         setPassword("");
+
+        navigate("/");
 
       } catch(error) {
         console.log("Feil ved axios request: ", error)

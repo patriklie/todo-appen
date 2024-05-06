@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { logout, login } from '../features/auth/authSlice';
 
@@ -10,6 +10,7 @@ const RouteProtector = ({ children }) => {
     const stateLoggedIn = stateAuth.isAuth;
     const userToken = localStorage.getItem("userToken");
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [tokenCheck, setTokenCheck] = useState(false);
 
     useEffect(() => {
@@ -30,20 +31,27 @@ const RouteProtector = ({ children }) => {
                 console.error('Feil ved henting av authtoken:', error);
                 dispatch(logout());
                 localStorage.removeItem("userToken");
+
+                navigate("/login");
+
                 }
+            }
+
+            if (!userToken) {
+                navigate("/login");
             }
         };
     
         fetchData();
 
-    }, [userToken]);
+    }, [userToken, tokenCheck]);
 
     console.log("Token check:", tokenCheck);
     console.log("Logged in:", stateLoggedIn);
 
     return (
         <>
-            {tokenCheck ? (stateLoggedIn ? children : <Navigate to="/login" />) : <p>Sjekker authtoken...</p>}
+            {tokenCheck ? children : <p>Sjekker authtoken...</p>}
         </>
     )
 }

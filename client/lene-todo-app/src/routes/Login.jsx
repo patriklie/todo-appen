@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../features/auth/authSlice';
 import Navbar from '../components/Navbar';
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
@@ -30,9 +31,18 @@ const Login = () => {
         dispatch(login());
         localStorage.setItem("userToken", token);
         navigate("/");
+        toast.success("Logget inn!", {
+          position: "bottom-left",
+          autoClose: 3000,
+        });
 
       } catch (error) {
-        console.log("Feil ved axios request: ", error)
+        console.log("Feil ved axios request: ", error);
+
+        toast.error(`${ error.response.data }`, {
+          position: "bottom-left",
+          autoClose: 3000,
+      });
       } 
     }
 

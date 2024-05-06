@@ -39,8 +39,9 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
 
     const { error } = validateUserLogin(req.body);
+
     if (error) {
-        return res.status(501).send(error);
+        return res.status(400).send("Ugyldig epost eller passord.");
     }
 
     const { email, password } = req.body;
@@ -49,7 +50,7 @@ router.post("/login", async (req, res) => {
         
         const foundUser = await User.findOne({ email });
         if (!foundUser) {
-            res.status(401).send("Fant ikke bruker i databasen");
+            res.status(401).send("Fant ikke bruker i databasen...");
         }
 
         const match = await bcrypt.compare(password, foundUser.password);
@@ -63,7 +64,7 @@ router.post("/login", async (req, res) => {
         }
     } catch (error) {
         console.error("Feil ved innlogging: ", error);
-        res.status(500).send("Intern serverfeil")
+        res.status(400).send("Innlogging feilet.")
     }
 })
 

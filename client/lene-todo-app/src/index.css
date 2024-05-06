@@ -32,14 +32,28 @@
     transform: scale(1.2);
 }
 
-/* About */ 
+.edit-profile, 
+.save-profile {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
-.container.about {
+/* About */ /* Profile */
+
+.container.about,
+.container.profile {
     max-width: 90%;
     margin: 40px auto;
     padding: 20px 40px;
     box-shadow: rgba(149, 157, 165, 0.5) 0px 2px 5px;
     border-radius: 10px;
+    position: relative;
+}
+
+.form-edit-profile {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Navbar */

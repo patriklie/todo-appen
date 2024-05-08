@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authenticateToken = require('../../utils/authenticateToken');
 const validateUserLogin = require('../../utils/validateUserLogin');
+const validateUserEdit = require('../../utils/validateUserEdit');
 
 router.post("/register", async (req, res) => {
     
@@ -84,6 +85,47 @@ router.get("/authtoken", authenticateToken, (req, res) => {
     const token = req.token;
     
     return res.status(200).json({ message: "Valid token" })
+})
+
+router.put("/edit", authenticateToken, async (req, res) => {
+
+    const { error } = validateUserEdit(req.body);
+
+    if (error) {
+        console.log("Feil i validering");
+        return res.status(501).send(error);
+    }
+
+    const { userId } = req;
+    const { username, email } = req.body;
+
+    const foundUser = await User.findById(userId);
+
+    const usernameUpdated = foundUser.username !== username;
+    const emailUpdated = foundUser.email !== email;
+    const existingUsername = await User.findOne({ username: username });
+    const existingEmail = await User.findOne({ email: email });
+
+    if (usernameUpdated && existingUsername) {
+        return res.status(409).send("Brukernavn er opptatt.");
+    }
+
+    if (emailUpdated && existingEmail) {
+        return res.status(409).send("Eposten er i bruk.");
+    }
+
+    try {
+        const updatedUser = await User.findByIdAndUpdate(userId, {
+            username: username,
+            email: email,
+        }, { new: true });
+
+        res.status(200).json({ message: "Oppdatert profilen!" });
+
+    } catch (error) {
+        res.status(401).send("Error updating user in mongoose...");
+    }
+
 })
 
 module.exports = router;

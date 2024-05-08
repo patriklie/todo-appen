@@ -35,8 +35,24 @@
 .edit-profile, 
 .save-profile {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform .2s ease-in-out;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 30px;
+}
+
+.edit-profile:hover, 
+.save-profile:hover {
+    transform: translateY(-50%) scale(1.2);
+}
+
+#idea-icon {
+    font-size: 50px;
+    color: rgb(223, 223, 223);
+    margin-right: 40px;
 }
 
 /* About */ /* Profile */
@@ -49,6 +65,11 @@
     box-shadow: rgba(149, 157, 165, 0.5) 0px 2px 5px;
     border-radius: 10px;
     position: relative;
+}
+
+.container.about {
+    display: flex;
+    align-items: center;
 }
 
 .form-edit-profile {
@@ -180,6 +201,12 @@ form.register-form button:hover,
 form.login-form button:hover {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 10px;
 }
+
+form.add-todo-form button:focus,
+form.register-form button:focus,
+form.login-form button:focus {
+    outline: 2px solid black;
+} 
 
 form.add-todo-form label:nth-of-type(2) {
     margin-top: 20px;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
 
@@ -11,26 +12,25 @@ const Profile = () => {
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
 
-  useEffect(() => {
+  const fetchProfile = async () => {
 
-    const fetchProfile = async () => {
-
-      try {
-        if (token) {
-          console.log("Token inside profile: ", token);
-          const response = await axios.get('http://localhost:5000/users/profile', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          })
-          setProfileData(response.data);
-          console.log('Dette er info som kom tilbake fra API: ', response)
-        }
-      } catch(error) {
-        console.log("Error fetching profile: ", error);
+    try {
+      if (token) {
+        console.log("Token inside profile: ", token);
+        const response = await axios.get('http://localhost:5000/users/profile', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        setProfileData(response.data);
+        console.log('Dette er info som kom tilbake fra API: ', response)
       }
+    } catch(error) {
+      console.log("Error fetching profile: ", error);
     }
+  }
 
+  useEffect(() => {
   fetchProfile();
     
   },[token])
@@ -55,10 +55,21 @@ const Profile = () => {
         }
       );
 
+      console.log(response.data);
+
+      fetchProfile();
+      toast.success(response.data.message, {
+        position: "bottom-left",
+        autoClose: 3000,
+      });
 
       
       } catch (error) {
-        console.log(error);
+        console.log("Her er feilmeldingen etter axios profil: ", error);
+        toast.error(error.response.data, {
+          position: "bottom-left",
+          autoClose: 3000,
+        });
       }
 
     }
@@ -76,9 +87,9 @@ const Profile = () => {
       { !editMode ? 
       (
         <div className='container profile'>
-          <div>Username: { profileData && profileData.username }</div>
-          <div>Email: { profileData && profileData.email }</div>
-          <span onClick={handleEdit} class="icons material-symbols-outlined edit-profile">edit</span>
+          <div>Username: <span style={{ cursor: "pointer" }} onClick={handleEdit} >{ profileData && profileData.username }</span></div>
+          <div>Email: <span style={{ cursor: "pointer" }} onClick={handleEdit}>{ profileData && profileData.email }</span></div>
+          <span onClick={handleEdit} class="profile-icons material-symbols-outlined edit-profile">edit</span>
         </div>
       )
         :
@@ -94,7 +105,7 @@ const Profile = () => {
               <input onChange={(e) => setNewEmail(e.target.value)} id="editEmail" type="text" value={newEmail}/>
             </div>
           </form>
-        <span onClick={handleSave} class="icons material-symbols-outlined save-profile">save</span>
+        <span onClick={handleSave} className="profile-icons material-symbols-outlined save-profile">save</span>
       </div>
       )
       }

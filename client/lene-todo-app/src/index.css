@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+#root {
+    width: 100%;
+}
+
 /* Icons */
 
 .material-symbols-outlined {
@@ -34,19 +38,17 @@
 
 .edit-profile, 
 .save-profile {
-    position: absolute;
     cursor: pointer;
     user-select: none;
     transition: transform .2s ease-in-out;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    font-size: 30px;
+    font-size: 35px;
+    height: 100%;
+
 }
 
 .edit-profile:hover, 
 .save-profile:hover {
-    transform: translateY(-50%) scale(1.2);
+    transform: scale(1.2);
 }
 
 #idea-icon {
@@ -55,26 +57,114 @@
     margin-right: 40px;
 }
 
+.todo-form-icon {
+    font-size: 80px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform .2s ease-in-out;
+    display: block;
+}
+
+.todo-form-icon:hover {
+    transform: scale(1.2);
+}
+
+.todo-form-icon.add {
+    color: rgb(0, 255, 81);
+}
+
+.todo-form-icon.remove {
+    color: rgb(255, 0, 0);
+}
+
+.add-icon-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.profile-icon {
+    font-size: 50px;
+    user-select: none;
+    text-align: center;
+    width: 100%;
+    background-color: rgb(248, 245, 245);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    display: block;
+    border-bottom: 1px solid rgba(216, 216, 216, 0.396);
+}
+
 /* About */ /* Profile */
 
-.container.about,
-.container.profile {
+.bold-text {
+    font-weight: 700;
+}
+
+.container.about {
     max-width: 90%;
     margin: 40px auto;
     padding: 20px 40px;
     box-shadow: rgba(149, 157, 165, 0.5) 0px 2px 5px;
     border-radius: 10px;
     position: relative;
+    border-bottom: 2px solid rgb(0, 255, 81);
+}
+
+.container.profile {
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: rgba(149, 157, 165, 0.5) 0px 2px 5px;
+    border-radius: 10px;
+    position: relative;
+    border-bottom: 2px solid rgb(0, 255, 81);
+    transition: height 0.5s ease;
+    height: 200px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.container.profile.expanded {
+    height: 275px;
+}
+
+.container.profile input {
+    padding-block: 0;
+    padding-inline: 0;
+}
+
+.delete-user-container {
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: rgba(149, 157, 165, 0.5) 0px 2px 5px;
+    border-radius: 10px;
+    position: relative;
+    border-bottom: 2px solid rgb(255, 0, 0);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete-user-container button {
+    padding: 5px 20px;
+    margin: 10px 10px 0 5px;
+    border-radius: 20px;
+    border: 0;
+    cursor: pointer;
+}
+
+.profile-data-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
 }
 
 .container.about {
     display: flex;
     align-items: center;
-}
-
-.form-edit-profile {
-    display: flex;
-    flex-direction: column;
 }
 
 /* Navbar */

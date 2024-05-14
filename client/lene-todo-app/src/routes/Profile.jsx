@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Profile = () => {
 
   const [profileData, setProfileData] = useState(null);
   const token = localStorage.getItem("userToken");
   const [editMode, setEditMode] = useState(false);
+  const [deletePrompt, setDeletePrompt] = useState(false);
 
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -38,6 +40,7 @@ const Profile = () => {
   const handleSave = async () => {
 
     setEditMode(false);
+    setDeletePrompt(false);
 
     if (profileData.username !== newUsername || profileData.email !== newEmail) {
 
@@ -82,33 +85,81 @@ const Profile = () => {
     setNewEmail(profileData.email);
   }
 
+  const handleDeleteProfile = () => {
+    alert("Sletter bruker!");
+    if (token) {
+      try {
+
+      } catch(error) {
+        console.log(error)
+      }
+    }
+  }
+
   return (
     <>
       { !editMode ? 
       (
-        <div className='container profile'>
-          <div>Username: <span style={{ cursor: "pointer" }} onClick={handleEdit} >{ profileData && profileData.username }</span></div>
-          <div>Email: <span style={{ cursor: "pointer" }} onClick={handleEdit}>{ profileData && profileData.email }</span></div>
-          <span onClick={handleEdit} class="profile-icons material-symbols-outlined edit-profile">edit</span>
+        <div className="container profile">
+          <div className="profile-container">
+            <span className="material-symbols-outlined profile-icon">account_circle</span>
+            <div className="profile-data-container">
+              <div>
+                <div><span className='bold-text'>Username: </span><span style={{ cursor: "pointer" }} onClick={handleEdit} >{ profileData && profileData.username }</span></div>
+                <div><span className='bold-text'>Email: </span><span style={{ cursor: "pointer" }} onClick={handleEdit}>{ profileData && profileData.email }</span></div>
+              </div>
+              <div>
+                <span onClick={handleEdit} className="profile-icons material-symbols-outlined edit-profile">edit</span>
+              </div>
+            </div>
+          </div>
         </div>
       )
         :
       (
-        <div className='container profile'>
+        <div className={`container profile ${editMode ? 'expanded' : ''}`}>
           <form className="form-edit-profile">
-            <div>
-              <label htmlFor='editUsername'>Username: </label>
-              <input onChange={(e) => setNewUsername(e.target.value)} id="editUsername" type="text" value={newUsername}/>
+            <span className="material-symbols-outlined profile-icon">account_circle</span>
+            <div className="profile-data-container">
+              <div>
+                <div>
+                  <label htmlFor='editUsername' className='bold-text'>Username: </label>
+                  <input onKeyDown={(e) => e.key === "Enter" ? handleSave() : ""} onChange={(e) => setNewUsername(e.target.value)} id="editUsername" type="text" value={newUsername}/>
+                </div>
+                <div>
+                <label htmlFor='editEmail' className='bold-text'>Email: </label>
+                <input onChange={(e) => setNewEmail(e.target.value)} onKeyDown={(e) => e.key === "Enter" ? handleSave() : ""} id="editEmail" type="text" value={newEmail}/>
+                </div>
+              </div>
+              <div>
+                <span onClick={handleSave} className="profile-icons material-symbols-outlined save-profile">save</span> 
+              </div>
             </div>
-            <div>
-              <label htmlFor='editEmail'>Email: </label>
-              <input onChange={(e) => setNewEmail(e.target.value)} id="editEmail" type="text" value={newEmail}/>
-            </div>
+            <div onClick={() => setDeletePrompt(true)} style={{ color: "red", cursor: "pointer", marginTop: "5px", textAlign: "center", marginBottom: "20px", userSelect: "none" }}>Slett Bruker</div>
           </form>
-        <span onClick={handleSave} className="profile-icons material-symbols-outlined save-profile">save</span>
       </div>
+
       )
       }
+
+      <AnimatePresence>
+      { deletePrompt && 
+      
+      <motion.div 
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -40, opacity: 0 }}
+      className="delete-user-container"
+      >
+        <div>Sikker på at du vil slette brukeren?</div>
+        <div>
+          <button className='btn-delete-profile' onClick={handleDeleteProfile}>Ja, slett brukeren!</button>
+          <button className="btn-cancel-delete" onClick={() => setDeletePrompt(false)}>Avbryt</button>
+        </div>
+      </motion.div>      
+      }
+    </AnimatePresence>
+
     </>
   )
 }

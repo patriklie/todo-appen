@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-
 const SingleTodo = memo(function SingleTodo ({ todo }) {
 
     const dispatch = useDispatch();

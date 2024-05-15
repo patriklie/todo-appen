@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
+import { logout } from '../features/auth/authSlice';
 
 const Profile = () => {
 
@@ -13,6 +14,7 @@ const Profile = () => {
 
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
+  const dispatch = useDispatch();
 
   const fetchProfile = async () => {
 
@@ -85,13 +87,30 @@ const Profile = () => {
     setNewEmail(profileData.email);
   }
 
-  const handleDeleteProfile = () => {
-    alert("Sletter bruker!");
+  const handleDeleteProfile = async() => {
+
     if (token) {
       try {
+          
+        const response = await axios.delete("http://localhost:5000/users/delete",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        )
+        
+        console.log("Delete response: ", response);
+        console.log("Brukernavnet er her: ", response.data.username);
+        dispatch(logout());
+        toast.success(`Slettet bruker: ${response.data.username}`, {
+          position: "bottom-left",
+          autoClose: 3000,
+        });
+        localStorage.removeItem("userToken");
 
       } catch(error) {
-        console.log(error)
+        console.log(error);
       }
     }
   }

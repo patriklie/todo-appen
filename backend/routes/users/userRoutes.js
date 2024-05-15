@@ -128,4 +128,28 @@ router.put("/edit", authenticateToken, async (req, res) => {
 
 })
 
+
+router.delete("/delete", authenticateToken, async (req, res) => {
+
+    try {
+
+        console.log(req.userId)
+        const { userId } = req
+        const deletedUser = await User.findByIdAndDelete({ _id: userId });
+    
+        if(!deletedUser) {
+            console.log("NOT FOUND")
+            return res.status(404).send({ message: "User not found" });
+        }
+    
+        if(deletedUser) {
+            console.log("Deleted user found");
+            return res.status(200).send({ message: "User found and deleted", username: deletedUser.username });
+        }
+
+    } catch(error) {
+        res.status(500).send({ message: "Internal server error i try delete try blocken", error});
+    }
+})
+
 module.exports = router;

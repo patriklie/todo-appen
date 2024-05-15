@@ -31,20 +31,21 @@ const RouteProtector = ({ children }) => {
                 console.error('Feil ved henting av authtoken:', error);
                 dispatch(logout());
                 localStorage.removeItem("userToken");
-
+                setTokenCheck(false);
                 navigate("/login");
 
                 }
             }
 
             if (!userToken) {
+                setTokenCheck(false);
                 navigate("/login");
             }
         };
     
         fetchData();
 
-    }, [userToken, tokenCheck]);
+    }, [userToken, tokenCheck, stateLoggedIn]);
 
     console.log("Token check:", tokenCheck);
     console.log("Logged in:", stateLoggedIn);

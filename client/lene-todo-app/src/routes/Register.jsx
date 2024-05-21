@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import { login } from '../features/auth/authSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Register = () => {
@@ -45,7 +45,7 @@ const Register = () => {
   return (
     <>
     <Navbar />
-    <div style={{ textAlign: "center", marginTop: "40px" }}>Registrer en ny bruker til TODOappen:</div>
+    <div style={{ textAlign: "center", marginTop: "120px" }}>Registrer en ny bruker til TODOappen:</div>
 
     <form onSubmit={handleRegister} className="register-form">
         <label htmlFor='register-username'>Username</label>
@@ -56,6 +56,7 @@ const Register = () => {
         <input type="password" id="register-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button>Registrer ny bruker</button>
     </form>
+    <p style={{ textAlign: "center", fontSize: "12px" }}>Har du allerede bruker? <Link to="/login">Logg på</Link></p>
 
     </>
   )

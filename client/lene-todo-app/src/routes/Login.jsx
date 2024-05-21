@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { login } from '../features/auth/authSlice';
 import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
@@ -49,7 +49,7 @@ const Login = () => {
   return (
     <>
     <Navbar />
-    <div style={{ textAlign: "center", marginTop: "40px" }}>Login på TODOappen:</div>
+    <div style={{ textAlign: "center", marginTop: "120px" }}>Login på TODOappen:</div>
 
     <form onSubmit={handleLogin} className="login-form">
         <label htmlFor='login-email'>Epost</label>
@@ -58,7 +58,7 @@ const Login = () => {
         <input type="password" id="login-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button>Login</button>
     </form>
-
+    <p style={{ textAlign: "center", fontSize: "12px" }}>Har du ikke bruker? <Link to="/register">Registrer deg her</Link></p>
     </>
   )
 }

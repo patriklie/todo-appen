@@ -41,17 +41,17 @@ const handleNaviClick = () => {
 
             {!isAuthenticated && 
             <>
-              <li><NavLink onClick={handleNaviClick} to="/login"><span class="material-symbols-outlined sidebar-icons">login</span>LOGIN</NavLink></li>
-              <li><NavLink onClick={handleNaviClick} to="/register"><span class="material-symbols-outlined sidebar-icons">person_add</span>REGISTRER</NavLink></li>
+              <li><NavLink onClick={handleNaviClick} to="/login"><span className="material-symbols-outlined sidebar-icons">login</span>LOGIN</NavLink></li>
+              <li><NavLink onClick={handleNaviClick} to="/register"><span className="material-symbols-outlined sidebar-icons">person_add</span>REGISTRER</NavLink></li>
             </>
             }
 
             {isAuthenticated &&
             <>
-              <li><NavLink onClick={handleNaviClick} to="/profile"><span class="material-symbols-outlined sidebar-icons">person</span>PROFILE</NavLink></li>
-              <li><NavLink onClick={handleNaviClick} to="/"><span class="material-symbols-outlined sidebar-icons">home</span>HJEM</NavLink></li>
-              <li><NavLink onClick={handleNaviClick} to="/about"><span class="material-symbols-outlined sidebar-icons">info</span>OM</NavLink></li>
-              <li style={{ cursor: "pointer", }} onClick={logoutUser}><span class="material-symbols-outlined sidebar-icons">logout</span>LOGOUT</li>
+              <li><NavLink onClick={handleNaviClick} to="/profile"><span className="material-symbols-outlined sidebar-icons">person</span>PROFILE</NavLink></li>
+              <li><NavLink onClick={handleNaviClick} to="/"><span className="material-symbols-outlined sidebar-icons">home</span>HJEM</NavLink></li>
+              <li><NavLink onClick={handleNaviClick} to="/about"><span className="material-symbols-outlined sidebar-icons">info</span>OM</NavLink></li>
+              <li style={{ cursor: "pointer", }} onClick={logoutUser}><span className="material-symbols-outlined sidebar-icons">logout</span>LOGOUT</li>
             </>
             }
 

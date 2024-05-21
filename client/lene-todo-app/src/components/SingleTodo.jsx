@@ -27,7 +27,7 @@ const SingleTodo = memo(function SingleTodo ({ todo }) {
             await axios.delete(`http://localhost:5000/todos/${todo._id}`)
 
             dispatch(removeTodo({ id: todo._id  }))
-            toast.error(`Slettet Todo: ${todo.name}`, {
+            toast.error(`Slettet "${todo.name}"`, {
                 position: "bottom-left",
                 autoClose: 2000,
             });

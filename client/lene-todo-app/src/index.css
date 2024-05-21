@@ -8,8 +8,20 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 #root {
     width: 100%;
+}
+
+.spacer {
+    height: 89px;
+    width: 100%;
+    margin-bottom: 30px;
 }
 
 /* Icons */
@@ -100,6 +112,11 @@
 }
 
 /* About */ /* Profile */
+
+.headline {
+    font-size: 25px;
+    font-weight: 600;
+}
 
 .bold-text {
     font-weight: 700;
@@ -301,26 +318,48 @@
     justify-content: space-between;
 }
 
-/* Add Todo Form */ 
+/* Todo/Login/Register FORMS */ 
 
 form.add-todo-form,
 form.register-form,
 form.login-form {
-    width: 90%;
-    max-width: 800px;
+    width: clamp(50%, 400px, 90%);
     margin: 0 auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
+form.add-todo-form input,
+form.add-todo-form textarea,
+form.register-form input,
+form.login-form input {
+    padding: 15px;
+    border: 1px solid rgb(102, 102, 102);
+    border-radius: 2px;
+}
+
+form.add-todo-form input:hover,
+form.add-todo-form textarea:hover,
+form.register-form input:hover,
+form.login-form input:hover {
+background-color: rgb(224, 224, 224);
+}
+
+form.add-todo-form label,
+form.register-form label,
+form.login-form label {
+    margin-top: 10px;
+    color:rgb(70, 70, 70)
+}
+
 form.add-todo-form button,
 form.register-form button,
 form.login-form button {
-    width: 50%;
+    width: clamp(300px, 100%, 400px);
     margin: 20px auto;
     border-radius: 30px;
-    border: none;
+    border: 2px solid transparent;
     padding: 10px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -337,14 +376,31 @@ form.add-todo-form button:hover,
 form.register-form button:hover,
 form.login-form button:hover {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 10px;
+    background: rgb(1, 209, 67);
 }
 
 form.add-todo-form button:focus,
 form.register-form button:focus,
 form.login-form button:focus {
-    outline: 2px solid black;
+    border: 2px solid black;
 } 
 
 form.add-todo-form label:nth-of-type(2) {
     margin-top: 20px;
+}
+
+/* Error Page */
+.errorpage {
+    width: clamp(50%, 90%, 900px);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+}
+
+.notfound-grid {
+    display: grid;
+    grid-template-rows: auto 1fr;
 }

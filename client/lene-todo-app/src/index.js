@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Profile from './routes/Profile';
 import RouteProtector from './components/RouteProtector';
+import ErrorPage from './routes/ErrorPage';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     element: <RouteProtector>
         <Layout />
       </RouteProtector>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

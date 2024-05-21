@@ -23,7 +23,8 @@ const Login = () => {
         })
   
         console.log("Dette er response etter axios: ", response)
-        const token = response.data;
+        const token = response.data.token;
+        const username = response.data.username;
 
         setEmail("");
         setPassword("");
@@ -31,7 +32,7 @@ const Login = () => {
         dispatch(login());
         localStorage.setItem("userToken", token);
         navigate("/");
-        toast.success("Logget inn!", {
+        toast.success(`${username} logget inn!`, {
           position: "bottom-left",
           autoClose: 3000,
         });
@@ -49,7 +50,8 @@ const Login = () => {
   return (
     <>
     <Navbar />
-    <div style={{ textAlign: "center", marginTop: "120px" }}>Login på TODOappen:</div>
+    <div className='spacer'></div>
+    <div className='headline' style={{ textAlign: "center" }}>Login:</div>
 
     <form onSubmit={handleLogin} className="login-form">
         <label htmlFor='login-email'>Epost</label>

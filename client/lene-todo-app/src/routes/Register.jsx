@@ -45,12 +45,13 @@ const Register = () => {
   return (
     <>
     <Navbar />
-    <div style={{ textAlign: "center", marginTop: "120px" }}>Registrer en ny bruker til TODOappen:</div>
+    <div className='spacer'></div>
+    <div className="headline" style={{ textAlign: "center" }} >Registrer ny bruker:</div>
 
     <form onSubmit={handleRegister} className="register-form">
-        <label htmlFor='register-username'>Username</label>
+        <label htmlFor='register-username'>Brukernavn</label>
         <input type="text" id="register-username" value={username} onChange={(e) => setName(e.target.value)} required />
-        <label htmlFor='register-email'>Epost</label>
+        <label htmlFor='register-email'>E-post</label>
         <input type="email" id="register-email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <label htmlFor='register-password'>Passord</label>
         <input type="password" id="register-password" value={password} onChange={(e) => setPassword(e.target.value)} required />

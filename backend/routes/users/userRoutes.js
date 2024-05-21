@@ -61,7 +61,7 @@ router.post("/login", async (req, res) => {
     
         if (match) {
             const token = jwt.sign({ userId: foundUser._id }, process.env.SECRET_KEY, { expiresIn: '30d' })
-            res.status(200).send(token);
+            res.status(200).send({ token, username: foundUser.username });
         }
     } catch (error) {
         console.error("Feil ved innlogging: ", error);

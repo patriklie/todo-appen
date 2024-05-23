@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { logout, login } from '../features/auth/authSlice';
+import { logout, loginWithToken } from '../features/auth/authSlice';
 
 const RouteProtector = ({ children }) => {
 
@@ -24,7 +24,7 @@ const RouteProtector = ({ children }) => {
                     }
                     });
 
-                    dispatch(login());
+                    dispatch(loginWithToken());
                     setTokenCheck(true);
 
             } catch (error) {

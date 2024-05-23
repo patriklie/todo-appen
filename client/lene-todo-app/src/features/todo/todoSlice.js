@@ -40,25 +40,7 @@ export const todoSlice = createSlice({
                 } else {
                     return todo;
                 }
-            } );
-        },
-        moveUp: (state, action) => {
-            const { id } = action.payload;
-            const index = state.todos.findIndex(item => item.id === id);
-            if (index !== -1 && index > 0) {
-                const tempObject = state.todos[index];
-                state.todos[index] = state.todos[index - 1];
-                state.todos[index - 1] = tempObject;
-            }
-        },
-        moveDown: (state, action) => {
-            const { id } = action.payload;
-            const index = state.todos.findIndex(item => item.id === id);
-            if (index !== -1 && index < state.todos.length -1) {
-                const tempObject = state.todos[index];
-                state.todos[index] = state.todos[index + 1];
-                state.todos[index + 1] = tempObject;
-            }
+            });
         }
     },
     extraReducers: (builder) => {

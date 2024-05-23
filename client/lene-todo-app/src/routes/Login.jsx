@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import { login } from '../features/auth/authSlice';
+import { loginUser } from '../features/auth/authSlice';
 import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
 
@@ -23,13 +23,15 @@ const Login = () => {
         })
   
         console.log("Dette er response etter axios: ", response)
+
         const token = response.data.token;
         const username = response.data.username;
 
         setEmail("");
         setPassword("");
 
-        dispatch(login());
+        dispatch(loginUser({ username }));
+
         localStorage.setItem("userToken", token);
         navigate("/");
         toast.success(`${username} logget inn!`, {

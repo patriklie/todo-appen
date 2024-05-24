@@ -14,6 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Profile from './routes/Profile';
 import RouteProtector from './components/RouteProtector';
 import ErrorPage from './routes/ErrorPage';
+import TodosStart from './routes/TodosStart';
+import SingleTodoList from './components/SingleTodoList';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />
+      },
+      {
+        path: "todos",
+        element: <TodosStart />
+      },
+      {
+        path: "lists/:id",
+        element: <SingleTodoList />
       },
       {
         path: "profile",

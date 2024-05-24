@@ -27,7 +27,7 @@ const Register = () => {
   
         const token = response.data;
 
-        dispatch(loginUser());
+        dispatch(loginUser(username));
         localStorage.setItem('userToken', token);
 
         setName("");

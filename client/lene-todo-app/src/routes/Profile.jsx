@@ -124,8 +124,8 @@ const Profile = () => {
             <span className="material-symbols-outlined profile-icon">account_circle</span>
             <div className="profile-data-container">
               <div>
-                <div><span className='bold-text'>Username: </span><span style={{ cursor: "pointer" }} onClick={handleEdit} >{ profileData && profileData.username }</span></div>
-                <div><span className='bold-text'>Email: </span><span style={{ cursor: "pointer" }} onClick={handleEdit}>{ profileData && profileData.email }</span></div>
+                <div><span className='bold-text'>Brukernavn:&nbsp;</span><span style={{ cursor: "pointer" }} onClick={handleEdit} >{ profileData && profileData.username }</span></div>
+                <div><span className='bold-text'>E-post:&nbsp;</span><span style={{ cursor: "pointer" }} onClick={handleEdit}>{ profileData && profileData.email }</span></div>
               </div>
               <div>
                 <span onClick={handleEdit} className="profile-icons material-symbols-outlined edit-profile">edit</span>
@@ -142,11 +142,11 @@ const Profile = () => {
             <div className="profile-data-container">
               <div>
                 <div>
-                  <label htmlFor='editUsername' className='bold-text'>Username: </label>
+                  <label htmlFor='editUsername' className='bold-text'>Brukernavn: </label>
                   <input onKeyDown={(e) => e.key === "Enter" ? handleSave() : ""} onChange={(e) => setNewUsername(e.target.value)} id="editUsername" type="text" value={newUsername}/>
                 </div>
                 <div>
-                <label htmlFor='editEmail' className='bold-text'>Email: </label>
+                <label htmlFor='editEmail' className='bold-text'>E-post: </label>
                 <input onChange={(e) => setNewEmail(e.target.value)} onKeyDown={(e) => e.key === "Enter" ? handleSave() : ""} id="editEmail" type="text" value={newEmail}/>
                 </div>
               </div>

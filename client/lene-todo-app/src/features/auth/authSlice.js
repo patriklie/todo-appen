@@ -14,10 +14,13 @@ const authSlice = createSlice({
             state.username = action.payload.username;
         },
         loginWithToken: (state, action) => {
+            console.log("Logget inn med token")
             state.isAuth = true;
+            state.username = action.payload.username;
         },
         logout: (state, action) => {
             state.isAuth = false;
+            state.username = null;
         }
     }
 })

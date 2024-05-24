@@ -23,8 +23,8 @@ const RouteProtector = ({ children }) => {
                         Authorization: `Bearer ${userToken}`
                     }
                     });
-
-                    dispatch(loginWithToken());
+                    const username = response?.data?.username
+                    dispatch(loginWithToken({ username }));
                     setTokenCheck(true);
 
             } catch (error) {
@@ -33,7 +33,6 @@ const RouteProtector = ({ children }) => {
                 localStorage.removeItem("userToken");
                 setTokenCheck(false);
                 navigate("/login");
-
                 }
             }
 
@@ -45,7 +44,7 @@ const RouteProtector = ({ children }) => {
     
         fetchData();
 
-    }, [userToken, tokenCheck, stateLoggedIn]);
+    }, [userToken, tokenCheck]);
 
     console.log("Token check:", tokenCheck);
     console.log("Logged in:", stateLoggedIn);

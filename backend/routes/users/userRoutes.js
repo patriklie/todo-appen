@@ -80,11 +80,15 @@ router.get("/profile", authenticateToken, async (req, res) => {
     return res.status(200).send(userData);
 })
 
-router.get("/authtoken", authenticateToken, (req, res) => {
+router.get("/authtoken", authenticateToken, async (req, res) => {
 
     const token = req.token;
-    
-    return res.status(200).json({ message: "Valid token" })
+    const userId = req.userId
+
+    const foundUser = await User.findById(userId);
+    const username = foundUser.username;
+
+    return res.status(200).json({ message: "Valid token", username })
 })
 
 router.put("/edit", authenticateToken, async (req, res) => {

@@ -25,7 +25,6 @@ const Register = () => {
           password
         })
   
-        console.log("Dette er response etter axios: ", response)
         const token = response.data;
 
         dispatch(loginUser());
@@ -50,11 +49,11 @@ const Register = () => {
 
     <form onSubmit={handleRegister} className="register-form">
         <label htmlFor='register-username'>Brukernavn</label>
-        <input type="text" id="register-username" value={username} onChange={(e) => setName(e.target.value)} required />
+        <input type="text" id="register-username" autoComplete='username' value={username} onChange={(e) => setName(e.target.value)} required />
         <label htmlFor='register-email'>E-post</label>
-        <input type="email" id="register-email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="email" id="register-email" autoComplete='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
         <label htmlFor='register-password'>Passord</label>
-        <input type="password" id="register-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input type="password" id="register-password" autoComplete='current-password' value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button>Registrer ny bruker</button>
     </form>
     <p style={{ textAlign: "center", fontSize: "12px" }}>Har du allerede bruker? <Link to="/login">Logg på</Link></p>

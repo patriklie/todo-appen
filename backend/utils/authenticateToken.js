@@ -8,12 +8,11 @@ const authenticateToken = (req, res, next) => {
     if (!token) {
         return res.status(401).json({ message: "No Token found." }); 
     }
-    console.log("Dette er token før verify inni AUTH: ", token);
+
     try {
         const verifiedToken = jwt.verify(token, process.env.SECRET_KEY);
         req.userId = verifiedToken.userId;
         req.token = verifiedToken;
-        console.log("Dette er VERIFIED TOKEN", verifiedToken);
         next();
 
     } catch (error) {

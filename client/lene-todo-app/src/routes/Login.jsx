@@ -22,8 +22,6 @@ const Login = () => {
           password
         })
   
-        console.log("Dette er response etter axios: ", response)
-
         const token = response.data.token;
         const username = response.data.username;
 
@@ -57,9 +55,9 @@ const Login = () => {
 
     <form onSubmit={handleLogin} className="login-form">
         <label htmlFor='login-email'>Epost</label>
-        <input type="email" id="login-email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="email" id="login-email" autoComplete='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
         <label htmlFor='login-password'>Passord</label>
-        <input type="password" id="login-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input type="password" id="login-password" autoComplete='current-password' value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button>Login</button>
     </form>
     <p style={{ textAlign: "center", fontSize: "12px" }}>Har du ikke bruker? <Link to="/register">Registrer deg her</Link></p>

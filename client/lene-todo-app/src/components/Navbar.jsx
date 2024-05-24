@@ -9,6 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state.auth.isAuth);
+  const loggedInUser = useSelector(state => state.auth.username);
   const [sidebar, setSidebar] = useState(false);
   
   const logoutUser = () => {  
@@ -25,6 +26,9 @@ const handleNaviClick = () => {
     <nav className="navbar">
       <div className='navbar-header'>
         <Hamburger toggled={sidebar} toggle={setSidebar} />
+        <div>
+          <div>{ loggedInUser }</div>
+        </div>
         <div className='logo'><Link to="/"><span>TODO</span>appen</Link></div>
       </div>
 
@@ -36,7 +40,7 @@ const handleNaviClick = () => {
        animate={{ x: 0, opacity: 1 }}
        exit={{ x: -200, opacity: 0 }}
        transition={{ type: "tween" }}
-      className='nav-menu'>
+       className='nav-menu'>
         <ul className="navbar-ul">
 
             {!isAuthenticated && 

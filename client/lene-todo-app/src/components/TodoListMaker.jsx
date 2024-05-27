@@ -28,7 +28,7 @@ const TodoListMaker = () => {
         } catch(error) {
             console.log(error)
         }
-
+        setListName("")
     }
 
 

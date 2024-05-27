@@ -23,9 +23,9 @@ mongoose.connect(uri)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-/* app.use("/todos", todoRoutes); DETTE ER DE GAMLE TODO RUTENE FØR LISTER */
 
 app.use("/lists", listRoutes);
+app.use("/todos", todoRoutes);
 app.use("/users", userRoutes);
 
 app.listen(port, () => {

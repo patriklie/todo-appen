@@ -25,11 +25,15 @@ const handleNaviClick = () => {
   return (
     <nav className="navbar">
       <div className='navbar-header'>
-        <Hamburger toggled={sidebar} toggle={setSidebar} />
-        <div>
+        <div className="navbar-ham">
+          <Hamburger toggled={sidebar} toggle={setSidebar} />
+        </div>
+        <div className='profile-link'>
           <div><Link to="/profile">{ loggedInUser }</Link></div>
         </div>
-        <div className='logo'><Link to="/"><span>TODO</span>appen</Link></div>
+        <div className='logo'>
+          <Link to="/"><span>TODO</span>appen</Link>
+        </div>
       </div>
 
       <AnimatePresence>

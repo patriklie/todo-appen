@@ -3,7 +3,6 @@ const router = express.Router();
 const validateTodo = require('../../utils/validateTodo');
 const Todo = require('../../models/Todo');
 
-// Henter alle todos i hele collection:
 router.get("/", async (req, res) => {
 
     try {
@@ -14,7 +13,6 @@ router.get("/", async (req, res) => {
     }
 })
 
-// Legger til en ny TODO i liste:
 router.post("/", async (req, res) => {
     const { error } = validateTodo(req.body);
 
@@ -29,7 +27,6 @@ router.post("/", async (req, res) => {
         name: req.body.name,
         description: req.body.description,
         completed: false,
-        list: req.body.list,
     })
 
     try {

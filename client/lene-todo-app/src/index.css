@@ -204,9 +204,34 @@
     width: 100%;
     height: 100%;
     padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
+}
+
+.navbar-header .profile-link {
+    justify-self: center;
+}
+
+.navbar-header .logo {
+    justify-self: flex-end;
+}
+
+@media screen and (max-width: 500px) { 
+    .navbar-header {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .navbar-header .logo,
+    .navbar-header .navbar-ham,
+    .navbar-header .profile-link {
+        justify-self: center;
+    }
+
+    .spacer {
+        height: 183px;
+    }
 }
 
 .navbar .logo a {
@@ -260,11 +285,6 @@
 
 .navbar-ul a.active {
     text-decoration: underline;
-}
-
-.hamburger-menu {
-    user-select: none;
-    cursor: pointer;
 }
 
 .sidebar-icons {

@@ -23,8 +23,6 @@ router.get("/", getUserId, async (req, res) => {
 // Her tenkte jeg hente frem EN liste
 router.get("/:id", async (req, res) => {
     const id = req.params.id;
-    console.log(id);
-
     const foundList = await List.findById(id)
     const foundOwner = await User.findById(foundList.owner)
 

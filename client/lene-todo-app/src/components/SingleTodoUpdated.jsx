@@ -1,32 +1,39 @@
-import React, { memo } from 'react'
-import { removeTodo, toggleComplete, moveUp, moveDown } from '../features/todo/todoSlice';
+import React, { memo, useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { toggleComplete } from '../features/todo/todoSlice';
 
-const SingleTodo = memo(function SingleTodo ({ todo }) {
+const SingleTodoUpdated = ({ todoId }) => {
 
     const dispatch = useDispatch();
+    const [todo, setTodo] = useState(null);
 
-    const handleToggle = async () => {
-        
+
+
+    useEffect(() => {
+        const fetchTodo = async () => {
+            const response = await axios.get(`http://localhost:5000/todos/${todoId}`);
+            setTodo(response.data);
+        }
+        fetchTodo();
+    },[]);
+
+    const handleToggle = async () => { 
         try {
-            const updatedTodo = await axios.put(`http://localhost:5000/todos/${todo._id}/toggle`, {
-                completed: todo.completed
+            const response = await axios.put(`http://localhost:5000/todos/${todo._id}/toggle`, {
+                todo
             })
-            dispatch(toggleComplete(updatedTodo.data))
-
+            dispatch(toggleComplete(response.data))
+            setTodo(response.data);
         } catch(error) {
             console.error("Feil ved oppdatering av toggle complete:", error)
         }
     }
-
     const handleDelete = async () => {
-
         try {
             await axios.delete(`http://localhost:5000/todos/${todo._id}`)
 
-            dispatch(removeTodo({ id: todo._id  }))
             toast.error(`Slettet "${todo.name}"`, {
                 position: "bottom-left",
                 autoClose: 2000,
@@ -35,15 +42,10 @@ const SingleTodo = memo(function SingleTodo ({ todo }) {
         } catch(error) {
             console.log("Feil ved sletting av todo:", error)
         }
-
     }
 
-    const handleUp = () => {
-        dispatch(moveUp({ id: todo._id }))
-    }
-
-    const handleDown = () => {
-        dispatch(moveDown({ id: todo._id }))
+    if (!todo) {
+        return null;
     }
 
     const formatertDato = new Date(todo.createdAt).toLocaleString();
@@ -58,13 +60,9 @@ const SingleTodo = memo(function SingleTodo ({ todo }) {
         <span onClick={handleDelete} className="material-symbols-outlined icons close" id="close">close</span>
         <div className="icons-container">
             {todo.completed ? <span onClick={() => handleToggle()} className="material-symbols-outlined checkmark">check_box</span> : <span onClick={() => handleToggle()} className="material-symbols-outlined checkmark">check_box_outline_blank</span> }
-            <div className="arrow-container">
-                <span onClick={handleUp} className="material-symbols-outlined icons">arrow_upward</span>
-                <span onClick={handleDown} className="material-symbols-outlined icons">arrow_downward</span>
-            </div>
         </div>
     </div>
   )
 }
-)
-export default SingleTodo
+
+export default SingleTodoUpdated

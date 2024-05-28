@@ -7,10 +7,10 @@ const initialState = {
     error: null,
 };
 
-export const loadTodos = createAsyncThunk(
-    'todo/loadTodos',
-    async () => {
-        const response = await axios.get('http://localhost:5000/todos');
+export const loadListTodos = createAsyncThunk(
+    'todo/loadListTodos',
+    async (listId) => {
+        const response = await axios.get(`http://localhost:5000/todos/listtodos/${listId}`);
         return response.data;
     }
 );
@@ -30,11 +30,11 @@ export const todoSlice = createSlice({
             })
         },
         toggleComplete: (state, action) => {
-            const { _id } = action.payload;
+            console.log("Her er action payload i reducer: ", action.payload)
             const updatedTodo = action.payload;
 
             state.todos = state.todos.map(todo => {
-                if(todo._id === _id) {
+                if(todo._id === updatedTodo._id) {
                     return updatedTodo;
                 } else {
                     return todo;
@@ -44,14 +44,14 @@ export const todoSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(loadTodos.fulfilled, (state, action) => {
+            .addCase(loadListTodos.fulfilled, (state, action) => {
                 state.status = "success";
                 state.todos = action.payload;
             })
-            .addCase(loadTodos.pending, (state, action) => {
+            .addCase(loadListTodos.pending, (state, action) => {
                 state.status = "pending";
             })
-            .addCase(loadTodos.rejected, (state, action) => {
+            .addCase(loadListTodos.rejected, (state, action) => {
                 state.status = "Failed fetching todos";
                 state.error = action.error.message;
             })

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { addList } from '../features/list/listSlice';
 
 const TodoListMaker = () => {
 
+    const dispatch = useDispatch();
     const userId = useSelector(state => state.auth.id);
     const token = localStorage.getItem('userToken');
 
@@ -22,7 +24,7 @@ const TodoListMaker = () => {
                 }
             }
         )
-
+        dispatch(addList(response.data));
             console.log(response)
 
         } catch(error) {

@@ -5,6 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { loginUser } from '../features/auth/authSlice';
 import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
+import { loadLists } from '../features/list/listSlice';
 
 const Login = () => {
 
@@ -28,7 +29,8 @@ const Login = () => {
         setEmail("");
         setPassword("");
 
-        dispatch(loginUser({ username }));
+        dispatch(loginUser({ username, token }));
+        dispatch(loadLists())
 
         localStorage.setItem("userToken", token);
         navigate("/");

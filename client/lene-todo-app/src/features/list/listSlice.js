@@ -27,6 +27,9 @@ const listSlice = createSlice({
         setList: (state, action) => {
             state.lists = action.payload;
         },
+        addList: (state, action) => {
+            state.lists.push(action.payload);
+        },
         addTodoToList: (state, action) => {
 
         }
@@ -47,5 +50,5 @@ const listSlice = createSlice({
     }
 })
 
-export const { setList, addTodoToList } = listSlice.actions;
+export const { setList, addTodoToList, addList } = listSlice.actions;
 export default listSlice.reducer;

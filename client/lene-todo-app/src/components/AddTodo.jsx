@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import { addTodoToList } from '../features/list/listSlice';
-
 const AddTodo = ({ listId }) => {
 
     const [todoName, setTodoName] = useState("");

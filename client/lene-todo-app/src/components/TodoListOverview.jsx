@@ -11,10 +11,7 @@ const TodoListOverview = () => {
     const navigate = useNavigate();
     const listsFromState = useSelector(state => state.list.lists);
     const [activeList, setActiveList] = useState(null);
-
-    useEffect(() => {
-        dispatch(loadLists());
-    }, [dispatch, listsFromState]);
+    console.log("Lister fra state: ", listsFromState)
 
     const handleSelect = (event) => {
         event.preventDefault();
@@ -23,7 +20,9 @@ const TodoListOverview = () => {
     }
 
     const goToActiveList = () => {
-        navigate(`/lists/${activeList._id}`)
+        if(activeList) {
+            navigate(`/lists/${activeList._id}`)
+        }
     }
 
   return (
@@ -31,6 +30,7 @@ const TodoListOverview = () => {
     <div>Her kan du se alle TODO listene dine</div>
     <div>Du har {listsFromState.length} lister!</div>
     <select onChange={handleSelect}>
+        <option>Velg en liste!</option>
     {
         listsFromState && listsFromState.length > 0 && 
         listsFromState.map(liste => {

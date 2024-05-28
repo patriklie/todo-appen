@@ -11,7 +11,7 @@ const User = require('../../models/User');
 // Her tenkte jeg sende tilbake alle listene som jeg finner på serveren for bruker ID som etterspør
 router.get("/", getUserId, async (req, res) => {
     try {
-        const lists = await List.find({ owner: req.userId })
+        const lists = await List.find({ owner: req.userId }).populate('todos')
         console.log("Alle lister fra mongodb logga fra API: ", lists)
         res.send(lists)
 

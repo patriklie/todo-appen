@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+/* import React, { memo } from 'react'
 import { removeTodo, toggleComplete, moveUp, moveDown } from '../features/todo/todoSlice';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -67,4 +67,4 @@ const SingleTodo = memo(function SingleTodo ({ todo }) {
   )
 }
 )
-export default SingleTodo
+export default SingleTodo */

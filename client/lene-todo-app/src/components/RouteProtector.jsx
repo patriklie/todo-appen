@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { logout, loginWithToken } from '../features/auth/authSlice';
+import { loadLists } from '../features/list/listSlice';
 
 const RouteProtector = ({ children }) => {
 
     const stateAuth = useSelector(state => state.auth);
     const stateLoggedIn = stateAuth.isAuth;
     const userToken = localStorage.getItem("userToken");
+    const stateToken = useSelector(state => state.auth.token);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [tokenCheck, setTokenCheck] = useState(false);
@@ -24,8 +26,9 @@ const RouteProtector = ({ children }) => {
                     }
                     });
                     const username = response?.data?.username
-                    dispatch(loginWithToken({ username }));
+                    dispatch(loginWithToken({ username, userToken }));
                     setTokenCheck(true);
+                    dispatch(loadLists())
 
             } catch (error) {
                 console.error('Feil ved henting av authtoken:', error);
@@ -44,7 +47,7 @@ const RouteProtector = ({ children }) => {
     
         fetchData();
 
-    }, [userToken, tokenCheck]);
+    }, [tokenCheck]);
 
     console.log("Token check:", tokenCheck);
     console.log("Logged in:", stateLoggedIn);

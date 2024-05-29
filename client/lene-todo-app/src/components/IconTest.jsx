@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Player } from '@lordicon/react';
 
-
+// I MORGEN så lag dette til en template som du bare mater med props som endrer ikonet
 
 export default function PlayOnce() {    
   const playerRef = useRef(null);

@@ -10,13 +10,18 @@ export default function PlayOnce() {
     playerRef.current?.playFromBeginning();
   }, [isHovered]);
 
+  const handleHover = () => {
+    setIsHovered(true)
+    playerRef.current?.playFromBeginning();
+  }
+
   return (
-    <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-      <Player 
+    <div style={{ display: "inline-block", cursor: "pointer"}} onMouseEnter={handleHover}>
+      <Player
         ref={playerRef} 
         icon={ICON}
         size={96}
-        state={isHovered ? "in-reveal" : "hover-empty"}
+        state={isHovered ? "hover-empty" : "in-reveal"}
       />
     </div>
   );

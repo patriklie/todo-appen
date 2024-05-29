@@ -31,9 +31,9 @@ const SingleTodoList = () => {
     <>
       { singleList && <h1 style={{ textAlign: "center"}}>{singleList.name}</h1>}
       <button className='button' onClick={handleDeleteList}>Delete List</button>
-      <div onClick={() => console.log("GARBAGE MAN")}>
+
       <IconTest />
-      </div>
+
       <div className="todos-container">
         {singleList && singleList.todos.length > 0 && singleList.todos.map((todo, index) => {
             return <SingleTodoUpdated key={todo._id} todo={todo} />

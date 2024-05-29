@@ -1,21 +1,23 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Player } from '@lordicon/react';
-
-// I MORGEN så lag dette til en template som du bare mater med props som endrer ikonet
 
 export default function PlayOnce() {    
   const playerRef = useRef(null);
   const ICON = require('../assets/lordicons/wired-outline-185-trash-bin.json');
-  
-    useEffect(() => {
-        playerRef.current?.playFromBeginning();
-    }, [])
+  const [isHovered, setIsHovered] = useState(false);
 
-    return (
-        <Player 
-            ref={playerRef} 
-            icon={ ICON }
-            size={96}
-        />
-    );
+  useEffect(() => {
+    playerRef.current?.playFromBeginning();
+  }, [isHovered]);
+
+  return (
+    <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+      <Player 
+        ref={playerRef} 
+        icon={ICON}
+        size={96}
+        state={isHovered ? "in-reveal" : "hover-empty"}
+      />
+    </div>
+  );
 }

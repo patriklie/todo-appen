@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import AddTodo from './AddTodo';
 import { motion, AnimatePresence } from 'framer-motion';
 import SingleTodoUpdated from './SingleTodoUpdated';
 import { useDispatch, useSelector } from 'react-redux';
+import { deleteListAndTodos } from '../features/list/listSlice'
+;
 
 const SingleTodoList = () => {
 
-  const { id } = useParams();
-  const [todoList, setTodoList] = useState(null);
-  const [addTodoActive, setAddTodoActive] = useState(false);
   const dispatch = useDispatch();
+  const { id } = useParams();
+  const singleList = useSelector(state => state.list.lists.find(lista => lista._id === id));
+  const [addTodoActive, setAddTodoActive] = useState(false);
+  console.log("Her er lista fra state: ", singleList);
+  const navigate = useNavigate();
 
-  useEffect(() => {
+/*   useEffect(() => {
     const getSingleList = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/lists/${id}`);
@@ -25,16 +29,26 @@ const SingleTodoList = () => {
 
     getSingleList();
 
-  },[id]);
+  },[id]); */
+
+  const handleDeleteList = async () => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/lists/${id}`)
+      dispatch(deleteListAndTodos(response.data));
+      navigate("/todos")
+    } catch(error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
-      { todoList && <h1 style={{ textAlign: "center"}}>{todoList.listName}</h1>}
+      { singleList && <h1 style={{ textAlign: "center"}}>{singleList.name}</h1>}
+      <button onClick={handleDeleteList}>Delete List</button>
 
-     
       <div className="todos-container">
-        {todoList && todoList.todos.length > 0 && todoList.todos.map((todo, index) => {
-            return <SingleTodoUpdated key={todo} todoId={todo} />
+        {singleList && singleList.todos.length > 0 && singleList.todos.map((todo, index) => {
+            return <SingleTodoUpdated key={todo._id} todo={todo} />
         }) }
     </div>
 

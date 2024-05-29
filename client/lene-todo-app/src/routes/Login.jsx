@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 import { loadLists } from '../features/list/listSlice';
 
 const Login = () => {
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
@@ -30,10 +29,10 @@ const Login = () => {
         setPassword("");
 
         dispatch(loginUser({ username, token }));
-        dispatch(loadLists())
-
         localStorage.setItem("userToken", token);
+        dispatch(loadLists())
         navigate("/");
+
         toast.success(`${username} logget inn!`, {
           position: "bottom-left",
           autoClose: 3000,

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { addTodoToList } from '../features/list/listSlice';
 
 const AddTodo = ({ listId }) => {
 
@@ -23,7 +24,7 @@ const AddTodo = ({ listId }) => {
         console.log(response)
         const savedTodo = response.data;
 
-       /*  dispatch(addTodoToList(savedTodo)) */
+        dispatch(addTodoToList(savedTodo)) 
         
         toast.success(`Lagt til "${todoName}"`, { 
             position: "bottom-left",

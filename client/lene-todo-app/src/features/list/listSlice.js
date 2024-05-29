@@ -31,7 +31,24 @@ const listSlice = createSlice({
             state.lists.push(action.payload);
         },
         addTodoToList: (state, action) => {
-
+            const foundList = state.lists.find(list => list._id === action.payload.list);
+            foundList.todos.push(action.payload);
+        },
+        toggleTodo: (state, action) => {
+            console.log("Her er todo i list staten: ", action.payload);
+            const foundList = state.lists.find(list => list._id === action.payload.list);
+            const foundTodo = foundList.todos.find(todo => todo._id === action.payload._id);
+            foundTodo.completed = !foundTodo.completed;
+        },
+        deleteTodoFromList: (state, action) => {
+            const foundList = state.lists.find(list => list._id === action.payload.list);
+            if(foundList) {
+                foundList.todos = foundList.todos.filter(todo => todo._id !== action.payload._id);
+            }
+        },
+        deleteListAndTodos: (state, action) => {
+            console.log()
+            state.lists = state.lists.filter(list => list._id !== action.payload._id);
         }
     },
     extraReducers: (builder) => {
@@ -50,5 +67,5 @@ const listSlice = createSlice({
     }
 })
 
-export const { setList, addTodoToList, addList } = listSlice.actions;
+export const { setList, addTodoToList, addList, toggleTodo, deleteTodoFromList, deleteListAndTodos } = listSlice.actions;
 export default listSlice.reducer;

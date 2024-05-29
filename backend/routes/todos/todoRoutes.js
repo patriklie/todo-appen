@@ -92,9 +92,9 @@ router.delete("/:id", async (req, res) => {
 
 router.put("/:id/toggle", async (req, res) => {
     const { id } = req.params;
-    console.log("Detta er i req body:",req.body)
+
     try {
-        const updatedTodo = await Todo.findByIdAndUpdate(id, { completed: !req.body.todo.completed}, { new: true });
+        const updatedTodo = await Todo.findByIdAndUpdate(id, { completed: !req.body.localTodo.completed}, { new: true });
         if(!updatedTodo) {
             return res.status(404).json({ error: "Todo not found" });
         }

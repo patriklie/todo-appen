@@ -52,6 +52,19 @@ router.post("/add", authenticateToken, async (req, res) => {
     } catch(error) {
         res.status(500).send({ error: error.message });
     }
+})
+
+// Sletter en liste OG alle tilhørende todos 
+router.delete("/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const foundList = await List.findByIdAndDelete(id);
+        const foundTodos = await Todo.deleteMany({ list: id });
+        res.status(200).send(foundList)
+    } catch(error) {
+        console.error("Feil ved sletting av liste og tilhørende todos: ", error);
+        res.status(500).send("Feil ved sletting av liste og tilhørende todos.");
+    }
 
 })
 

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import AddTodo from './AddTodo';
 import { motion, AnimatePresence } from 'framer-motion';
 import SingleTodoUpdated from './SingleTodoUpdated';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteListAndTodos } from '../features/list/listSlice'
-;
+import { deleteListAndTodos } from '../features/list/listSlice';
+import IconTest from './IconTest';
 
 const SingleTodoList = () => {
 
@@ -16,20 +16,6 @@ const SingleTodoList = () => {
   const [addTodoActive, setAddTodoActive] = useState(false);
   console.log("Her er lista fra state: ", singleList);
   const navigate = useNavigate();
-
-/*   useEffect(() => {
-    const getSingleList = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/lists/${id}`);
-        setTodoList(response.data);
-      } catch(error) {
-        console.error(error);
-      }
-    }
-
-    getSingleList();
-
-  },[id]); */
 
   const handleDeleteList = async () => {
     try {
@@ -44,8 +30,10 @@ const SingleTodoList = () => {
   return (
     <>
       { singleList && <h1 style={{ textAlign: "center"}}>{singleList.name}</h1>}
-      <button onClick={handleDeleteList}>Delete List</button>
-
+      <button className='button' onClick={handleDeleteList}>Delete List</button>
+      <div onClick={() => console.log("GARBAGE MAN")}>
+      <IconTest />
+      </div>
       <div className="todos-container">
         {singleList && singleList.todos.length > 0 && singleList.todos.map((todo, index) => {
             return <SingleTodoUpdated key={todo._id} todo={todo} />

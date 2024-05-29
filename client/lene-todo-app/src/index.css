@@ -111,6 +111,14 @@
     border-bottom: 1px solid rgba(216, 216, 216, 0.396);
 }
 
+/* Button Styling */
+.button {
+    width: 250px;
+    padding: 10px;
+    border-radius: 30px;
+    border: none;
+}
+
 /* About */ /* Profile */
 
 .headline {

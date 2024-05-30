@@ -6,6 +6,7 @@ import { loginUser } from '../features/auth/authSlice';
 import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
 import { loadLists } from '../features/list/listSlice';
+import { motion } from "framer-motion";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -52,8 +53,20 @@ const Login = () => {
     <>
     <Navbar />
     <div className='spacer'></div>
-    <div className='headline' style={{ textAlign: "center" }}>Login:</div>
 
+
+  
+
+    <motion.div className='login-container'
+      initial={{ scale: .9 }}
+      animate={{ scale: 1 }}
+      transition={{
+      type: "spring",
+      stiffness: 260,
+      damping: 20
+      }}
+      >
+    <div className='headline' style={{ textAlign: "center" }}>Login</div>
     <form onSubmit={handleLogin} className="login-form">
         <label htmlFor='login-email'>Epost</label>
         <input type="email" id="login-email" autoComplete='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -62,6 +75,8 @@ const Login = () => {
         <button>Login</button>
     </form>
     <p style={{ textAlign: "center", fontSize: "12px" }}>Har du ikke bruker? <Link to="/register">Registrer deg her</Link></p>
+    </motion.div>
+   
     </>
   )
 }

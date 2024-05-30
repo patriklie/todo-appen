@@ -418,6 +418,15 @@
 
 /* Todo/Login/Register FORMS */ 
 
+.login-container {
+    width: clamp(25%, 500px, 90%);
+    margin: auto;
+    background: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
 form.add-todo-form,
 form.register-form,
 form.login-form {
@@ -454,7 +463,7 @@ form.login-form label {
 form.add-todo-form button,
 form.register-form button,
 form.login-form button {
-    width: clamp(300px, 100%, 400px);
+    width: clamp(100%, 100%, 400px);
     margin: 20px auto;
     border-radius: 30px;
     border: 2px solid transparent;

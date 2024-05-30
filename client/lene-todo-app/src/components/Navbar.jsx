@@ -26,10 +26,10 @@ const handleNaviClick = () => {
     <nav className="navbar">
       <div className='navbar-header'>
         <div className="navbar-ham">
-          <Hamburger toggled={sidebar} toggle={setSidebar} />
+          <Hamburger rounded color="#fff" toggled={sidebar} toggle={setSidebar} />
         </div>
         <div className='profile-link'>
-          <div><Link to="/profile">{ loggedInUser }</Link></div>
+          <div className='profile-name'><Link to="/profile">{ loggedInUser }</Link></div>
         </div>
         <div className='logo'>
           <Link to="/"><span>TODO</span>appen</Link>
@@ -60,7 +60,7 @@ const handleNaviClick = () => {
               <li><NavLink onClick={handleNaviClick} to="/"><span className="material-symbols-outlined sidebar-icons">home</span>HJEM</NavLink></li>
               <li><NavLink onClick={handleNaviClick} to="/todos"><span className="material-symbols-outlined sidebar-icons">checklist_rtl</span>TODOS</NavLink></li>
               <li><NavLink onClick={handleNaviClick} to="/about"><span className="material-symbols-outlined sidebar-icons">info</span>OM</NavLink></li>
-              <li style={{ cursor: "pointer", }} onClick={logoutUser}><span className="material-symbols-outlined sidebar-icons">logout</span>LOGOUT</li>
+              <li style={{ cursor: "pointer", color: "white" }} onClick={logoutUser}><span className="material-symbols-outlined sidebar-icons">logout</span>LOGOUT</li>
             </>
             }
 

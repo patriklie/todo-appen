@@ -24,7 +24,62 @@
     margin-bottom: 30px;
 }
 
+/* List styling */
+
+.list-info-container {
+    background: rgb(255, 255, 255);
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    position: relative;
+    margin: auto 20px;
+    border-bottom: 2px solid transparent;
+    text-align: center;
+}
+
+.list-info-container .under-text {
+    color: rgb(145, 145, 145);
+}
+.list-info-container .list-title  {
+    background: #0ABD6C;
+    background: linear-gradient(to right, #0ABD6C 50%, #44ffab 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /* Icons */
+
+.button-container {
+    padding: 15px;
+    margin: 20px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    color:rgb(180, 180, 180);
+    font-size: 20px;
+    transition: all .2s ease;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.button-container:hover {
+    transform: scale(1.2);
+    color: black;
+}
+.button-container:active {
+    transform: scale(1);
+}
+
+.button-container-text {
+    margin-top: 5px;
+}
 
 .material-symbols-outlined {
   font-variation-settings:
@@ -203,7 +258,7 @@
     width: 100%;
     position: fixed;
     top: 0;
-    background: rgb(245, 245, 245);
+    background: #0abd6c;
     border-bottom: 2px solid rgb(220, 220, 220);
     z-index: 2000;
 }
@@ -215,6 +270,11 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
+}
+
+.navbar-header .profile-name a {
+    color: white;
+    text-decoration: none;
 }
 
 .navbar-header .profile-link {
@@ -249,7 +309,7 @@
 }
 
 .navbar .logo span {
-    color: red;
+    color: #ffffff;
     font-weight: 700;
     letter-spacing: 1.5px;
 }
@@ -257,7 +317,7 @@
 /* SIDEBAR CSS */
 
 .nav-menu {
-    background: rgb(245, 245, 245);
+    background: #0abd6c;
     width: 50%;
     position: fixed;
     height: 100%;
@@ -288,7 +348,7 @@
 
 .navbar-ul a {
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .navbar-ul a.active {
@@ -337,7 +397,7 @@
 }
 
 .single-todo-container.todo-active {
-    border-bottom: 2px solid rgb(0, 255, 81);
+    border-bottom: 2px solid #0abd6c;
 }
 
 .icons-container {

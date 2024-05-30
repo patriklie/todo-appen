@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Player } from '@lordicon/react';
 
-export default function PlayOnce() {    
+export default function IconContainer({ iconName, size, reveal, hover, onClick }) {    
   const playerRef = useRef(null);
-  const ICON = require('../assets/lordicons/wired-outline-185-trash-bin.json');
+  const ICON = require(`../assets/lordicons/${iconName}.json`);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
@@ -16,12 +16,12 @@ export default function PlayOnce() {
   }
 
   return (
-    <div style={{ display: "inline-block", cursor: "pointer"}} onMouseEnter={handleHover}>
+    <div onClick={onClick} style={{ display: "inline-block", cursor: "pointer"}} onMouseEnter={handleHover}>
       <Player
         ref={playerRef} 
         icon={ICON}
-        size={96}
-        state={isHovered ? "hover-empty" : "in-reveal"}
+        size={size}
+        state={isHovered ? hover : reveal }
       />
     </div>
   );

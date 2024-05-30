@@ -50,7 +50,7 @@ router.post("/add", authenticateToken, async (req, res) => {
         res.status(200).send(savedList);
 
     } catch(error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).send(error); 
     }
 })
 
@@ -67,5 +67,17 @@ router.delete("/:id", async (req, res) => {
     }
 
 })
+
+// Sletter alle todos tilhørende en liste
+router.delete("/:id/todos", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const foundTodos = await Todo.deleteMany({ list: id });
+        res.status(200).send(foundTodos);
+    } catch(error) {
+        console.log("Feil ved sletting av todos tilhørende i en liste")
+        res.status(500).send(error);
+    }
+}) 
 
 module.exports = router;

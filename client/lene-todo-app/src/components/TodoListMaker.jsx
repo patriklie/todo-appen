@@ -40,7 +40,7 @@ const TodoListMaker = () => {
         <div>TodoListMaker</div>
         <form onSubmit={handleSubmit}>
             <label htmlFor='listName'>Listenavn: </label>
-            <input id="listName" value={listName} onChange={(e) => setListName(e.target.value)} type="text" placeholder='Listname' />
+            <input maxLength={20} id="listName" value={listName} onChange={(e) => setListName(e.target.value)} type="text" placeholder='Listname' />
             <button>Opprett ny liste</button>
         </form>
     </>

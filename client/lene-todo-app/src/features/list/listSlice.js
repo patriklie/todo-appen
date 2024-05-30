@@ -47,8 +47,13 @@ const listSlice = createSlice({
             }
         },
         deleteListAndTodos: (state, action) => {
-            console.log()
             state.lists = state.lists.filter(list => list._id !== action.payload._id);
+        },
+        deleteAllTodosFromlist: (state, action) => {
+            const foundList = state.lists.find(list => list._id === action.payload);
+            if(foundList) {
+                foundList.todos = []
+            }
         }
     },
     extraReducers: (builder) => {
@@ -67,5 +72,5 @@ const listSlice = createSlice({
     }
 })
 
-export const { setList, addTodoToList, addList, toggleTodo, deleteTodoFromList, deleteListAndTodos } = listSlice.actions;
+export const { setList, addTodoToList, addList, toggleTodo, deleteTodoFromList, deleteListAndTodos, deleteAllTodosFromlist } = listSlice.actions;
 export default listSlice.reducer;

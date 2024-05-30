@@ -4,6 +4,8 @@ import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { logout } from '../features/auth/authSlice';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hamburger from 'hamburger-react'
+import maskott from "../assets/images/IMG_0333.JPEG"
+import maskott2 from "../assets/images/IMG_0336-removebg.png"
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -65,6 +67,7 @@ const handleNaviClick = () => {
             }
 
         </ul>
+          <img style={{ width: "100%" }} src={maskott2}></img>
       </motion.nav>
       <motion.div 
       initial={{ opacity: 0 }}

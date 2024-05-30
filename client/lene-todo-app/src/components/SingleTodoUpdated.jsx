@@ -4,21 +4,11 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { toggleTodo, deleteTodoFromList } from '../features/list/listSlice';
 
-
 const SingleTodoUpdated = memo(function SingleTodoUpdated({ todo }) {
 
     const todos = useSelector(state => state.list.lists);
-
     const dispatch = useDispatch();
     const [localTodo, setLocalTodo] = useState(todo);
-
-   /*  useEffect(() => {
-        const fetchTodo = async () => {
-            const response = await axios.get(`http://localhost:5000/todos/${todoId}`);
-            setTodo(response.data);
-        }
-        fetchTodo();
-    },[]); */
 
     const handleToggle = async () => { 
         console.log("Dette sender jeg i body til API toggle: ", localTodo)
@@ -57,7 +47,7 @@ const SingleTodoUpdated = memo(function SingleTodoUpdated({ todo }) {
     const tidspunktOpprettet = formatertDato.split(",")[1].trim().slice(0, 5);
 
   return (
-    <div className={`single-todo-container ${localTodo.completed ? "todo-active" : ""}`}>
+    <div className={`${localTodo.completed ? "todo-active" : ""}`}>
         <h3>{localTodo.name}</h3>
         <p>{localTodo.description}</p>
         <p className='date'>Opprettet: {datoOpprettet} klokken {tidspunktOpprettet}</p>

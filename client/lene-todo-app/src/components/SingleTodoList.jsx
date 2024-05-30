@@ -94,7 +94,7 @@ const SingleTodoList = () => {
           <div className='button-container-text'>Slett todos</div>
         </div>
       </div>
-
+      {singleList.todos.length > 0 && 
       <div className="todos-container">
       <AnimatePresence>
         {singleList && singleList.todos.length > 0 && singleList.todos.map((todo, index) => {
@@ -114,6 +114,7 @@ const SingleTodoList = () => {
         })}
         </AnimatePresence>
     </div>
+    }
 
       <AnimatePresence>
       { addTodoActive && <motion.div 

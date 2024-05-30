@@ -61,7 +61,7 @@
 }
 
 .button-container {
-    width: clamp(30vw, 40vw, 200px);
+    width: clamp(100px, 20%, 200px);
     padding: 15px;
     margin: 20px;
     display: inline-flex;

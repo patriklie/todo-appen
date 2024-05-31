@@ -77,6 +77,18 @@ const Login = () => {
     <p style={{ textAlign: "center", fontSize: "12px" }}>Har du ikke bruker? <Link to="/register">Registrer deg her</Link></p>
     </motion.div>
    
+
+    <form className='fancy-form'>
+      <div className='fancy-input-container'>
+        <input type="text" id="email" required />
+        <label htmlFor="email">Epost</label>
+      </div>
+      <div className='fancy-input-container'>
+        <input type="password" id="passord" required />
+        <label htmlFor="passord">Passord</label>
+      </div>
+    </form>
+
     </>
   )
 }

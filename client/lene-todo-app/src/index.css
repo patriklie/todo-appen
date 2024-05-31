@@ -14,6 +14,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #0abd6c;
+    --secondary-color: #20d885;
+}
+
 #root {
     width: 100%;
 }
@@ -45,8 +50,8 @@
     color: rgb(145, 145, 145);
 }
 .list-info-container .list-title  {
-    background: #0ABD6C;
-    background: linear-gradient(to right, #0ABD6C 50%, #44ffab 100%);
+    background: var(--primary-color);
+    background: linear-gradient(to right, var(--primary-color) 50%, #44ffab 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -150,7 +155,7 @@
 }
 
 .todo-form-icon.add {
-    color: rgb(0, 255, 81);
+    color: var(--primary-color)6C;
 }
 
 .todo-form-icon.remove {
@@ -268,7 +273,7 @@
     width: 100%;
     position: fixed;
     top: 0;
-    background: #0abd6c;
+    background: var(--primary-color);
     border-bottom: 2px solid rgb(220, 220, 220);
     z-index: 2000;
 }
@@ -327,7 +332,7 @@
 /* SIDEBAR CSS */
 
 .nav-menu {
-    background: #0abd6c;
+    background: var(--primary-color);
     width: 50%;
     position: fixed;
     height: 100%;
@@ -407,7 +412,7 @@
 }
 
 .single-todo-container.todo-active {
-    border-bottom: 2px solid #0abd6c;
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .icons-container {
@@ -417,6 +422,56 @@
 }
 
 /* Todo/Login/Register FORMS */ 
+
+.fancy-form {
+    display: flex;
+    flex-direction: column;
+    margin: 100px auto;
+    width: 50%;
+    gap: 30px;
+}
+
+.fancy-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.fancy-form input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid rgb(136, 136, 136);
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 400;
+    transition: 300ms ease;
+    border-radius: 5px;
+}
+
+.fancy-form input:focus {
+    outline: none;
+    border-color: var(--primary-color)
+}
+
+.fancy-form label {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 50%;
+    left: 10px;
+    padding: 0 5px;
+    transition: 300ms ease;
+    pointer-events: none;
+    font-size: 16px;
+}
+
+.fancy-input-container input:focus + label, 
+.fancy-input-container input:valid + label {
+    transform: translateY(-100%);
+    color: var(--primary-color);
+    font-size: 14px;
+    background-color: white;
+}
 
 .login-container {
     width: clamp(25%, 500px, 90%);
@@ -471,8 +526,8 @@ form.login-form button {
     font-weight: 500;
     letter-spacing: 1px;
     font-size: 16px;
-    color: rgb(57, 57, 57);
-    background: rgb(0, 255, 81);
+    color: rgb(255, 255, 255);
+    background: var(--secondary-color);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
     cursor: pointer;
     outline: none;
@@ -483,7 +538,7 @@ form.add-todo-form button:hover,
 form.register-form button:hover,
 form.login-form button:hover {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 10px;
-    background: rgb(1, 209, 67);
+    background: #0eb368;
 }
 
 form.add-todo-form button:focus,

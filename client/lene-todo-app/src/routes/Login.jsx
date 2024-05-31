@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
 import { loadLists } from '../features/list/listSlice';
 import { motion } from "framer-motion";
+import maskott from "../assets/images/IMG_0336-removebg.png"
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -53,42 +54,31 @@ const Login = () => {
     <>
     <Navbar />
     <div className='spacer'></div>
-
-
-  
-
-    <motion.div className='login-container'
-      initial={{ scale: .9 }}
-      animate={{ scale: 1 }}
-      transition={{
-      type: "spring",
-      stiffness: 260,
-      damping: 20
-      }}
-      >
-    <div className='headline' style={{ textAlign: "center" }}>Login</div>
-    <form onSubmit={handleLogin} className="login-form">
-        <label htmlFor='login-email'>Epost</label>
-        <input type="email" id="login-email" autoComplete='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <label htmlFor='login-password'>Passord</label>
-        <input type="password" id="login-password" autoComplete='current-password' value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button>Login</button>
-    </form>
-    <p style={{ textAlign: "center", fontSize: "12px" }}>Har du ikke bruker? <Link to="/register">Registrer deg her</Link></p>
-    </motion.div>
-   
-
-    <form className='fancy-form'>
+    <motion.form onSubmit={handleLogin} className='fancy-form'
+          initial={{ scale: .9 }}
+          animate={{ scale: 1 }}
+          transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20
+          }}
+          >
+      <div className='fancy-form-title'>Login</div>
       <div className='fancy-input-container'>
-        <input type="text" id="email" required />
+        <input type="text" id="email" autoComplete='email' value={email} onChange={(e) => setEmail(e.target.value)} required  />
         <label htmlFor="email">Epost</label>
       </div>
       <div className='fancy-input-container'>
-        <input type="password" id="passord" required />
+        <input type="password" id="passord" autoComplete='current-password' value={password} onChange={(e) => setPassword(e.target.value)} required />
         <label htmlFor="passord">Passord</label>
+        
       </div>
-    </form>
-
+      <button>Login</button>
+      <p style={{ textAlign: "center", fontSize: "12px" }}>Har du ikke bruker? <Link to="/register">Registrer deg her</Link></p>
+      <img className="login-maskott-img" src={maskott}/>
+    </motion.form>
+    
+    
     </>
   )
 }

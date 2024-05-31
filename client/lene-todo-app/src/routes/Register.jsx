@@ -6,6 +6,8 @@ import { loginUser } from '../features/auth/authSlice';
 import { useNavigate, Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { loadLists } from '../features/list/listSlice';
+import { motion } from "framer-motion";
+import maskott from "../assets/images/IMG_0336-removebg.png"
 
 const Register = () => {
 
@@ -47,18 +49,39 @@ const Register = () => {
     <>
     <Navbar />
     <div className='spacer'></div>
-    <div className="headline" style={{ textAlign: "center" }} >Registrer ny bruker:</div>
 
-    <form onSubmit={handleRegister} className="register-form">
-        <label htmlFor='register-username'>Brukernavn</label>
-        <input type="text" id="register-username" autoComplete='username' value={username} onChange={(e) => setName(e.target.value)} required />
-        <label htmlFor='register-email'>E-post</label>
-        <input type="email" id="register-email" autoComplete='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <label htmlFor='register-password'>Passord</label>
-        <input type="password" id="register-password" autoComplete='current-password' value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button>Registrer ny bruker</button>
-    </form>
-    <p style={{ textAlign: "center", fontSize: "12px" }}>Har du allerede bruker? <Link to="/login">Logg på</Link></p>
+    <motion.form onSubmit={handleRegister} className='fancy-form'
+          initial={{ scale: .9 }}
+          animate={{ scale: 1 }}
+          transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20
+          }}
+          >
+
+      <div className='fancy-form-title'>Registrer</div>
+
+      <div className='fancy-input-container'>
+        <input type="text" id="username" value={username} onChange={(e) => setName(e.target.value)} required />
+        <label htmlFor="username">Brukernavn</label>
+      </div>
+      
+      <div className='fancy-input-container'>
+        <input type="text" id="email" autoComplete='email' value={email} onChange={(e) => setEmail(e.target.value)} required  />
+        <label htmlFor="email">Epost</label>
+      </div>
+
+      <div className='fancy-input-container'>
+        <input type="password" id="passord" autoComplete='current-password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <label htmlFor="passord">Passord</label>
+        
+      </div>
+      <button>Registrer</button>
+      <p style={{ textAlign: "center", fontSize: "12px" }}>Har du allerede bruker? <Link to="/login">Logg på</Link></p>
+      <img className="login-maskott-img" src={maskott}/>
+    </motion.form>
+
 
     </>
   )

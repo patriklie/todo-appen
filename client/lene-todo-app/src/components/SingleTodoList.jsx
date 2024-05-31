@@ -90,7 +90,7 @@ const SingleTodoList = () => {
         </div>
 
         <div className="button-container" onClick={handleDeleteAllTodos}>
-          <IconContainer onClick={handleDeleteAllTodos} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={50} />
+          <IconContainer onClick={handleDeleteAllTodos} iconName={"wired-outline-1683-recycling"} reveal={"in-reveal"} hover={"hover-cycle"} size={50} />
           <div className='button-container-text'>Slett todos</div>
         </div>
       </div>

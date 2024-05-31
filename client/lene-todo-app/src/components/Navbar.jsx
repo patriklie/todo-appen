@@ -26,14 +26,18 @@ const handleNaviClick = () => {
   return (
     <nav className="navbar">
       <div className='navbar-header'>
+
         <div className="navbar-ham">
           <Hamburger rounded color="#fff" toggled={sidebar} toggle={setSidebar} />
         </div>
-        
+
+        { loggedInUser && 
         <div className='profile-link'>
           <div className='profile-name'><Link to="/profile">{ loggedInUser }</Link></div>
         </div>
-        <div className='logo'>
+        }
+
+        <div style={{ justifySelf: !loggedInUser ? "center" : "" }} className='logo'>
           <Link to="/"><span>TODO</span>appen</Link>
         </div>
       </div>

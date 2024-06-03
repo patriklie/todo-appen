@@ -81,8 +81,7 @@ const Register = () => {
       <p style={{ textAlign: "center", fontSize: "12px" }}>Har du allerede bruker? <Link to="/login">Logg på</Link></p>
       <img className="login-maskott-img" src={maskott}/>
     </motion.form>
-
-
+    
     </>
   )
 }

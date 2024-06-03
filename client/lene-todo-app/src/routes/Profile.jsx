@@ -121,14 +121,14 @@ const Profile = () => {
       (
         <div className="container profile">
           <div className="profile-container">
-            <span className="material-symbols-outlined profile-icon">account_circle</span>
+            <span className="material-symbols-rounded profile-icon">account_circle</span>
             <div className="profile-data-container">
               <div>
                 <div><span className='bold-text'>Brukernavn:&nbsp;</span><span style={{ cursor: "pointer" }} onClick={handleEdit} >{ profileData && profileData.username }</span></div>
                 <div><span className='bold-text'>E-post:&nbsp;</span><span style={{ cursor: "pointer" }} onClick={handleEdit}>{ profileData && profileData.email }</span></div>
               </div>
               <div>
-                <span onClick={handleEdit} className="profile-icons material-symbols-outlined edit-profile">edit</span>
+                <span onClick={handleEdit} className="profile-icons material-symbols-rounded edit-profile">edit</span>
               </div>
             </div>
           </div>
@@ -138,7 +138,7 @@ const Profile = () => {
       (
         <div className={`container profile ${editMode ? 'expanded' : ''}`}>
           <form className="form-edit-profile">
-            <span className="material-symbols-outlined profile-icon">account_circle</span>
+            <span className="material-symbols-rounded profile-icon">account_circle</span>
             <div className="profile-data-container">
               <div>
                 <div>
@@ -151,7 +151,7 @@ const Profile = () => {
                 </div>
               </div>
               <div>
-                <span onClick={handleSave} className="profile-icons material-symbols-outlined save-profile">save</span> 
+                <span onClick={handleSave} className="profile-icons material-symbols-rounded save-profile">save</span> 
               </div>
             </div>
             <div onClick={() => setDeletePrompt(true)} style={{ color: "red", cursor: "pointer", marginTop: "5px", textAlign: "center", marginBottom: "20px", userSelect: "none" }}>Slett Bruker</div>

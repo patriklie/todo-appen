@@ -47,13 +47,13 @@ const SingleTodoUpdated = memo(function SingleTodoUpdated({ todo }) {
     const tidspunktOpprettet = formatertDato.split(",")[1].trim().slice(0, 5);
 
   return (
-    <div className={`${localTodo.completed ? "todo-active" : ""}`}>
+    <div>
         <h3>{localTodo.name}</h3>
         <p>{localTodo.description}</p>
         <p className='date'>Opprettet: {datoOpprettet} klokken {tidspunktOpprettet}</p>
-        <span onClick={handleDelete} className="material-symbols-outlined icons close" id="close">close</span>
+        <span onClick={handleDelete} className="material-symbols-rounded icons close" id="close">close</span>
         <div className="icons-container">
-            {localTodo.completed ? <span onClick={() => handleToggle()} className="material-symbols-outlined checkmark">check_box</span> : <span onClick={() => handleToggle()} className="material-symbols-outlined checkmark">check_box_outline_blank</span> }
+            {localTodo.completed ? <span onClick={() => handleToggle()} className="material-symbols-rounded checkmark">check_box</span> : <span onClick={() => handleToggle()} className="material-symbols-rounded checkmark">check_box_outline_blank</span> }
         </div>
     </div>
   )

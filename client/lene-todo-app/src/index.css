@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "~@flaticon/flaticon-uicons/css/all/all";
+
 
 * {
     margin: 0;
@@ -96,7 +98,7 @@
     text-overflow: ellipsis; /* Vis "..." hvis teksten går utenfor konteineren */
 }
 
-.material-symbols-outlined {
+.material-symbols-rounded {
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
@@ -333,7 +335,7 @@
 
 .nav-menu {
     background: var(--primary-color);
-    width: 50%;
+    width: clamp(300px, 50%, 400px);
     position: fixed;
     height: 100%;
     z-index: 1000;
@@ -347,7 +349,50 @@
     z-index: 500;
 }
 
-.navbar-ul {
+.sidebar-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: center;
+    justify-items: start;
+    width: 75%;
+    margin: 40px auto;
+}
+
+.sidebar-flex-container {
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+    gap: 20px;
+    transition: .2s;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+}
+
+.sidebar-flex-container.active {
+    background-color: #ffffff4b;
+    color: white;
+}
+
+.sidebar-flex-container:hover {
+    background-color: #ffffff4b;
+    color: white;
+}
+
+.sidebar-flex-container .sidebar-icons {
+    font-size: 40px;
+    color: white;
+    font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+}
+
+/* .navbar-ul {
     display: flex;
     flex-direction: column;
     list-style: none;
@@ -374,7 +419,7 @@
     margin-right: 5px;
     vertical-align: -4px;
     font-size: 25px;
-}
+} */
 
 /* TODO */
 

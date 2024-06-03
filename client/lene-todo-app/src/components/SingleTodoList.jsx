@@ -100,7 +100,7 @@ const SingleTodoList = () => {
         {singleList && singleList.todos.length > 0 && singleList.todos.map((todo, index) => {
             return (
               <motion.div
-                className='single-todo-container' 
+                className={`single-todo-container ${todo.completed ? "todo-active" : ""}`} 
                 key={todo._id}
                 initial={{ y: -40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -108,7 +108,7 @@ const SingleTodoList = () => {
                 layout
                 transition={{ duration: 0.2 }}
               >          
-                <SingleTodoUpdated  todo={todo} />
+                <SingleTodoUpdated todo={todo} />
               </motion.div>
             )
         })}

@@ -4,7 +4,7 @@ import AddTodo from '../components/AddTodo'
 const Home = () => {
   return (
     <>
-    <AddTodo />
+    <h1>Hjem</h1>
     </>
   )
 }

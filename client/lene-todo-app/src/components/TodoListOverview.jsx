@@ -12,6 +12,7 @@ const TodoListOverview = () => {
     const listsFromState = useSelector(state => state.list.lists);
     const [activeList, setActiveList] = useState(null);
     console.log("Lister fra state: ", listsFromState)
+    const [editListId, setEditListId] = useState(null);
 
     const handleSelect = (event) => {
         event.preventDefault();
@@ -25,9 +26,20 @@ const TodoListOverview = () => {
         }
     }
 
+    const handleEditClick = (event, listId) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setEditListId(editListId === listId ? null : listId);
+    }
+
+    const handleSaveEdit = (listeId) => {
+        setEditListId(null);
+        console.log("SAVED EDIT")
+    }
+
   return (
     <>
-    <div>Her kan du se alle TODO listene dine</div>
+    <h2>Her kan du se alle TODO listene dine</h2>
     <div>Du har {listsFromState.length} lister!</div>
     <select onChange={handleSelect}>
         <option>Velg en liste!</option>
@@ -39,16 +51,30 @@ const TodoListOverview = () => {
     }
     </select>
     <button onClick={goToActiveList}>Gå til liste</button>
-    <ul>
-        { listsFromState && listsFromState.length > 0 && 
-            listsFromState.map(liste => {
-                return <li key={liste._id}>
-                    <Link to={`/lists/${liste._id}`}>{liste.name}</Link>
-                    </li>
-            })
-        }
-    </ul>
-    </>
+
+    <div className='list-overview-grid'>
+            { listsFromState && listsFromState.length > 0 && 
+                listsFromState.map(liste => {
+                    return (
+                        editListId === liste._id ? 
+                        <div className='singlelist-overview-container' key={liste._id}>
+                            <form>
+                                <input type="text" placeholder={liste.name} />
+                            </form>
+                           
+                            <div onClick={(event) => handleSaveEdit(liste._id)} className="material-symbols-rounded list-overview-icon">save</div>                          
+                       
+                        </div> 
+                        :
+                        <Link className='singlelist-overview-container' to={`/lists/${liste._id}`} key={liste._id}>
+                            <div>{liste.name}</div>
+                            <div onClick={(event) => handleEditClick(event, liste._id)} className="material-symbols-rounded list-overview-icon">edit</div>
+                        </Link>
+                    )
+                })
+            }
+        </div>
+        </>
   )
 }
 

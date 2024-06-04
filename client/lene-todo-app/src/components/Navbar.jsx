@@ -54,18 +54,22 @@ const handleNaviClick = () => {
             <div className='sidebar-grid'>
             {!isAuthenticated && 
             <>
-              <div><NavLink onClick={handleNaviClick} to="/login"><span className="material-symbols-outlined sidebar-icons">login</span>LOGIN</NavLink></div>
-              <div><NavLink onClick={handleNaviClick} to="/register"><span className="material-symbols-outlined sidebar-icons">person_add</span>REGISTRER</NavLink></div>
+
+            <NavLink onClick={handleNaviClick} to="/login" className='sidebar-flex-container'>
+              <div className="material-symbols-rounded sidebar-icons">login</div>
+              <div className='sidebar-text'>LOGIN</div>
+            </NavLink>
+
+            <NavLink onClick={handleNaviClick} to="/register" className='sidebar-flex-container'>
+              <div className="material-symbols-rounded sidebar-icons">person_add</div>
+              <div className='sidebar-text'>REGISTRER</div>
+            </NavLink>
+              
             </>
             }
 
             {isAuthenticated &&
             <>
-
-            <NavLink onClick={handleNaviClick} to="/profile" className='sidebar-flex-container'>
-              <div className="material-symbols-rounded sidebar-icons">person</div>
-              <div className='sidebar-text'>Profile</div>
-            </NavLink>
 
             <NavLink onClick={handleNaviClick} to="/" className='sidebar-flex-container'>
               <div className="material-symbols-rounded sidebar-icons">home</div>
@@ -75,6 +79,11 @@ const handleNaviClick = () => {
             <NavLink onClick={handleNaviClick} to="/todos" className='sidebar-flex-container'>
               <div className="material-symbols-rounded sidebar-icons">checklist_rtl</div>
               <div className='sidebar-text'>Todos</div>
+            </NavLink>
+
+            <NavLink onClick={handleNaviClick} to="/profile" className='sidebar-flex-container'>
+              <div className="material-symbols-rounded sidebar-icons">person</div>
+              <div className='sidebar-text'>Profile</div>
             </NavLink>
 
             <NavLink onClick={handleNaviClick} to="/about" className='sidebar-flex-container'>

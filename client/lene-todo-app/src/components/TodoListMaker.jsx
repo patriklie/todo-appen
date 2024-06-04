@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { addList } from '../features/list/listSlice';
+import maskott from '../assets/images/IMG_0336-removebg.png'
 
 const TodoListMaker = () => {
 
@@ -33,16 +34,18 @@ const TodoListMaker = () => {
         setListName("")
     }
 
-
-
   return (
     <>
-        <div>TodoListMaker</div>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor='listName'>Listenavn: </label>
-            <input maxLength={20} id="listName" value={listName} onChange={(e) => setListName(e.target.value)} type="text" placeholder='Listname' />
-            <button>Opprett ny liste</button>
-        </form>
+    <form onSubmit={handleSubmit} className='fancy-form'>
+        <div className='fancy-form-title'>Opprett ny liste</div>
+
+        <div className='fancy-input-container'>
+            <input type="text" id="listName" value={listName} onChange={(e) => setListName(e.target.value)} required  />
+            <label htmlFor="listName">Listenavn</label>
+        </div>
+        <button>Legg til</button>
+        <img className="login-maskott-img" src={maskott}/>
+    </form>
     </>
   )
 }

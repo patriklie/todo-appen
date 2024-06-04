@@ -16,6 +16,15 @@
     box-sizing: border-box;
 }
 
+
+/* Dette fjerner chrome sin bakgrunnsfarge på autocomplete valg for inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 :root {
     --primary-color: #0abd6c;
     --secondary-color: #20d885;
@@ -189,6 +198,43 @@
     padding: 10px;
     border-radius: 30px;
     border: none;
+}
+
+/* List Overview */
+
+.list-overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 40px auto;
+    width: 90%;
+}
+
+.singlelist-overview-container {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+.singlelist-overview-container .list-overview-icon {
+    color: black;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.singlelist-overview-container .list-overview-icon:hover {
+    color: black;
+    transform: scale(1.3);
 }
 
 /* About */ /* Profile */

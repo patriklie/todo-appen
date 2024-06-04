@@ -39,18 +39,27 @@ const TodoListOverview = () => {
 
   return (
     <>
-    <h2>Her kan du se alle TODO listene dine</h2>
-    <div>Du har {listsFromState.length} lister!</div>
-    <select onChange={handleSelect}>
-        <option>Velg en liste!</option>
-    {
-        listsFromState && listsFromState.length > 0 && 
-        listsFromState.map(liste => {
-            return <option key={liste._id} value={liste._id}>{liste.name}</option>
-        })
-    }
-    </select>
-    <button onClick={goToActiveList}>Gå til liste</button>
+    
+    <h1 style={{ textAlign: "center", margin: "20px", color: "var(--primary-color)" }}>Alle listene dine</h1>
+    <div className='select-wrapper'>
+    
+        <div className='custom-select'>
+            <select onChange={handleSelect}>
+                
+                <option>Velg en av dine {listsFromState.length} lister</option>
+            {
+                listsFromState && listsFromState.length > 0 && 
+                listsFromState.map(liste => {
+                    return <option key={liste._id} value={liste._id}>{liste.name}</option>
+                })
+            }
+            </select>
+            <span className="custom-arrow"></span>
+            
+        </div>
+        <button className='custom-select-button' onClick={goToActiveList}>Åpne liste</button>
+    </div>
+
 
     <div className='list-overview-grid'>
             { listsFromState && listsFromState.length > 0 && 

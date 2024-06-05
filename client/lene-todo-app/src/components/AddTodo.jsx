@@ -41,20 +41,14 @@ const AddTodo = ({ listId }) => {
 
     return (
     <>
-{/*         <form className='add-todo-form' onSubmit={handleSubmit}>
-            <label htmlFor="todo-name">Navn</label>
-            <input placeholder='Legg til oppgavenavn 👻' type="text" id="todo-name" value={todoName} onChange={(e) => setTodoName(e.target.value)} required />
-            <label htmlFor="todo-description">Beskrivelse</label>
-            <textarea placeholder='Legg til oppgavebeskrivelse' type="text" id="todo-description" value={todoDescription} onChange={(e) => setTodoDescription(e.target.value) } required ></textarea>
-            <button>Ny Oppgave</button>
-        </form> */}
+
 
     <form onSubmit={handleSubmit} className='fancy-form'>
         <div className='fancy-form-title'>Legg til Todo</div>
 
       <div className='fancy-input-container'>
         <input type="text" id="todo-name" value={todoName} onChange={(e) => setTodoName(e.target.value)} required  />
-        <label htmlFor="email">Oppgavenavn</label>
+        <label htmlFor="todo-name">Oppgavenavn</label>
       </div>
 
       <div className='fancy-input-container'>

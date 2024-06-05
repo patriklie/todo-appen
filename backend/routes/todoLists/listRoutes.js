@@ -80,4 +80,17 @@ router.delete("/:id/todos", async (req, res) => {
     }
 }) 
 
+// Her oppdaterer jeg navnet på en liste
+router.put("/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { newListname } = req.body;
+        const updatedList = await List.findByIdAndUpdate(id, { name: newListname }, { new: true})
+        res.status(200).send(updatedList)
+    } catch(error) {
+        console.log("Feil ved endring av navn på lista");
+        res.status(500).res.send(error);
+    }
+})
+
 module.exports = router;

@@ -352,6 +352,7 @@ select:hover {
     justify-content: flex-end;
     gap: 5px;
     height: 100%;
+    margin-left: 20px;
 }
 
 .singlelist-overview-container .list-overview-icon {

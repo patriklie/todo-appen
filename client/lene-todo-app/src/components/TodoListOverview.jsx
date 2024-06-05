@@ -26,6 +26,8 @@ const TodoListOverview = () => {
         }
     }, [editListId]);
 
+
+
     const handleSelect = (event) => {
         event.preventDefault();
         const selectedList = listsFromState.find(list => list._id === event.target.value);
@@ -101,7 +103,6 @@ const TodoListOverview = () => {
         <button className='custom-select-button' onClick={goToActiveList}>Åpne liste</button>
     </div>
 
-
     <div className='list-overview-grid'>
             { listsFromState && listsFromState.length > 0 && 
                 listsFromState.map(liste => {
@@ -109,15 +110,16 @@ const TodoListOverview = () => {
                         editListId === liste._id ? 
                         <div className='singlelist-overview-container' key={liste._id}>
                             <form>
-                                <input ref={inputRef} maxLength={20} type="text" onKeyDown={(event) => {if (event.key === "Enter") {handleSaveEdit(liste._id)}}} value={newListname} onChange={(event) => setNewListname(event.target.value)} placeholder={liste.name} />
+                                <input onBlur={() => setEditListId(null)} ref={inputRef} maxLength={20} type="text" onKeyDown={(event) => {if (event.key === "Enter") {handleSaveEdit(liste._id)}}} value={newListname} onChange={(event) => setNewListname(event.target.value)} placeholder={liste.name} />
                             </form>
                            
                             <div className='list-icons-flex'>
-                                <div onClick={() => handleDeleteList(liste._id)} className="material-symbols-rounded list-overview-icon">delete</div>                          
-                                <div onClick={() => handleSaveEdit(liste._id)} className="material-symbols-rounded list-overview-icon">save</div>                          
+                                <div onMouseDown={() => handleDeleteList(liste._id)} className="material-symbols-rounded list-overview-icon">delete</div>                          
+                                <div onMouseDown={() => handleSaveEdit(liste._id)} className="material-symbols-rounded list-overview-icon">save</div>                          
                             </div>
                         </div> 
                         :
+                        // HER LAGER DU EN MOTION DIV MED DRAGGABLE TO ORIGIN MED EGNE KEYS OGSÅ EN funksjon istedet for linken under med navigate og id 
                         <Link className='singlelist-overview-container' to={`/lists/${liste._id}`} key={liste._id}>
                             <div>{liste.name}</div>
                             <div onClick={(event) => handleEditClick(event, liste._id)} className="material-symbols-rounded list-overview-icon">edit</div>

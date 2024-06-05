@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteListAndTodos, loadLists, updateListname } from '../features/list/listSlice';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 
 const TodoListOverview = () => {
 
@@ -48,11 +49,14 @@ const TodoListOverview = () => {
     const handleSaveEdit = async (listeId) => {
         setEditListId(null);
         const foundList = listsFromState.find(list => list._id === listeId)
-        if(foundList && newListname && newListname !==  foundList.name) {
+        if(foundList && newListname && newListname !== foundList.name) {
             try {
                 const response = await axios.put(`http://localhost:5000/lists/${listeId}`, {newListname});
-                dispatch(updateListname(response.data))
-                console.log("Saved Edit on: ", listeId)
+                dispatch(updateListname(response.data));
+                toast.success(`Endret listenavn til "${response.data.name}".`, {
+                    position: "bottom-left",
+                    autoClose: 3000,
+                  });
             } catch(error) {
                 console.log(error);
             }
@@ -65,7 +69,10 @@ const TodoListOverview = () => {
         try {
             const response = await axios.delete(`http://localhost:5000/lists/${listeId}`);
             dispatch(deleteListAndTodos(response.data))
-            console.log("Deleted List: ", listeId);
+            toast.error(`Slettet liste "${response.data.name}".`, {
+                position: "bottom-left",
+                autoClose: 3000,
+              });
         } catch(error) {
             console.log(error)
         }

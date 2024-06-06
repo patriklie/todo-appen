@@ -366,6 +366,30 @@ select:hover {
     transform: scale(1.3);
 }
 
+/* Liste drag and delete */ 
+
+.drag-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(200px, 50%, 600px);
+    height: 70px;
+    margin: 20px auto;
+    border: 2px dotted red;
+    background-color: #ff000015;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.drag-container .delete-drag {
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    user-select: none;
+    color: black;
+} 
+
 /* About */ /* Profile */
 
 .headline {

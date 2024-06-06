@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { addList } from '../features/list/listSlice';
 import maskott from '../assets/images/IMG_0336-removebg.png'
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 
 const TodoListMaker = () => {
 
     const dispatch = useDispatch();
     const userId = useSelector(state => state.auth.id);
     const token = localStorage.getItem('userToken');
-
     const [listName, setListName] = useState("");
 
     const handleSubmit = async (e) => {
@@ -36,16 +36,15 @@ const TodoListMaker = () => {
 
   return (
     <>
-    <form onSubmit={handleSubmit} className='fancy-form'>
+    <motion.form layout transition={{ duration: 1 }} onSubmit={handleSubmit} className='fancy-form'>
         <div className='fancy-form-title'>Opprett ny liste</div>
-
         <div className='fancy-input-container'>
             <input type="text" id="listName" value={listName} onChange={(e) => setListName(e.target.value)} required  />
             <label htmlFor="listName">Listenavn</label>
         </div>
         <button>Legg til</button>
         <img className="login-maskott-img" src={maskott}/>
-    </form>
+    </motion.form>
     </>
   )
 }

@@ -13,10 +13,11 @@ const TodoListOverview = () => {
     const navigate = useNavigate();
     const listsFromState = useSelector(state => state.list.lists);
     const [activeList, setActiveList] = useState(null);
-    console.log("Lister fra state: ", listsFromState)
     const [editListId, setEditListId] = useState(null);
     const [newListname, setNewListname] = useState("");
+    const [isDragging, setIsDragging] = useState(false);
     const inputRef = useRef(null);
+    const slettRef = useRef(null);
 
     useEffect(() => {
         // Sett fokus på inputfeltet når editListId endres
@@ -25,8 +26,6 @@ const TodoListOverview = () => {
             inputRef.current.focus();
         }
     }, [editListId]);
-
-
 
     const handleSelect = (event) => {
         event.preventDefault();
@@ -80,6 +79,48 @@ const TodoListOverview = () => {
         }
     }
 
+    const handleNavigation = (listeId) => {
+        if(!isDragging) {
+            navigate(`/lists/${listeId}`)
+        }
+    }
+    const checkIfOverDelete = (event, dragInfo, id) => {
+        const dragElement = dragInfo.point;
+        const delArea = slettRef.current.getBoundingClientRect();
+
+        if ( 
+            dragElement.x >= delArea.x &&
+            dragElement.x <= delArea.right &&
+            dragElement.y >= delArea.y &&
+            dragElement.y <= delArea.bottom
+         ) {
+            handleDeleteList(id);
+            slettRef.current.style.background = "#ff000015";
+        }
+
+            // Under var bare for å forsikre meg om verdiene ved dragging
+/*         console.log("REF objektet: ", slettRef.current.getBoundingClientRect());
+        console.log("Drag objektet: ", dragElement) */
+
+    }
+
+    const handleOverElement = (event, dragInfo, id) => {
+
+        const delArea = slettRef.current.getBoundingClientRect();
+        const dragElement = dragInfo.point;
+        
+            if ( 
+                dragElement.x >= delArea.x &&
+                dragElement.x <= delArea.right &&
+                dragElement.y >= delArea.y &&
+                dragElement.y <= delArea.bottom
+            ) {
+                slettRef.current.style.background = "#ff000080";
+            } else {
+                slettRef.current.style.background = "#ff000015";
+            }
+        }
+
   return (
     <>
     
@@ -103,6 +144,10 @@ const TodoListOverview = () => {
         <button className='custom-select-button' onClick={goToActiveList}>Åpne liste</button>
     </div>
 
+    <motion.div className="drag-container" ref={slettRef} >
+        <div className="material-symbols-rounded delete-drag">delete</div>
+    </motion.div>
+
     <div className='list-overview-grid'>
             { listsFromState && listsFromState.length > 0 && 
                 listsFromState.map(liste => {
@@ -119,11 +164,26 @@ const TodoListOverview = () => {
                             </div>
                         </div> 
                         :
-                        // HER LAGER DU EN MOTION DIV MED DRAGGABLE TO ORIGIN MED EGNE KEYS OGSÅ EN funksjon istedet for linken under med navigate og id 
-                        <Link className='singlelist-overview-container' to={`/lists/${liste._id}`} key={liste._id}>
+                        <motion.div 
+                        drag 
+                        dragSnapToOrigin 
+                        onDragStart={(event, info) => setIsDragging(true)}
+                        onDragEnd={(event, info) => {
+                            setIsDragging(false);
+                            checkIfOverDelete(event, info, liste._id);
+                        }}
+                        onDrag={(event, info) => {
+                            handleOverElement(event, info);
+                        }}
+                        whileDrag={{opacity: 0.5 }}
+                        animate={{opacity: 1, y: 0}}
+                        initial={{opacity: 1, y: -20}}
+                        onClick={() => handleNavigation(liste._id)} 
+                        className='singlelist-overview-container'  
+                        key={liste._id} style={{ cursor: "pointer"}}>
                             <div>{liste.name}</div>
                             <div onClick={(event) => handleEditClick(event, liste._id)} className="material-symbols-rounded list-overview-icon">edit</div>
-                        </Link>
+                        </motion.div>
                     )
                 })
             }

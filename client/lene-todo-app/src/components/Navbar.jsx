@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { logout } from '../features/auth/authSlice';
 import { motion, AnimatePresence } from 'framer-motion';
-import Hamburger from 'hamburger-react'
+import { Squash as Hamburger } from 'hamburger-react'
 
 const Navbar = () => {
   const navigate = useNavigate();

@@ -36,15 +36,21 @@ const TodoListMaker = () => {
 
   return (
     <>
-    <motion.form layout transition={{ duration: 1 }} onSubmit={handleSubmit} className='fancy-form'>
-        <div className='fancy-form-title'>Opprett ny liste</div>
-        <div className='fancy-input-container'>
-            <input type="text" id="listName" value={listName} onChange={(e) => setListName(e.target.value)} required  />
-            <label htmlFor="listName">Listenavn</label>
-        </div>
-        <button>Legg til</button>
-        <img className="login-maskott-img" src={maskott}/>
-    </motion.form>
+    <AnimatePresence>
+        <motion.form         
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }} onSubmit={handleSubmit} className='fancy-form'>
+            <div className='fancy-form-title'>Opprett ny liste</div>
+            <div className='fancy-input-container'>
+                <input type="text" id="listName" value={listName} onChange={(e) => setListName(e.target.value)} required  />
+                <label htmlFor="listName">Listenavn</label>
+            </div>
+            <button>Legg til</button>
+            <img className="login-maskott-img" src={maskott}/>
+        </motion.form>
+    </AnimatePresence>
     </>
   )
 }

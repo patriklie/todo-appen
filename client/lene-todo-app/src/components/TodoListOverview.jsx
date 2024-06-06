@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteListAndTodos, loadLists, updateListname } from '../features/list/listSlice';
 import { useNavigate, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 
 const TodoListOverview = () => {
@@ -86,7 +86,11 @@ const TodoListOverview = () => {
     }
     const checkIfOverDelete = (event, dragInfo, id) => {
         const dragElement = dragInfo.point;
-        const delArea = slettRef.current.getBoundingClientRect();
+       
+
+        if (slettRef.current) {
+            const delArea = slettRef.current.getBoundingClientRect();
+      
 
         if ( 
             dragElement.x >= delArea.x &&
@@ -96,19 +100,16 @@ const TodoListOverview = () => {
          ) {
             handleDeleteList(id);
             slettRef.current.style.background = "#ff000015";
+            }
         }
-
-            // Under var bare for å forsikre meg om verdiene ved dragging
-/*         console.log("REF objektet: ", slettRef.current.getBoundingClientRect());
-        console.log("Drag objektet: ", dragElement) */
-
     }
-
     const handleOverElement = (event, dragInfo, id) => {
 
-        const delArea = slettRef.current.getBoundingClientRect();
-        const dragElement = dragInfo.point;
         
+        const dragElement = dragInfo.point;
+
+        if (slettRef.current) {
+            const delArea = slettRef.current.getBoundingClientRect();
             if ( 
                 dragElement.x >= delArea.x &&
                 dragElement.x <= delArea.right &&
@@ -120,6 +121,9 @@ const TodoListOverview = () => {
                 slettRef.current.style.background = "#ff000015";
             }
         }
+        
+
+        }
 
   return (
     <>
@@ -130,7 +134,8 @@ const TodoListOverview = () => {
         <div className='custom-select'>
             <select onChange={handleSelect}>
                 
-                <option>Velg en av dine {listsFromState.length} lister</option>
+                {listsFromState.length > 1 ? <option>Velg en liste</option> : <option>Velg listen</option> }
+                
             {
                 listsFromState && listsFromState.length > 0 && 
                 listsFromState.map(liste => {
@@ -141,12 +146,18 @@ const TodoListOverview = () => {
             <span className="custom-arrow"></span>
             
         </div>
-        <button className='custom-select-button' onClick={goToActiveList}>Åpne liste</button>
+        <AnimatePresence>
+            {activeList && 
+        <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className='custom-select-button' onClick={goToActiveList}>Åpne liste</motion.button>
+        }
+        </AnimatePresence>
+        
     </div>
-
-    <motion.div className="drag-container" ref={slettRef} >
-        <div className="material-symbols-rounded delete-drag">delete</div>
-    </motion.div>
 
     <div className='list-overview-grid'>
             { listsFromState && listsFromState.length > 0 && 
@@ -176,8 +187,6 @@ const TodoListOverview = () => {
                             handleOverElement(event, info);
                         }}
                         whileDrag={{opacity: 0.5 }}
-                        animate={{opacity: 1, y: 0}}
-                        initial={{opacity: 1, y: -20}}
                         onClick={() => handleNavigation(liste._id)} 
                         className='singlelist-overview-container'  
                         key={liste._id} style={{ cursor: "pointer"}}>
@@ -187,7 +196,18 @@ const TodoListOverview = () => {
                     )
                 })
             }
+            
         </div>
+        <AnimatePresence>
+            {isDragging && 
+        <motion.div         
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        layout className="drag-container" ref={slettRef} >
+            <div className="material-symbols-rounded delete-drag">delete</div>
+        </motion.div> }
+    </AnimatePresence>
         </>
   )
 }

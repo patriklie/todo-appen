@@ -198,7 +198,7 @@ const TodoListOverview = () => {
             }
             
         </div>
-        <AnimatePresence>
+    <AnimatePresence>
             {isDragging && 
         <motion.div         
         initial={{ opacity: 0 }}

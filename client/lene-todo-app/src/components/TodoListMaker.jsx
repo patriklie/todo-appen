@@ -11,6 +11,8 @@ const TodoListMaker = () => {
     const userId = useSelector(state => state.auth.id);
     const token = localStorage.getItem('userToken');
     const [listName, setListName] = useState("");
+    const listsFromState = useSelector(state => state.list.lists);
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,11 +39,12 @@ const TodoListMaker = () => {
   return (
     <>
     <AnimatePresence>
-        <motion.form         
+        <motion.form
+        layout
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }} onSubmit={handleSubmit} className='fancy-form'>
+         onSubmit={handleSubmit} className='fancy-form'>
             <div className='fancy-form-title'>Opprett ny liste</div>
             <div className='fancy-input-container'>
                 <input type="text" id="listName" value={listName} onChange={(e) => setListName(e.target.value)} required  />
@@ -51,6 +54,16 @@ const TodoListMaker = () => {
             <img className="login-maskott-img" src={maskott}/>
         </motion.form>
     </AnimatePresence>
+
+    <motion.div
+      layout
+      data-isOpen={isOpen}
+      
+      className="parent"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+    
+    </motion.div>
     </>
   )
 }

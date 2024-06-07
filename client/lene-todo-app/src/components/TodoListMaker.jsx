@@ -4,6 +4,7 @@ import axios from 'axios';
 import { addList } from '../features/list/listSlice';
 import maskott from '../assets/images/IMG_0336-removebg.png'
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
+import IconContainer from './IconContainer';
 
 const TodoListMaker = () => {
 
@@ -55,15 +56,27 @@ const TodoListMaker = () => {
         </motion.form>
     </AnimatePresence>
 
-    <motion.div
+    <motion.form
       layout
       data-isOpen={isOpen}
-      
       className="parent"
-      onClick={() => setIsOpen(!isOpen)}
+      
+      onSubmit={handleSubmit}
     >
-    
-    </motion.div>
+        { !isOpen && 
+        <IconContainer onClick={() => setIsOpen(!isOpen)} iconName={"wired-outline-49-plus-circle"} reveal={"in-reveal"} hover={"hover-rotation"} size={100} />
+        }
+        { isOpen && <div>
+            <div className='fancy-form-title'>Opprett ny liste</div>
+            <div className='fancy-input-container'>
+            <input type="text" id="listName" value={listName} onChange={(e) => setListName(e.target.value)} required  />
+            <label htmlFor="listName">Listenavn</label>
+            </div>
+            <button>Legg til</button>
+            <img className="login-maskott-img" src={maskott}/>
+            </div>}
+
+    </motion.form>
     </>
   )
 }

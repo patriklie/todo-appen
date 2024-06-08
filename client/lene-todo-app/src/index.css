@@ -34,6 +34,11 @@ html, body, #root {
     min-width: fit-content;
 }
 
+body {
+    position: relative;
+    top: 90px;
+}
+
 :root {
     --primary-color: #0abd6c;
     --secondary-color: #20d885;
@@ -952,6 +957,11 @@ form.add-todo-form label:nth-of-type(2) {
 }
 
 @media screen and (max-width: 500px) { 
+
+    body {
+        top: 184px;
+    }
+
     .navbar-header {
         grid-template-columns: 1fr;
         gap: 20px;

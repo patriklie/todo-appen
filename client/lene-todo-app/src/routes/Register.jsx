@@ -48,7 +48,6 @@ const Register = () => {
   return (
     <>
     <Navbar />
-    <div className='spacer'></div>
 
     <motion.form onSubmit={handleRegister} className='fancy-form'
           initial={{ scale: .9 }}

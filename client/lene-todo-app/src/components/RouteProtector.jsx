@@ -54,7 +54,6 @@ const RouteProtector = ({ children }) => {
 
     return (
         <div>
-            <div className='spacer'></div>
             {tokenCheck ? children : <p>Sjekker authtoken...</p>}
         </div>
     )

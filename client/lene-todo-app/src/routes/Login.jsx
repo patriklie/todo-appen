@@ -53,7 +53,6 @@ const Login = () => {
   return (
     <>
     <Navbar />
-    <div className='spacer'></div>
     <motion.form onSubmit={handleLogin} className='fancy-form'
           initial={{ scale: .9 }}
           animate={{ scale: 1 }}

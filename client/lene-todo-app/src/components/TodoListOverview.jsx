@@ -90,13 +90,14 @@ const TodoListOverview = () => {
 
         if (slettRef.current) {
             const delArea = slettRef.current.getBoundingClientRect();
-      
+            const dragElementScrollY = dragElement.y - window.scrollY;
+            const dragElementScrollX = dragElement.x - window.scrollX;
 
         if ( 
-            dragElement.x >= delArea.x &&
-            dragElement.x <= delArea.right &&
-            dragElement.y >= delArea.y &&
-            dragElement.y <= delArea.bottom
+            dragElementScrollX >= delArea.left &&
+            dragElementScrollX <= delArea.right &&
+            dragElementScrollY >= delArea.top &&
+            dragElementScrollY <= delArea.bottom
          ) {
             handleDeleteList(id);
             slettRef.current.style.background = "#ff000015";
@@ -104,17 +105,30 @@ const TodoListOverview = () => {
         }
     }
     const handleOverElement = (event, dragInfo, id) => {
-
         
         const dragElement = dragInfo.point;
 
         if (slettRef.current) {
             const delArea = slettRef.current.getBoundingClientRect();
+            console.log(window.scrollX);
+            console.log(window.scrollY);
+            const dragElementScrollY = dragElement.y - window.scrollY;
+            const dragElementScrollX = dragElement.x - window.scrollX;
+
+            console.log("Justert X verdi: ", dragElementScrollX)
+            console.log("Justert Y verdi: ", dragElementScrollY)
+            console.log("Dra elementet Y: ", dragElement.y)
+            console.log("Dra elementet X: ", dragElement.x)
+            console.log("Delete plassen Top/Y: ", delArea.y)
+            console.log("Delete plassen Bottom: ", delArea.bottom)
+            console.log("Delete plassen Left/X: ", delArea.x)
+            console.log("Delete plassen Right: ", delArea.right)
+
             if ( 
-                dragElement.x >= delArea.x &&
-                dragElement.x <= delArea.right &&
-                dragElement.y >= delArea.y &&
-                dragElement.y <= delArea.bottom
+                dragElementScrollX >= delArea.left &&
+                dragElementScrollX <= delArea.right &&
+                dragElementScrollY >= delArea.top &&
+                dragElementScrollY <= delArea.bottom
             ) {
                 slettRef.current.style.background = "#ff000080";
             } else {

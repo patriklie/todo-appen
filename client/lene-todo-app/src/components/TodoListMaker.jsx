@@ -39,42 +39,29 @@ const TodoListMaker = () => {
 
   return (
     <>
-    <AnimatePresence>
-        <motion.form
-        layout
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-         onSubmit={handleSubmit} className='fancy-form'>
-            <div className='fancy-form-title'>Opprett ny liste</div>
-            <div className='fancy-input-container'>
-                <input type="text" id="listName" value={listName} onChange={(e) => setListName(e.target.value)} required  />
-                <label htmlFor="listName">Listenavn</label>
-            </div>
-            <button>Legg til</button>
-            <img className="login-maskott-img" src={maskott}/>
-        </motion.form>
-    </AnimatePresence>
-
     <motion.form
       layout
-      data-isOpen={isOpen}
-      className="parent"
-      
+      data-isopen={isOpen}
+      className="add-list-form"
       onSubmit={handleSubmit}
     >
         { !isOpen && 
         <IconContainer onClick={() => setIsOpen(!isOpen)} iconName={"wired-outline-49-plus-circle"} reveal={"in-reveal"} hover={"hover-rotation"} size={100} />
         }
-        { isOpen && <div>
-            <div className='fancy-form-title'>Opprett ny liste</div>
-            <div className='fancy-input-container'>
+
+        { isOpen && <>
+            <div className='add-list-form-title'>Opprett ny liste</div>
+            <div className='add-list-form-container'>
             <input type="text" id="listName" value={listName} onChange={(e) => setListName(e.target.value)} required  />
             <label htmlFor="listName">Listenavn</label>
             </div>
             <button>Legg til</button>
             <img className="login-maskott-img" src={maskott}/>
-            </div>}
+            </>}
+            
+            { isOpen && 
+        <IconContainer onClick={() => setIsOpen(!isOpen)} iconName={"wired-outline-50-minus-circle"} reveal={"in-reveal"} hover={"hover-rotation"} size={100} />
+        }
 
     </motion.form>
     </>

@@ -142,7 +142,7 @@ const TodoListOverview = () => {
   return (
     <>
     
-    <h1 style={{ textAlign: "center", margin: "20px", color: "var(--primary-color)" }}>Alle listene dine</h1>
+    <h1 style={{ fontSize: "50px", textAlign: "center", margin: "20px", color: "var(--primary-color)" }}>Dine lister</h1>
     <div className='select-wrapper'>
     
         <div className='custom-select'>

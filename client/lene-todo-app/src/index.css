@@ -37,6 +37,7 @@ html, body, #root {
 body {
     position: relative;
     top: 90px;
+    padding-bottom: 1px;
 }
 
 :root {
@@ -63,7 +64,7 @@ body {
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     position: relative;
-    margin: auto 20px;
+    margin: 20px;
     border-bottom: 2px solid transparent;
     text-align: center;
 }
@@ -589,7 +590,7 @@ select:hover {
     position: fixed;
     top: 0;
     background: var(--primary-color);
-    border-bottom: 2px solid rgb(220, 220, 220);
+/*     border-bottom: 2px solid rgb(220, 220, 220); */
     z-index: 2000;
 }
 
@@ -959,13 +960,13 @@ form.add-todo-form label:nth-of-type(2) {
 @media screen and (max-width: 500px) { 
 
     body {
-        top: 184px;
+        top: 133px;
     }
 
     .navbar-header {
         grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 20px 0;
+        gap: 5px;
+        padding: 10px 0;
     }
 
     .navbar-header .logo,
@@ -974,11 +975,23 @@ form.add-todo-form label:nth-of-type(2) {
         justify-self: center;
     }
 
+    .nav-menu {
+        width: 100%;
+    }
+
     .spacer {
         height: 183px;
     }
 
     .list-overview-grid {
         grid-template-columns: 1fr ;
+    }
+
+    .fancy-form {
+        padding: 20px 30px;
+    }
+
+    .add-list-form[data-isopen="true"] {
+        padding: 20px 30px;
     }
 }

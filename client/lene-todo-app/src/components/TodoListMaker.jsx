@@ -39,6 +39,7 @@ const TodoListMaker = () => {
 
   return (
     <>
+    <AnimatePresence>
     <motion.form
       layout
       data-isopen={isOpen}
@@ -64,6 +65,7 @@ const TodoListMaker = () => {
         }
 
     </motion.form>
+    </AnimatePresence>
     </>
   )
 }

@@ -5,9 +5,8 @@ import TodoListOverview from '../components/TodoListOverview'
 const TodosStart = () => {
   return (
     <>
-
-    <TodoListOverview />
-    <TodoListMaker />
+      <TodoListOverview />
+      
     </>
   )
 }

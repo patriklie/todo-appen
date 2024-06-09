@@ -5,6 +5,7 @@ import { deleteListAndTodos, loadLists, updateListname } from '../features/list/
 import { useNavigate, Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { toast } from 'react-toastify';
+import TodoListMaker from './TodoListMaker';
 
 const TodoListOverview = () => {
 
@@ -141,7 +142,7 @@ const TodoListOverview = () => {
 
   return (
     <>
-    
+ 
     <h1 style={{ fontSize: "50px", textAlign: "center", margin: "20px", color: "var(--primary-color)" }}>Dine lister</h1>
     <div className='select-wrapper'>
     
@@ -160,7 +161,7 @@ const TodoListOverview = () => {
             <span className="custom-arrow"></span>
             
         </div>
-        <AnimatePresence>
+        
             {activeList && 
         <motion.button
         initial={{ opacity: 0 }}
@@ -169,11 +170,11 @@ const TodoListOverview = () => {
         transition={{ duration: 0.5 }}
         className='custom-select-button' onClick={goToActiveList}>Åpne liste</motion.button>
         }
-        </AnimatePresence>
+  
         
     </div>
-
-    <div className='list-overview-grid'>
+    
+        <div className='list-overview-grid'>
             { listsFromState && listsFromState.length > 0 && 
                 listsFromState.map(liste => {
                     return (
@@ -189,8 +190,10 @@ const TodoListOverview = () => {
                             </div>
                         </div> 
                         :
+                    <AnimatePresence>
                         <motion.div 
                         drag 
+                        layout
                         dragSnapToOrigin 
                         onDragStart={(event, info) => setIsDragging(true)}
                         onDragEnd={(event, info) => {
@@ -207,22 +210,29 @@ const TodoListOverview = () => {
                             <div>{liste.name}</div>
                             <div onClick={(event) => handleEditClick(event, liste._id)} className="material-symbols-rounded list-overview-icon">edit</div>
                         </motion.div>
+                    </AnimatePresence>
                     )
                 })
-            }
-            
+            }  
         </div>
-    <AnimatePresence>
+        
             {isDragging && 
+            <AnimatePresence>
         <motion.div         
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        layout className="drag-container" ref={slettRef} >
+        layout 
+        className="drag-container" 
+        ref={slettRef} 
+        >
             <div className="material-symbols-rounded delete-drag">delete</div>
-        </motion.div> }
-    </AnimatePresence>
-        </>
+        </motion.div> 
+        </AnimatePresence>
+        }
+
+    <TodoListMaker />
+    </>
   )
 }
 

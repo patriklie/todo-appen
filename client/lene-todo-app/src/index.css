@@ -30,14 +30,15 @@ input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-html, body, #root {
+/* html, body, #root {
     min-width: fit-content;
-}
+} */
 
 body {
     position: relative;
     top: 90px;
     padding-bottom: 1px;
+/*     overflow-x: hidden; */
 }
 
 :root {
@@ -50,6 +51,13 @@ body {
     height: 89px;
     max-width: 100%;
     margin-bottom: 30px;
+}
+
+.standard-h1 {
+    font-size: 50px;
+    text-align: center;
+    margin: 20px;
+    color: var(--primary-color);
 }
 
 /* List styling */
@@ -190,15 +198,13 @@ select:hover {
     width: 100px;
     gap: 25px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  }
+}
 
   .add-list-form[data-isopen="true"] {
-    width: clamp(300px, 60%, 600px);
+    width: clamp(200px, 60%, 600px);
     border-radius: 10px;
     padding: 20px 60px 20px 60px;
-  }
-
-
+}
 
 .add-list-form-title {
     text-align: center;
@@ -961,6 +967,10 @@ form.add-todo-form label:nth-of-type(2) {
 
     body {
         top: 133px;
+    }
+
+    .standard-h1 {
+        font-size: 50px;
     }
 
     .navbar-header {

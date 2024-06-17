@@ -143,20 +143,18 @@ const TodoListOverview = () => {
   return (
     <>
  
-    <h1 style={{ fontSize: "50px", textAlign: "center", margin: "20px", color: "var(--primary-color)" }}>Dine lister</h1>
+    <h1 className='standard-h1'>Dine lister</h1>
     <div className='select-wrapper'>
     
         <div className='custom-select'>
             <select onChange={handleSelect}>
-                
-                {listsFromState.length > 1 ? <option>Velg en liste</option> : <option>Velg listen</option> }
-                
-            {
+                <option>Velg liste</option>
+                {
                 listsFromState && listsFromState.length > 0 && 
                 listsFromState.map(liste => {
                     return <option key={liste._id} value={liste._id}>{liste.name}</option>
                 })
-            }
+                }
             </select>
             <span className="custom-arrow"></span>
             

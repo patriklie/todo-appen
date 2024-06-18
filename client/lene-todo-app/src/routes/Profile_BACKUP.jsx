@@ -6,15 +6,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { logout } from '../features/auth/authSlice';
 
 const Profile = () => {
+
   const [profileData, setProfileData] = useState(null);
   const token = localStorage.getItem("userToken");
   const [editMode, setEditMode] = useState(false);
   const [deletePrompt, setDeletePrompt] = useState(false);
+
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const dispatch = useDispatch();
 
   const fetchProfile = async () => {
+
     try {
       if (token) {
         console.log("Token inside profile: ", token);
@@ -37,6 +40,7 @@ const Profile = () => {
   },[token])
 
   const handleSave = async () => {
+
     setEditMode(false);
     setDeletePrompt(false);
 
@@ -72,7 +76,9 @@ const Profile = () => {
           autoClose: 3000,
         });
       }
+
     }
+
   }
 
   const handleEdit = () => {
@@ -84,7 +90,8 @@ const Profile = () => {
   const handleDeleteProfile = async() => {
 
     if (token) {
-      try { 
+      try {
+          
         const response = await axios.delete("http://localhost:5000/users/delete",
           {
             headers: {
@@ -171,11 +178,6 @@ const Profile = () => {
       </motion.div>      
       }
     </AnimatePresence>
-
-    <div className="profile-picture-container">
-      <input type="file"/>
-      <button>Upload</button>
-    </div>
 
     </>
   )

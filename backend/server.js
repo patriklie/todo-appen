@@ -5,6 +5,7 @@ const cors = require('cors');
 const todoRoutes = require('./routes/todos/todoRoutes');
 const userRoutes = require('./routes/users/userRoutes');
 const listRoutes = require('./routes/todoLists/listRoutes');
+const uploadRoutes = require('./routes/uploads/uploadRoutes');
 
 const uri = process.env.MONGODB_URI;
 const port = process.env.PORT || 5000;
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/lists", listRoutes);
 app.use("/todos", todoRoutes);
 app.use("/users", userRoutes);
+app.use("/uploads", uploadRoutes);
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)

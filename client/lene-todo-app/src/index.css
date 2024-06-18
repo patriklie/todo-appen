@@ -589,6 +589,12 @@ select:hover {
     align-items: center;
 }
 
+.profile-picture-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 /* Navbar */
 
 .navbar {

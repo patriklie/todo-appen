@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -16,9 +16,23 @@ const Profile = () => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState('');
+  const fileInputRef = useRef();
+  const [thumbnailUrl, setThumbnailUrl] = useState(null);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+
+    // Lage en ny filereader
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setThumbnailUrl(reader.result);
+    };
+
+    if (selectedFile) {
+      reader.readAsDataURL(selectedFile);
+    }
+
   }
 
   const handleUpload = async () => {
@@ -47,6 +61,9 @@ const Profile = () => {
       setUploadMessage('Det oppstod en feil under opplastingen..')
     } finally {
       setUploading(false);
+      setFile(null);
+      fileInputRef.current.value = "";
+      console.log("Inni finally")
     }
 
   }
@@ -210,8 +227,12 @@ const Profile = () => {
     </AnimatePresence>
 
     <div className="profile-picture-container">
-      <input type="file" onChange={handleFileChange} accept='image/*' />
+      <input ref={fileInputRef} type="file" onChange={handleFileChange} accept='image/*' />
       <button onClick={handleUpload} disabled={uploading} >Upload</button>
+      {thumbnailUrl && (
+        <img src={thumbnailUrl} alt="Thumbnail" style={{ maxWidth: "200px", maxHeight: "200px" }} />
+      )}
+      {file && <p>Filename: {file.name}</p>}
       {uploadMessage && <p>{uploadMessage}</p>}
     </div>
 

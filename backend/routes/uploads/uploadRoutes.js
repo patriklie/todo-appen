@@ -4,7 +4,9 @@ const cloudinary = require('../../utils/cloudinary');
 const upload = require('../../middleware/multer');
 
 router.post('/profileImage', upload.single('image'), (req, res) => {
-    cloudinary.uploader.upload(req.file.path, (err, result) => {
+    cloudinary.uploader.upload(req.file.path, {
+        folder: "todo-appen",
+    }, (err, result) => {
         if(err) {
             console.log(err);
             return res.status(500).json({

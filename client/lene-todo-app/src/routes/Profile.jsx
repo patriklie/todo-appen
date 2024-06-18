@@ -13,6 +13,43 @@ const Profile = () => {
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const dispatch = useDispatch();
+  const [file, setFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadMessage, setUploadMessage] = useState('');
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  }
+
+  const handleUpload = async () => {
+
+    if (!file) {
+      alert("Vennligst velg en fil!");
+      return;
+    }
+
+    setUploading(true);
+
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const response = await axios.post('http://localhost:5000/uploads/profileImage', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+      setUploadMessage(response.data.message);
+      console.log("Respons fra server: ", response.data);
+    } catch (error) {
+      console.error('Feil ved opplasting av bilde: ', error);
+      setUploadMessage('Det oppstod en feil under opplastingen..')
+    } finally {
+      setUploading(false);
+    }
+
+  }
 
   const fetchProfile = async () => {
     try {
@@ -173,8 +210,9 @@ const Profile = () => {
     </AnimatePresence>
 
     <div className="profile-picture-container">
-      <input type="file"/>
-      <button>Upload</button>
+      <input type="file" onChange={handleFileChange} accept='image/*' />
+      <button onClick={handleUpload} disabled={uploading} >Upload</button>
+      {uploadMessage && <p>{uploadMessage}</p>}
     </div>
 
     </>

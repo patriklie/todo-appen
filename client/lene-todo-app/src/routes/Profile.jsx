@@ -1,29 +1,29 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
 import { logout } from '../features/auth/authSlice';
 
 const Profile = () => {
-  const [profileData, setProfileData] = useState(null);
+  const dispatch = useDispatch();
   const token = localStorage.getItem("userToken");
+  const fileInputRef = useRef();
+
+  const [profileData, setProfileData] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [deletePrompt, setDeletePrompt] = useState(false);
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
-  const dispatch = useDispatch();
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState('');
-  const fileInputRef = useRef();
   const [thumbnailUrl, setThumbnailUrl] = useState(null);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
 
-    // Lage en ny filereader
     const reader = new FileReader();
     reader.onloadend = () => {
       setThumbnailUrl(reader.result);
@@ -32,7 +32,6 @@ const Profile = () => {
     if (selectedFile) {
       reader.readAsDataURL(selectedFile);
     }
-
   }
 
   const handleUpload = async () => {
@@ -43,7 +42,6 @@ const Profile = () => {
     }
 
     setUploading(true);
-
     const formData = new FormData();
     formData.append('image', file);
 
@@ -62,10 +60,10 @@ const Profile = () => {
     } finally {
       setUploading(false);
       setFile(null);
+      setThumbnailUrl(null);
       fileInputRef.current.value = "";
       console.log("Inni finally")
     }
-
   }
 
   const fetchProfile = async () => {

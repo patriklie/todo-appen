@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true, minLength: 6 },
     profileImageUrl: { type: String, default: null },
+    profileImagePublicId: { type: String, default: null },
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);

@@ -46,23 +46,29 @@ const Profile = () => {
     formData.append('image', file);
 
     try {
+
       const response = await axios.post('http://localhost:5000/uploads/profileImage', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
         }
       });
-
+      
       setUploadMessage(response.data.message);
       console.log("Respons fra server: ", response.data);
+
     } catch (error) {
+
       console.error('Feil ved opplasting av bilde: ', error);
       setUploadMessage('Det oppstod en feil under opplastingen..')
+
     } finally {
+
       setUploading(false);
       setFile(null);
       setThumbnailUrl(null);
       fileInputRef.current.value = "";
-      console.log("Inni finally")
+
     }
   }
 

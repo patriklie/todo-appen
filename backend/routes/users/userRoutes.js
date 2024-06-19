@@ -76,6 +76,7 @@ router.get("/profile", authenticateToken, async (req, res) => {
     const userData = {
         username: foundUser.username,
         email: foundUser.email,
+        profileImage: foundUser.profileImageUrl,
     }
     return res.status(200).send(userData);
 })

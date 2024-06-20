@@ -178,7 +178,7 @@ const Profile = () => {
 
 
 
-    <div className="profile-picture-container">
+    <div style={{ marginTop: "100px" }} className="profile-picture-container">
       <input ref={fileInputRef} type="file" onChange={handleFileChange} accept='image/*' />
       <button onClick={handleUpload} disabled={uploading} >Upload</button>
       {thumbnailUrl && (

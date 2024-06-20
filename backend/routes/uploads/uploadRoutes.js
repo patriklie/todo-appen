@@ -17,7 +17,7 @@ router.post('/profileImage', upload.single('image'), getUserId, async (req, res)
         }
 
         const result = await cloudinary.uploader.upload(req.file.path, {
-            folder: "todo-appen",
+            folder: `todo-appen/${req.userId}/profile`,
         });
 
         // Legger til url og public id på profilbilde 

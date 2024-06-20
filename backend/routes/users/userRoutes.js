@@ -60,8 +60,23 @@ router.post("/login", async (req, res) => {
         }
     
         if (match) {
+
             const token = jwt.sign({ userId: foundUser._id }, process.env.SECRET_KEY, { expiresIn: '30d' })
-            res.status(200).send({ token, username: foundUser.username });
+            
+            const userData  = {
+                token,
+                username: foundUser.username,
+            };
+
+            if(foundUser.profileImageUrl) {
+                userData.profileImageUrl = foundUser.profileImageUrl;
+            }
+
+            if(foundUser.profileHeaderUrl) {
+                userData.profileHeaderUrl = foundUser.profileHeaderUrl;
+            }
+            
+            res.status(200).send(userData);    
         }
     } catch (error) {
         console.error("Feil ved innlogging: ", error);
@@ -76,8 +91,12 @@ router.get("/profile", authenticateToken, async (req, res) => {
     const userData = {
         username: foundUser.username,
         email: foundUser.email,
-        profileImage: foundUser.profileImageUrl,
     }
+
+    if(foundUser.profileImageUrl) {
+        userData.profileImage = foundUser.profileImageUrl; 
+    }
+
     return res.status(200).send(userData);
 })
 

@@ -24,18 +24,28 @@ const Login = () => {
           password
         })
   
-        const token = response.data.token;
-        const username = response.data.username;
+        const profileData = {
+          token: response.data.token,
+          username: response.data.username
+        }
+
+        if (response.data.profileImageUrl) {
+          profileData.profileImageUrl = response.data.profileImageUrl;
+        }
+
+        if (response.data.profileHeaderUrl) {
+          profileData.profileHeaderUrl = response.data.profileHeaderUrl;
+        }
 
         setEmail("");
         setPassword("");
 
-        dispatch(loginUser({ username, token }));
-        localStorage.setItem("userToken", token);
+        dispatch(loginUser(profileData));
+        localStorage.setItem("userToken", profileData.token);
         dispatch(loadLists())
         navigate("/");
 
-        toast.success(`${username} logget inn!`, {
+        toast.success(`${profileData.username} logget inn!`, {
           position: "bottom-left",
           autoClose: 3000,
         });

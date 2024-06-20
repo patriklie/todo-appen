@@ -15,35 +15,20 @@ const Profile = () => {
   const [deletePrompt, setDeletePrompt] = useState(false);
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
-  const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState('');
-  const [thumbnailUrl, setThumbnailUrl] = useState(null);
 
-  const handleFileChange = (e) => {
+  const handleUpload = async (e) => {
     const selectedFile = e.target.files[0];
-    setFile(selectedFile);
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setThumbnailUrl(reader.result);
-    };
-
-    if (selectedFile) {
-      reader.readAsDataURL(selectedFile);
-    }
-  }
-
-  const handleUpload = async () => {
-
-    if (!file) {
+    if (!selectedFile) {
       alert("Vennligst velg en fil!");
       return;
     }
 
     setUploading(true);
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append('image', selectedFile);
 
     try {
 
@@ -57,19 +42,25 @@ const Profile = () => {
       setUploadMessage(response.data.message);
       console.log("Respons fra server: ", response.data);
 
+      // oppdaterer lokal profildata med url som kommer tilbake
+      setProfileData(prevData => ({
+        ...prevData,
+        profileImage: response.data.url,
+      }));
+
     } catch (error) {
 
       console.error('Feil ved opplasting av bilde: ', error);
       setUploadMessage('Det oppstod en feil under opplastingen..')
 
     } finally {
-
       setUploading(false);
-      setFile(null);
-      setThumbnailUrl(null);
       fileInputRef.current.value = "";
-
     }
+  }
+
+  const handleProfileImgClick = () => {
+    fileInputRef.current.click();
   }
 
   const fetchProfile = async () => {
@@ -171,22 +162,14 @@ const Profile = () => {
       
     <div className='todo-profile-container'>
       {profileData &&
-      <img className='profile-image' src={profileData.profileImage} />
+      <img onClick={handleProfileImgClick} className='profile-image' src={profileData.profileImage} />
       }
+      <div className="white-circle-cutout"></div>
+      <input style={{ display: "none" }} ref={fileInputRef} type="file" onChange={handleUpload} accept='image/*' />
     </div>
       
-
-
-
-    <div style={{ marginTop: "100px" }} className="profile-picture-container">
-      <input ref={fileInputRef} type="file" onChange={handleFileChange} accept='image/*' />
-      <button onClick={handleUpload} disabled={uploading} >Upload</button>
-      {thumbnailUrl && (
-        <img src={thumbnailUrl} alt="Thumbnail" style={{ maxWidth: "200px", maxHeight: "200px" }} />
-      )}
-      {file && <p>Filename: {file.name}</p>}
       {uploadMessage && <p>{uploadMessage}</p>}
-    </div>
+  
 
     </>
   )

@@ -589,12 +589,6 @@ select:hover {
     align-items: center;
 }
 
-.profile-picture-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
 /* Navbar */
 
 .navbar {
@@ -964,6 +958,17 @@ form.add-todo-form label:nth-of-type(2) {
     position: relative;
 }
 
+.todo-profile-container .white-circle-cutout {
+    height: 170px;
+    width: 170px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .todo-profile-container .profile-image {
     border-radius: 50%;
     height: 150px;
@@ -974,7 +979,13 @@ form.add-todo-form label:nth-of-type(2) {
     left: 50%;
     top: 90%;
     transform: translate(-50%, -50%);
-    border: 10px solid white;
+    cursor: pointer;
+    z-index: 99;
+    transition: all .2s ease;
+}
+
+.todo-profile-container .profile-image:hover {
+    opacity: .5;
 }
 
 /* Error Page */

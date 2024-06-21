@@ -97,6 +97,10 @@ router.get("/profile", authenticateToken, async (req, res) => {
         userData.profileImage = foundUser.profileImageUrl; 
     }
 
+    if(foundUser.profileHeaderUrl) {
+        userData.profileHeaderUrl = foundUser.profileHeaderUrl;
+    }
+
     return res.status(200).send(userData);
 })
 

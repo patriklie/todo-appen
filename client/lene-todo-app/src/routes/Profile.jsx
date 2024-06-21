@@ -9,6 +9,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const token = localStorage.getItem("userToken");
   const fileInputRef = useRef();
+  const headerInputRef = useRef();
 
   const [profileData, setProfileData] = useState(null);
   const [editMode, setEditMode] = useState(false);
@@ -18,7 +19,7 @@ const Profile = () => {
   const [uploading, setUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState('');
 
-  const handleUpload = async (e) => {
+  const handleProfileUpload = async (e) => {
     const selectedFile = e.target.files[0];
 
     if (!selectedFile) {
@@ -59,8 +60,53 @@ const Profile = () => {
     }
   }
 
+  const handleHeaderUpload = async (e) => {
+    const selectedFile = e.target.files[0];
+
+    if (!selectedFile) {
+      alert("Vennligst velg en fil!");
+      return;
+    }
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('image', selectedFile);
+
+    try {
+
+      const response = await axios.post('http://localhost:5000/uploads/headerImage', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        }
+      });
+
+      setUploadMessage(response.data.message);
+      console.log("Respons fra server: ", response.data);
+
+      // oppdaterer lokal profildata med url som kommer tilbake
+      setProfileData(prevData => ({
+        ...prevData,
+        headerImage: response.data.url,
+      }));
+
+    } catch (error) {
+
+      console.error('Feil ved opplasting av bilde: ', error);
+      setUploadMessage('Det oppstod en feil under opplastingen..')
+
+    } finally {
+      setUploading(false);
+      fileInputRef.current.value = "";
+    }
+  }
+
   const handleProfileImgClick = () => {
     fileInputRef.current.click();
+  }
+
+  const handleHeaderImgClick = () => {
+    headerInputRef.current.click();
   }
 
   const fetchProfile = async () => {
@@ -160,12 +206,19 @@ const Profile = () => {
   return (
     <>
       
-    <div className='todo-profile-container'>
-      {profileData &&
+    <div className='todo-profile-container' >
+    {profileData && profileData.headerImage ?
+      <img onClick={handleHeaderImgClick} className='header-image' src={profileData.headerImage} />
+      :
+      <div onClick={handleHeaderImgClick} className='header-placeholder'></div>
+    }
+      {profileData && profileData.profileImage &&
       <img onClick={handleProfileImgClick} className='profile-image' src={profileData.profileImage} />
       }
       <div className="white-circle-cutout"></div>
-      <input style={{ display: "none" }} ref={fileInputRef} type="file" onChange={handleUpload} accept='image/*' />
+      <input style={{ display: "none" }} ref={fileInputRef} type="file" onChange={handleProfileUpload} accept='image/*' />
+      <input style={{ display: "none" }} ref={headerInputRef} type="file" onChange={handleHeaderUpload} accept='image/*' />
+    
     </div>
       
       {uploadMessage && <p>{uploadMessage}</p>}

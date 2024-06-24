@@ -1,23 +1,24 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
 import { logout } from '../features/auth/authSlice';
+import { addHeaderImage, addProfileImage } from '../features/auth/authSlice';
+import IconContainer from '../components/IconContainer';
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const token = localStorage.getItem("userToken");
+  const token = localStorage.getItem("token");
   const fileInputRef = useRef();
   const headerInputRef = useRef();
+  const stateProfile = useSelector(state => state.auth);
 
-  const [profileData, setProfileData] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [deletePrompt, setDeletePrompt] = useState(false);
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [uploading, setUploading] = useState(false);
-  const [uploadMessage, setUploadMessage] = useState('');
 
   const handleProfileUpload = async (e) => {
     const selectedFile = e.target.files[0];
@@ -40,19 +41,20 @@ const Profile = () => {
         }
       });
 
-      setUploadMessage(response.data.message);
       console.log("Respons fra server: ", response.data);
-
-      // oppdaterer lokal profildata med url som kommer tilbake
-      setProfileData(prevData => ({
-        ...prevData,
-        profileImage: response.data.url,
-      }));
+      dispatch(addProfileImage(response.data.url))
+      toast.success("Profilbilde lastet opp! ✌️", {
+        position: "bottom-left",
+        autoClose: 3000,
+      });
 
     } catch (error) {
 
       console.error('Feil ved opplasting av bilde: ', error);
-      setUploadMessage('Det oppstod en feil under opplastingen..')
+      toast.error("Feil ved opplasting! 👀", {
+        position: "bottom-left",
+        autoClose: 3000,
+      });
 
     } finally {
       setUploading(false);
@@ -81,19 +83,20 @@ const Profile = () => {
         }
       });
 
-      setUploadMessage(response.data.message);
       console.log("Respons fra server: ", response.data);
-
-      // oppdaterer lokal profildata med url som kommer tilbake
-      setProfileData(prevData => ({
-        ...prevData,
-        headerImage: response.data.url,
-      }));
+      dispatch(addHeaderImage(response.data.url))
+      toast.success("Header bilde lastet opp! ✌️", {
+        position: "bottom-left",
+        autoClose: 3000,
+      });
 
     } catch (error) {
 
       console.error('Feil ved opplasting av bilde: ', error);
-      setUploadMessage('Det oppstod en feil under opplastingen..')
+      toast.error("Feil ved opplasting! 👀", {
+        position: "bottom-left",
+        autoClose: 3000,
+      });
 
     } finally {
       setUploading(false);
@@ -109,7 +112,7 @@ const Profile = () => {
     headerInputRef.current.click();
   }
 
-  const fetchProfile = async () => {
+/*   const fetchProfile = async () => {
     try {
       if (token) {
         console.log("Token inside profile: ", token);
@@ -129,13 +132,13 @@ const Profile = () => {
   useEffect(() => {
   fetchProfile();
     
-  },[token])
+  },[token]) */
 
   const handleSave = async () => {
     setEditMode(false);
     setDeletePrompt(false);
 
-    if (profileData.username !== newUsername || profileData.email !== newEmail) {
+    if (stateProfile.username !== newUsername || stateProfile.email !== newEmail) {
 
       try {
         const response = await axios.put(
@@ -153,7 +156,7 @@ const Profile = () => {
 
       console.log(response.data);
 
-      fetchProfile();
+/*       fetchProfile(); */
       toast.success(response.data.message, {
         position: "bottom-left",
         autoClose: 3000,
@@ -172,8 +175,8 @@ const Profile = () => {
 
   const handleEdit = () => {
     setEditMode(true);
-    setNewUsername(profileData.username);
-    setNewEmail(profileData.email);
+    setNewUsername(stateProfile.username);
+    setNewEmail(stateProfile.email);
   }
 
   const handleDeleteProfile = async() => {
@@ -195,7 +198,7 @@ const Profile = () => {
           position: "bottom-left",
           autoClose: 3000,
         });
-        localStorage.removeItem("userToken");
+        localStorage.removeItem("token");
 
       } catch(error) {
         console.log(error);
@@ -207,22 +210,31 @@ const Profile = () => {
     <>
       
     <div className='todo-profile-container' >
-    {profileData && profileData.headerImage ?
-      <img onClick={handleHeaderImgClick} className='header-image' src={profileData.headerImage} />
+
+    {stateProfile && stateProfile.profileHeaderUrl ?
+      <img onClick={handleHeaderImgClick} className='header-image' src={stateProfile.profileHeaderUrl} />
       :
       <div onClick={handleHeaderImgClick} className='header-placeholder'></div>
     }
-      {profileData && profileData.profileImage &&
-      <img onClick={handleProfileImgClick} className='profile-image' src={profileData.profileImage} />
-      }
+
+    {stateProfile && stateProfile.profileImageUrl ?
+      <img onClick={handleProfileImgClick} className='profile-image' src={stateProfile.profileImageUrl} />
+      :
+      <div onClick={handleProfileImgClick} className='profile-placeholder'></div>
+    }
+
       <div className="white-circle-cutout"></div>
+
       <input style={{ display: "none" }} ref={fileInputRef} type="file" onChange={handleProfileUpload} accept='image/*' />
       <input style={{ display: "none" }} ref={headerInputRef} type="file" onChange={handleHeaderUpload} accept='image/*' />
     
+    <div className='profile-tools-container'>
+      <IconContainer onClick={() => console.log("hello")} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
+      <IconContainer onClick={() => console.log("hello")} iconName={"wired-outline-35-edit"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
     </div>
-      
-      {uploadMessage && <p>{uploadMessage}</p>}
-  
+
+
+    </div>
 
     </>
   )

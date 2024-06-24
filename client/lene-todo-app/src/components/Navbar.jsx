@@ -13,7 +13,7 @@ const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
   
   const logoutUser = () => {  
-    localStorage.removeItem("userToken");
+    localStorage.removeItem("token");
     dispatch(logout());
     navigate("/login")
 }

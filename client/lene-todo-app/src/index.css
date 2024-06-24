@@ -969,11 +969,30 @@ form.add-todo-form label:nth-of-type(2) {
 }
 
 .todo-profile-container .profile-image {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: all .2s ease;
+    z-index: 1;
+}
+
+.todo-profile-container .profile-image:hover {
+    opacity: .5;
+}
+
+.todo-profile-container .profile-placeholder {
     border-radius: 50%;
     height: 150px;
     width: 150px;
-    object-fit: cover;
-    object-position: center;
+    background: var(--primary-color);
     position: absolute;
     left: 50%;
     top: 90%;
@@ -983,7 +1002,7 @@ form.add-todo-form label:nth-of-type(2) {
     transition: all .2s ease;
 }
 
-.todo-profile-container .profile-image:hover {
+.todo-profile-container .profile-placeholder:hover {
     opacity: .5;
 }
 
@@ -1007,9 +1026,24 @@ form.add-todo-form label:nth-of-type(2) {
     width: 100%;
     background-color: var(--primary-color);
     cursor: pointer;
+    transition: all .2s ease;
 }
 
+.todo-profile-container .header-placeholder:hover {
+    opacity: .5;
+}
 
+/* PROFILE TOOLS */
+.profile-tools-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.904);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
 
 /* Error Page */
 .errorpage {

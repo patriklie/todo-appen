@@ -10,7 +10,7 @@ const initialState = {
 export const loadLists = createAsyncThunk(
     'list/loadLists',
     async () => {
-        const token = localStorage.getItem("userToken")
+        const token = localStorage.getItem("token")
         const response = await axios.get("http://localhost:5000/lists/", {
             headers: {
                 Authorization: `Bearer ${token}`,

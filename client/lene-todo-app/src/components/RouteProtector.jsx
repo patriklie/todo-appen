@@ -9,7 +9,7 @@ const RouteProtector = ({ children }) => {
 
     const stateAuth = useSelector(state => state.auth);
     const stateLoggedIn = stateAuth.isAuth;
-    const userToken = localStorage.getItem("userToken");
+    const token = localStorage.getItem("token");
     const stateToken = useSelector(state => state.auth.token);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -18,28 +18,28 @@ const RouteProtector = ({ children }) => {
     useEffect(() => {
 
         const fetchData = async () => {
-            if (userToken) {
+            if (token) {
                 try {
                     const response = await axios.get("http://localhost:5000/users/authtoken", {
                     headers: {
-                        Authorization: `Bearer ${userToken}`
+                        Authorization: `Bearer ${token}`
                     }
                     });
-                    const username = response?.data?.username
-                    dispatch(loginWithToken({ username, userToken }));
+                    
+                    dispatch(loginWithToken(response.data));
                     setTokenCheck(true);
                     dispatch(loadLists())
 
             } catch (error) {
                 console.error('Feil ved henting av authtoken:', error);
                 dispatch(logout());
-                localStorage.removeItem("userToken");
+                localStorage.removeItem("token");
                 setTokenCheck(false);
                 navigate("/login");
                 }
             }
 
-            if (!userToken) {
+            if (!token) {
                 setTokenCheck(false);
                 navigate("/login");
             }

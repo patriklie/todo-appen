@@ -5,7 +5,7 @@ const initialState = {
     username: null,
     token: null,
     profileImageUrl: null,
-    headerImageUrl: null,
+    profileHeaderUrl: null,
 }
 
 const authSlice = createSlice({
@@ -20,16 +20,15 @@ const authSlice = createSlice({
             if (action.payload.profileImageUrl) {
                 state.profileImageUrl = action.payload.profileImageUrl;
             }
-
             if (action.payload.profileHeaderUrl) {
-                state.headerImageUrl = action.payload.headerImageUrl;
+                state.profileHeaderUrl = action.payload.profileHeaderUrl;
             }
 
         },
         loginWithToken: (state, action) => {
             console.log("Logget inn med token")
             state.isAuth = true;
-            state.token = action.payload.userToken
+            state.token = action.payload.token
             state.username = action.payload.username;
 
             if (action.payload.profileImageUrl) {
@@ -37,7 +36,7 @@ const authSlice = createSlice({
             }
 
             if (action.payload.profileHeaderUrl) {
-                state.headerImageUrl = action.payload.headerImageUrl;
+                state.profileHeaderUrl = action.payload.profileHeaderUrl;
             }
 
         },
@@ -46,13 +45,13 @@ const authSlice = createSlice({
             state.token = null;
             state.username = null;
             state.profileImageUrl = null;
-            state.headerImageUrl = null;
+            state.profileHeaderUrl = null;
         },
         addProfileImage: (state, action) => {
-            state.profileImageUrl = action.payload.profileImage;
+            state.profileImageUrl = action.payload;
         },
         addHeaderImage: (state, action) => {
-            state.headerImageUrl = action.payload.headerImage;
+            state.profileHeaderUrl = action.payload;
         }
     }
 })

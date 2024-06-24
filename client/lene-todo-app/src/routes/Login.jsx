@@ -41,7 +41,7 @@ const Login = () => {
         setPassword("");
 
         dispatch(loginUser(profileData));
-        localStorage.setItem("userToken", profileData.token);
+        localStorage.setItem("token", profileData.token);
         dispatch(loadLists())
         navigate("/");
 

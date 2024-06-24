@@ -31,7 +31,7 @@ const Register = () => {
         const token = response.data;
 
         dispatch(loginUser({ username, token }));
-        localStorage.setItem('userToken', token);
+        localStorage.setItem('token', token);
         dispatch(loadLists())
 
         setName("");

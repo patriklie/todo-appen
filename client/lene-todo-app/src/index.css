@@ -950,8 +950,11 @@ form.add-todo-form label:nth-of-type(2) {
 /* TODO USER PROFILE */
 
 .todo-profile-container {
-    max-width: calc(100% - 60px);
+    /* max-width: calc(100% - 60px); */
+    max-width: clamp(50%, 100%, 800px);
     margin: 30px auto;
+    border-left: 30px solid white;
+    border-right: 30px solid white;
     height: 150px;
     border-radius: 10px;
     position: relative;
@@ -1044,7 +1047,7 @@ form.add-todo-form label:nth-of-type(2) {
     width: 110px;
     padding: 5px 10px;
     background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .profile-image-tools-container {
@@ -1057,7 +1060,7 @@ form.add-todo-form label:nth-of-type(2) {
     width: 110px;
     padding: 5px 10px;
     background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     transform: translate(-50%, -50%);
     z-index: 10;

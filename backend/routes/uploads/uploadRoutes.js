@@ -84,4 +84,29 @@ router.post('/headerImage', upload.single('image'), getUserId, async (req, res) 
 
 });
 
+router.delete('/deleteProfileImage', getUserId, async (req, res) => {
+
+    try {
+        const findUser = await User.findById(req.userId);
+
+        if (findUser) {
+            await cloudinary.uploader.destroy(findUser.profileImagePublicId);
+        }
+        
+        // oppdatere mongodb info på brukeren etter sletting:
+        const oppdatertBruker = await User.findByIdAndUpdate(req.userId, {
+            $unset: {
+                profileImageUrl: "",
+                profileImagePublicId: "",
+            }
+        }, { new: true });
+        
+        res.status(200).json({ message: "Deleted profile image!", user: oppdatertBruker })
+
+    } catch(error) {
+        console.error("Error deleting profile image:", error);
+        res.status(500).json({ error: "Failed to delete profile image" });
+    }
+})
+
 module.exports = router;

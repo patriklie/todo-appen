@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from 'axios';
 
 const initialState = {
     isAuth: false,
@@ -6,7 +7,20 @@ const initialState = {
     token: null,
     profileImageUrl: null,
     profileHeaderUrl: null,
+    status: "",
 }
+
+export const updateProfile = createAsyncThunk(
+    'auth/updateProfile',
+    async (token) => {
+        const response = await axios.get(`http://localhost:5000/users/profile`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+              }
+        });
+        return response.data;
+    }
+);
 
 const authSlice = createSlice({
     name: 'auth',
@@ -53,6 +67,20 @@ const authSlice = createSlice({
         addHeaderImage: (state, action) => {
             state.profileHeaderUrl = action.payload;
         }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(updateProfile.fulfilled, (state, action) => {
+                state.profileImageUrl = action.payload.profileImageUrl;
+                state.profileHeaderUrl = action.payload.profileHeaderUrl;
+                state.status = "updated";
+            })
+            .addCase(updateProfile.pending, (state, action) => {
+                state.status = "pending";
+            })
+            .addCase(updateProfile.rejected, (state, action) => {
+                state.status = "Failed updating profile";
+            })
     }
 })
 

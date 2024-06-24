@@ -22,6 +22,24 @@ const Profile = () => {
   const [headerTools, setHeaderTools] = useState(false);
   const [profileImageTools, setProfileImageTools] = useState(false);
 
+  const handleDeleteProfileImg = async () => {
+    try {
+
+    const response = await axios.delete('http://localhost:5000/uploads/deleteProfileImage', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    
+    // update profile in state
+
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
   const toggleHeaderTools = () => {
     setHeaderTools(!headerTools);
   }

@@ -19,6 +19,16 @@ const Profile = () => {
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [headerTools, setHeaderTools] = useState(false);
+  const [profileImageTools, setProfileImageTools] = useState(false);
+
+  const toggleHeaderTools = () => {
+    setHeaderTools(!headerTools);
+  }
+
+  const toggleProfileImageTools = () => {
+    setProfileImageTools(!profileImageTools);
+  }
 
   const handleProfileUpload = async (e) => {
     const selectedFile = e.target.files[0];
@@ -58,6 +68,7 @@ const Profile = () => {
 
     } finally {
       setUploading(false);
+      setProfileImageTools(false);
       fileInputRef.current.value = "";
     }
   }
@@ -101,14 +112,15 @@ const Profile = () => {
     } finally {
       setUploading(false);
       fileInputRef.current.value = "";
+      setHeaderTools(false);
     }
   }
 
-  const handleProfileImgClick = () => {
+  const handleProfileInputClick = () => {
     fileInputRef.current.click();
   }
 
-  const handleHeaderImgClick = () => {
+  const handleHeaderInputClick = () => {
     headerInputRef.current.click();
   }
 
@@ -212,15 +224,15 @@ const Profile = () => {
     <div className='todo-profile-container' >
 
     {stateProfile && stateProfile.profileHeaderUrl ?
-      <img onClick={handleHeaderImgClick} className='header-image' src={stateProfile.profileHeaderUrl} />
+      <img onClick={toggleHeaderTools} className='header-image' src={stateProfile.profileHeaderUrl} />
       :
-      <div onClick={handleHeaderImgClick} className='header-placeholder'></div>
+      <div onClick={handleHeaderInputClick} className='header-placeholder'></div>
     }
 
     {stateProfile && stateProfile.profileImageUrl ?
-      <img onClick={handleProfileImgClick} className='profile-image' src={stateProfile.profileImageUrl} />
+      <img onClick={toggleProfileImageTools} className='profile-image' src={stateProfile.profileImageUrl} />
       :
-      <div onClick={handleProfileImgClick} className='profile-placeholder'></div>
+      <div onClick={handleProfileInputClick} className='profile-placeholder'></div>
     }
 
       <div className="white-circle-cutout"></div>
@@ -228,10 +240,34 @@ const Profile = () => {
       <input style={{ display: "none" }} ref={fileInputRef} type="file" onChange={handleProfileUpload} accept='image/*' />
       <input style={{ display: "none" }} ref={headerInputRef} type="file" onChange={handleHeaderUpload} accept='image/*' />
     
-    <div className='profile-tools-container'>
-      <IconContainer onClick={() => console.log("hello")} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
-      <IconContainer onClick={() => console.log("hello")} iconName={"wired-outline-35-edit"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
-    </div>
+      <AnimatePresence>
+    {
+      headerTools && 
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className='profile-header-tools-container'>
+          <IconContainer onClick={handleHeaderInputClick} iconName={"wired-outline-35-edit"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
+          <IconContainer onClick={() => console.log("hello")} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
+        </motion.div>
+    }
+    </AnimatePresence>
+
+    <AnimatePresence>
+    {
+      profileImageTools && 
+      <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className='profile-image-tools-container'>
+        <IconContainer onClick={handleProfileInputClick} iconName={"wired-outline-35-edit"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
+        <IconContainer onClick={() => console.log("hello")} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
+      </motion.div>
+    }
+    </AnimatePresence>
+
 
 
     </div>

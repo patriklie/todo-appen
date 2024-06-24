@@ -10,7 +10,7 @@ const TodoListMaker = () => {
 
     const dispatch = useDispatch();
     const userId = useSelector(state => state.auth.id);
-    const token = localStorage.getItem('userToken');
+    const token = localStorage.getItem('token');
     const [listName, setListName] = useState("");
     const listsFromState = useSelector(state => state.list.lists);
     const [isOpen, setIsOpen] = useState(false);

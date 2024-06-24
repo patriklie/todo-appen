@@ -1034,15 +1034,33 @@ form.add-todo-form label:nth-of-type(2) {
 }
 
 /* PROFILE TOOLS */
-.profile-tools-container {
+.profile-header-tools-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 120px;
-    padding: 5px;
-    background-color: rgba(255, 255, 255, 0.904);
-    border-radius: 10px;
+    width: 110px;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.profile-image-tools-container {
+    position: absolute;
+    top: 165%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
 /* Error Page */

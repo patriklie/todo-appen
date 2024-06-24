@@ -9,7 +9,7 @@ import TodoListMaker from './TodoListMaker';
 
 const TodoListOverview = () => {
 
-    const token = localStorage.getItem("userToken");
+    const token = localStorage.getItem("token");
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const listsFromState = useSelector(state => state.list.lists);
@@ -188,7 +188,7 @@ const TodoListOverview = () => {
                             </div>
                         </div> 
                         :
-                    <AnimatePresence>
+                    <AnimatePresence key={ liste._id + 1 }>
                         <motion.div 
                         drag 
                         layout

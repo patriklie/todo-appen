@@ -4,6 +4,7 @@ import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { logout } from '../features/auth/authSlice';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Squash as Hamburger } from 'hamburger-react'
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -14,7 +15,12 @@ const Navbar = () => {
   
   const logoutUser = () => {  
     localStorage.removeItem("token");
+    toast.warning(`Logget ut! 👋`, {
+      position: "bottom-left",
+      autoClose: 3000,
+    });
     dispatch(logout());
+
     navigate("/login")
 }
 

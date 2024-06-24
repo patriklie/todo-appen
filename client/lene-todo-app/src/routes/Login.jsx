@@ -45,7 +45,7 @@ const Login = () => {
         dispatch(loadLists())
         navigate("/");
 
-        toast.success(`${profileData.username} logget inn!`, {
+        toast.success(`Hei ${profileData.username}! ✌️`, {
           position: "bottom-left",
           autoClose: 3000,
         });

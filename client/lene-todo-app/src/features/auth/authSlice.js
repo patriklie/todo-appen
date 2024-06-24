@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from 'axios';
 
 const initialState = {
     isAuth: false,
@@ -9,18 +8,6 @@ const initialState = {
     profileHeaderUrl: null,
     status: "",
 }
-
-export const updateProfile = createAsyncThunk(
-    'auth/updateProfile',
-    async (token) => {
-        const response = await axios.get(`http://localhost:5000/users/profile`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-              }
-        });
-        return response.data;
-    }
-);
 
 const authSlice = createSlice({
     name: 'auth',
@@ -37,7 +24,6 @@ const authSlice = createSlice({
             if (action.payload.profileHeaderUrl) {
                 state.profileHeaderUrl = action.payload.profileHeaderUrl;
             }
-
         },
         loginWithToken: (state, action) => {
             console.log("Logget inn med token")
@@ -66,23 +52,15 @@ const authSlice = createSlice({
         },
         addHeaderImage: (state, action) => {
             state.profileHeaderUrl = action.payload;
-        }
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(updateProfile.fulfilled, (state, action) => {
-                state.profileImageUrl = action.payload.profileImageUrl;
-                state.profileHeaderUrl = action.payload.profileHeaderUrl;
-                state.status = "updated";
-            })
-            .addCase(updateProfile.pending, (state, action) => {
-                state.status = "pending";
-            })
-            .addCase(updateProfile.rejected, (state, action) => {
-                state.status = "Failed updating profile";
-            })
+        },
+        removeProfileImage: (state) => {
+            state.profileImageUrl = null;
+        },
+        removeHeaderImage: (state) => {
+            state.profileHeaderUrl = null;
+        },
     }
 })
 
-export const { loginUser, loginWithToken, logout, addProfileImage, addHeaderImage } = authSlice.actions;
+export const { loginUser, loginWithToken, logout, addProfileImage, addHeaderImage, removeHeaderImage, removeProfileImage } = authSlice.actions;
 export default authSlice.reducer;

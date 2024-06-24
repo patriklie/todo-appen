@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
-import { logout } from '../features/auth/authSlice';
+import { logout, removeHeaderImage, removeProfileImage } from '../features/auth/authSlice';
 import { addHeaderImage, addProfileImage } from '../features/auth/authSlice';
 import IconContainer from '../components/IconContainer';
 
@@ -32,12 +32,39 @@ const Profile = () => {
     });
     
     // update profile in state
-
+    dispatch(removeProfileImage());
+    setProfileImageTools(false);
+    toast.warning("Profilbilde fjernet! 🗑️", {
+      position: "bottom-left",
+      autoClose: 3000,
+    });
 
     } catch (error) {
       console.log(error);
     }
+  }
 
+  const handleDeleteProfileHeader = async () => {
+    try {
+
+    const response = await axios.delete('http://localhost:5000/uploads/deleteProfileHeader', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    
+    // update profile in state
+    dispatch(removeHeaderImage());
+    setHeaderTools(false);
+    toast.warning("Headerbilde fjernet! 🗑️", {
+      position: "bottom-left",
+      autoClose: 3000,
+    });
+    console.log("removed header image")
+
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const toggleHeaderTools = () => {
@@ -267,7 +294,7 @@ const Profile = () => {
         exit={{ opacity: 0 }}
         className='profile-header-tools-container'>
           <IconContainer onClick={handleHeaderInputClick} iconName={"wired-outline-35-edit"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
-          <IconContainer onClick={() => console.log("hello")} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
+          <IconContainer onClick={handleDeleteProfileHeader} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
         </motion.div>
     }
     </AnimatePresence>
@@ -281,7 +308,7 @@ const Profile = () => {
       exit={{ opacity: 0 }}
       className='profile-image-tools-container'>
         <IconContainer onClick={handleProfileInputClick} iconName={"wired-outline-35-edit"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
-        <IconContainer onClick={() => console.log("hello")} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
+        <IconContainer onClick={handleDeleteProfileImg} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
       </motion.div>
     }
     </AnimatePresence>

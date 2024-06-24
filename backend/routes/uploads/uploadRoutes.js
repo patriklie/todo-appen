@@ -109,4 +109,29 @@ router.delete('/deleteProfileImage', getUserId, async (req, res) => {
     }
 })
 
+router.delete('/deleteProfileHeader', getUserId, async (req, res) => {
+
+    try {
+        const findUser = await User.findById(req.userId);
+
+        if (findUser) {
+            await cloudinary.uploader.destroy(findUser.profileHeaderPublicId);
+        }
+        
+        // oppdatere mongodb info på brukeren etter sletting:
+        const oppdatertBruker = await User.findByIdAndUpdate(req.userId, {
+            $unset: {
+                profileHeaderUrl: "",
+                profileHeaderPublicId: "",
+            }
+        }, { new: true });
+        
+        res.status(200).json({ message: "Deleted profile header!", user: oppdatertBruker })
+
+    } catch(error) {
+        console.error("Error deleting profile header:", error);
+        res.status(500).json({ error: "Failed to delete profile header" });
+    }
+})
+
 module.exports = router;

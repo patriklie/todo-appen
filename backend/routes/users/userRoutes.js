@@ -66,6 +66,7 @@ router.post("/login", async (req, res) => {
             const userData  = {
                 token,
                 username: foundUser.username,
+                email: foundUser.email,
             };
 
             if(foundUser.profileImageUrl) {
@@ -110,6 +111,7 @@ router.get("/authtoken", authenticateToken, async (req, res) => {
     const foundUser = await User.findById(userId);
     const userData = {
         username: foundUser.username,
+        email: foundUser.email,
         token: req.token,
     }
 

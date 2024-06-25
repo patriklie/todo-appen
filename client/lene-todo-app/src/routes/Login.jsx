@@ -26,7 +26,8 @@ const Login = () => {
   
         const profileData = {
           token: response.data.token,
-          username: response.data.username
+          username: response.data.username,
+          email: response.data.email,
         }
 
         if (response.data.profileImageUrl) {

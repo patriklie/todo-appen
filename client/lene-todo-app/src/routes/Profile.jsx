@@ -312,11 +312,14 @@ const Profile = () => {
       </motion.div>
     }
     </AnimatePresence>
-
-
-
     </div>
 
+    <div className='profile-flex-container'>
+      <div className='titles'>
+        <h2>{stateProfile.username}</h2>
+        <h3>{stateProfile.email}</h3>
+      </div>
+    </div>
     </>
   )
 }

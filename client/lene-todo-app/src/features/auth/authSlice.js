@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
     isAuth: false,
     username: null,
+    email: null,
     token: null,
     profileImageUrl: null,
     profileHeaderUrl: null,
@@ -17,6 +18,7 @@ const authSlice = createSlice({
             state.isAuth = true;
             state.token = action.payload.token;
             state.username = action.payload.username;
+            state.email = action.payload.email;
             
             if (action.payload.profileImageUrl) {
                 state.profileImageUrl = action.payload.profileImageUrl;
@@ -30,6 +32,7 @@ const authSlice = createSlice({
             state.isAuth = true;
             state.token = action.payload.token
             state.username = action.payload.username;
+            state.email = action.payload.email;
 
             if (action.payload.profileImageUrl) {
                 state.profileImageUrl = action.payload.profileImageUrl;

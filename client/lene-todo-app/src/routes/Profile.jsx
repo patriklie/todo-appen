@@ -13,6 +13,7 @@ const Profile = () => {
   const fileInputRef = useRef();
   const headerInputRef = useRef();
   const stateProfile = useSelector(state => state.auth);
+  const stateLists = useSelector(state => state.list.lists);
 
   const [editMode, setEditMode] = useState(false);
   const [deletePrompt, setDeletePrompt] = useState(false);
@@ -21,6 +22,17 @@ const Profile = () => {
   const [uploading, setUploading] = useState(false);
   const [headerTools, setHeaderTools] = useState(false);
   const [profileImageTools, setProfileImageTools] = useState(false);
+
+  const countTodos = () => {
+    return stateLists.reduce((total, list) => total + list.todos.length, 0);
+  }
+
+  const countCompletedTodos = () => {
+   return stateLists.reduce((total, list) => total + list.todos.filter(todo => todo.completed).length, 0);
+  };
+
+  const antallTodos = countTodos();
+  const doneTodos = countCompletedTodos();
 
   const handleDeleteProfileImg = async () => {
     try {
@@ -319,6 +331,15 @@ const Profile = () => {
         <h2>{stateProfile.username}</h2>
         <h3>{stateProfile.email}</h3>
       </div>
+      <div className='info-dump'>
+        <div className='info-title one'>LISTER</div>
+        <div className='info-title two'>TODOS</div>
+        <div className='info-title three'>UTFØRTE TODOS</div>
+        <div className='info-state'>{stateLists.length}</div>
+        <div className='info-state'>{antallTodos}</div>
+        <div className='info-state'>{doneTodos}</div>
+      </div>
+      <button className='delete-profile'>Slett profil</button>
     </div>
     </>
   )

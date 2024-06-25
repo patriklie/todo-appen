@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { logout, oppdaterProfil, removeHeaderImage, removeProfileImage } from '../features/auth/authSlice';
 import { addHeaderImage, addProfileImage } from '../features/auth/authSlice';
 import IconContainer from '../components/IconContainer';
+import KulTeller from '../components/KulTeller';
+import AnimatedCounter from '../components/AnimatedCounter';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -289,8 +291,20 @@ const Profile = () => {
 
   return (
     <>
+    
+{ deletePrompt && 
+      <div className="profile-dimmer">
+        <p>Vil du virkelig slette profilen?</p>
+        <div className='delete-prompt'>
+          <button>Ja</button>
+          <button onClick={() => setDeletePrompt(false)}>Nei</button>
+        </div>
+      </div>
+      }
       
     <div className='todo-profile-container' >
+
+    
 
     {stateProfile && stateProfile.profileHeaderUrl ?
       <img onClick={toggleHeaderTools} className='header-image' src={stateProfile.profileHeaderUrl} />
@@ -383,22 +397,17 @@ const Profile = () => {
         <div className='info-title one'>LISTER</div>
         <div className='info-title two'>TODOS</div>
         <div className='info-title three'>UTFØRTE TODOS</div>
-        <div className='info-state'>{stateLists.length}</div>
-        <div className='info-state'>{antallTodos}</div>
-        <div className='info-state'>{doneTodos}</div>
+        <div className='info-state'><AnimatedCounter from={0} to={stateLists.length}/></div>
+        <div className='info-state'><AnimatedCounter from={0} to={antallTodos}/></div>
+        <div className='info-state'><AnimatedCounter from={0} to={doneTodos}/></div>
       </div>
       <button className='delete-profile' onClick={() => setDeletePrompt(true)}>Slett profil</button>
-      { !deletePrompt && 
-      <>
-      <p>Vil du virkelig slette profilen?</p>
-        <div className='delete-prompt'>
-          <button>Ja</button>
-          <button>Nei</button>
-        </div>
-        </>
-      }
+
+
+
       
     </div>
+
     </>
   )
 }

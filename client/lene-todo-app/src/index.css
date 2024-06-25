@@ -36,7 +36,7 @@ input:-webkit-autofill:active{
 
 body {
     position: relative;
-    top: 90px;
+    top: 88px;
     padding-bottom: 1px;
 /*     overflow-x: hidden; */
 }
@@ -1078,6 +1078,20 @@ form.add-todo-form label:nth-of-type(2) {
 }
 
 /* PROFILE DELETE PROMPT */
+
+.profile-dimmer {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile-flex-container .delete-prompt {
     display: flex;
     margin-top: 10px;

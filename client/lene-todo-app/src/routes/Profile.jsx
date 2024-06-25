@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
-import { logout, removeHeaderImage, removeProfileImage } from '../features/auth/authSlice';
+import { logout, oppdaterProfil, removeHeaderImage, removeProfileImage } from '../features/auth/authSlice';
 import { addHeaderImage, addProfileImage } from '../features/auth/authSlice';
 import IconContainer from '../components/IconContainer';
 
@@ -14,6 +14,7 @@ const Profile = () => {
   const headerInputRef = useRef();
   const stateProfile = useSelector(state => state.auth);
   const stateLists = useSelector(state => state.list.lists);
+  const usernameInputRef = useRef();
 
   const [editMode, setEditMode] = useState(false);
   const [deletePrompt, setDeletePrompt] = useState(false);
@@ -22,6 +23,7 @@ const Profile = () => {
   const [uploading, setUploading] = useState(false);
   const [headerTools, setHeaderTools] = useState(false);
   const [profileImageTools, setProfileImageTools] = useState(false);
+  const [editTools, setEditTools] = useState(false);
 
   const countTodos = () => {
     return stateLists.reduce((total, list) => total + list.todos.length, 0);
@@ -222,11 +224,8 @@ const Profile = () => {
           }
         }
       );
-
-      console.log(response.data);
-
-/*       fetchProfile(); */
-      toast.success(response.data.message, {
+      dispatch(oppdaterProfil(response.data));
+      toast.success("Oppdatert profilen! ✌️", {
         position: "bottom-left",
         autoClose: 3000,
       });
@@ -247,6 +246,12 @@ const Profile = () => {
     setNewUsername(stateProfile.username);
     setNewEmail(stateProfile.email);
   }
+
+  useEffect(() => {
+    if (editMode) {
+      usernameInputRef.current.focus();
+    }
+  }, [editMode]);
 
   const handleDeleteProfile = async() => {
 
@@ -273,6 +278,13 @@ const Profile = () => {
         console.log(error);
       }
     }
+  }
+
+  const editToolsEnter = () => {
+    setEditTools(true);
+  }
+  const editToolsLeave = () => {
+    setEditTools(false);
   }
 
   return (
@@ -327,10 +339,46 @@ const Profile = () => {
     </div>
 
     <div className='profile-flex-container'>
-      <div className='titles'>
-        <h2>{stateProfile.username}</h2>
-        <h3>{stateProfile.email}</h3>
+      
+      <div className='titles' onMouseEnter={editToolsEnter} onMouseLeave={editToolsLeave}>
+        
+        { editMode ? 
+        (
+        <>
+        <AnimatePresence>
+        { editTools && 
+            <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="material-symbols-rounded profile-edit" onClick={handleSave}>save</motion.div>
+        }
+        </AnimatePresence>
+            <input ref={usernameInputRef} onKeyDown={(e) => e.key === "Enter" ? handleSave() : ""} onChange={(e) => setNewUsername(e.target.value)} id="editUsername" type="text" value={newUsername}/>
+            <input onKeyDown={(e) => e.key === "Enter" ? handleSave() : ""} onChange={(e) => setNewEmail(e.target.value)} id="editEmail" type="text" value={newEmail}/>
+        </>
+        )
+        :
+        (
+        <>
+        <AnimatePresence>
+          { editTools && 
+          <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="material-symbols-rounded profile-edit" onClick={handleEdit}>edit</motion.div>
+          }
+        </AnimatePresence>  
+          <div className='profile-username'>{stateProfile.username}</div>
+          <div className='profile-email'>{stateProfile.email}</div>
+        </>
+        )
+        }
+        
       </div>
+
       <div className='info-dump'>
         <div className='info-title one'>LISTER</div>
         <div className='info-title two'>TODOS</div>
@@ -339,7 +387,17 @@ const Profile = () => {
         <div className='info-state'>{antallTodos}</div>
         <div className='info-state'>{doneTodos}</div>
       </div>
-      <button className='delete-profile'>Slett profil</button>
+      <button className='delete-profile' onClick={() => setDeletePrompt(true)}>Slett profil</button>
+      { !deletePrompt && 
+      <>
+      <p>Vil du virkelig slette profilen?</p>
+        <div className='delete-prompt'>
+          <button>Ja</button>
+          <button>Nei</button>
+        </div>
+        </>
+      }
+      
     </div>
     </>
   )

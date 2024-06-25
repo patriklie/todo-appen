@@ -975,15 +975,6 @@ form.add-todo-form label:nth-of-type(2) {
     align-items: center;
 }
 
-.profile-flex-container .titles {
-    text-align: center;
-}
-.profile-flex-container .titles h3 {
-    color: rgb(189, 189, 189);
-    font-size: .8rem;
-    font-weight: 400;
-}
-
 .profile-flex-container .info-dump {
     display: grid;
     width: 100%;
@@ -1013,17 +1004,85 @@ form.add-todo-form label:nth-of-type(2) {
     margin: 30px;
     border: none;
     outline: none;
-    background: linear-gradient(to left, #ff0000, #f12400);
+    background-color: rgb(209, 209, 209);
     color: white;
     letter-spacing: 1px;
     cursor: pointer;
     text-transform: uppercase;
-    transition: all .2s ease;
+    transition: all .3s ease;
 }
 
 .profile-flex-container .delete-profile:hover {
     transform: scale(1.2);
+    background-color: red;
 }
+
+.profile-flex-container .titles {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 55px;
+}
+.profile-flex-container .titles .profile-username {
+    color: rgb(0, 0, 0);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.profile-flex-container .titles .profile-email {
+    color: rgb(189, 189, 189);
+    font-size: .8rem;
+    font-weight: 400;
+}
+
+/* PROFILE EDIT MODE */
+.profile-flex-container .titles input {
+    width: 50%;
+}
+
+.profile-flex-container .titles .profile-edit {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+#editUsername {
+    outline: none;
+    border: none;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 1.4rem;
+    font-weight: 700;
+    background-color: var(--secondary-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#editEmail {
+    color: rgb(189, 189, 189);
+    font-size: .8rem;
+    font-weight: 400;
+    outline: none;
+    border: none;
+    text-align: center;
+    background-color: rgb(240, 240, 240);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: black;
+}
+
+/* PROFILE DELETE PROMPT */
+.profile-flex-container .delete-prompt {
+    display: flex;
+    margin-top: 10px;
+}
+
 
 /* PROFILE TOOLS */
 .profile-header-tools-container {

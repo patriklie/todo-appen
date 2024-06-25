@@ -159,7 +159,7 @@ router.put("/edit", authenticateToken, async (req, res) => {
             email: email,
         }, { new: true });
 
-        res.status(200).json({ message: "Oppdatert profilen!" });
+        res.status(200).send(updatedUser);
 
     } catch (error) {
         res.status(401).send("Error updating user in mongoose...");

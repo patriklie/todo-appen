@@ -62,8 +62,12 @@ const authSlice = createSlice({
         removeHeaderImage: (state) => {
             state.profileHeaderUrl = null;
         },
+        oppdaterProfil: (state, action) => {
+            state.username = action.payload.username;
+            state.email = action.payload.email;
+        }
     }
 })
 
-export const { loginUser, loginWithToken, logout, addProfileImage, addHeaderImage, removeHeaderImage, removeProfileImage } = authSlice.actions;
+export const { oppdaterProfil, loginUser, loginWithToken, logout, addProfileImage, addHeaderImage, removeHeaderImage, removeProfileImage } = authSlice.actions;
 export default authSlice.reducer;

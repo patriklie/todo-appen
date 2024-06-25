@@ -291,16 +291,34 @@ const Profile = () => {
 
   return (
     <>
-    
-{ deletePrompt && 
-      <div className="profile-dimmer">
-        <p>Vil du virkelig slette profilen?</p>
+    <AnimatePresence>
+      { deletePrompt && 
+      <motion.div className="profile-dimmer"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      >
+        <div className='delete-prompt-text'>Vil du slette profilen? 😐</div>
         <div className='delete-prompt'>
-          <button>Ja</button>
-          <button onClick={() => setDeletePrompt(false)}>Nei</button>
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            whileTap={{
+              scale: 0.8,
+              borderRadius: "100%"
+            }}
+          >Ja</motion.button>
+          <motion.button
+          onClick={() => setDeletePrompt(false)}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{
+            scale: 0.8,
+            borderRadius: "100%"
+          }}
+          >Nei</motion.button>
         </div>
-      </div>
+      </motion.div>
       }
+      </AnimatePresence>
       
     <div className='todo-profile-container' >
 

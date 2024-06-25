@@ -11,7 +11,7 @@ const AnimatedCounter = ({ from , to, animationOptions }) => {
         element.textContent = String(from);
 
         const controls = animate(from, to, {
-            duration: 1,
+            duration: 0.4,
             ease: "easeOut",
             ...animationOptions,
             onUpdate(value) {

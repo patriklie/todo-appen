@@ -403,8 +403,8 @@ const Profile = () => {
           className="material-symbols-rounded profile-edit" onClick={handleEdit}>edit</motion.div>
           }
         </AnimatePresence>  
-          <div className='profile-username'>{stateProfile.username}</div>
-          <div className='profile-email'>{stateProfile.email}</div>
+          <div onClick={handleEdit} className='profile-username'>{stateProfile.username}</div>
+          <div onClick={handleEdit}  className='profile-email'>{stateProfile.email}</div>
         </>
         )
         }

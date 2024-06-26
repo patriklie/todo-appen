@@ -349,12 +349,6 @@ select:hover {
     transform: scale(1.2);
 }
 
-#idea-icon {
-    font-size: 50px;
-    color: rgb(223, 223, 223);
-    margin-right: 40px;
-}
-
 .todo-form-icon {
     font-size: 80px;
     cursor: pointer;
@@ -507,16 +501,39 @@ select:hover {
     font-weight: 700;
 }
 
+#idea-icon {
+    font-size: 50px;
+    color: rgb(223, 223, 223);
+    margin-right: 20px;
+    user-select: none;
+}
+
 .container.about {
     max-width: 90%;
-    margin: 40px auto;
-    padding: 20px 40px;
+    margin: 30px auto;
+    padding: 20px;
     box-shadow: rgba(149, 157, 165, 0.5) 0px 2px 5px;
     border-radius: 10px;
     position: relative;
     border-bottom: 2px solid rgb(0, 255, 81);
     display: flex;
     align-items: center;
+}
+
+.container.about span {
+    font-weight: 700;
+}
+
+.image-container-maskott {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.liten-maskott {
+    height: 100%;
+    display: block;
 }
 
 /* Navbar */
@@ -980,12 +997,22 @@ form.add-todo-form label:nth-of-type(2) {
     width: 100%;
     justify-items: center;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+        "title1 title2 title3"
+        "state1 state2 state3";
     margin-top: 30px;
     background: rgb(250, 250, 250);
     padding: 20px 0;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
+
+.info-title.one { grid-area: title1; }
+.info-title.two { grid-area: title2; }
+.info-title.three { grid-area: title3; }
+.info-state:nth-of-type(1) { grid-area: state1; }
+.info-state:nth-of-type(2) { grid-area: state2; }
+.info-state:nth-of-type(3) { grid-area: state3; }
 
 .info-dump .info-title {
     color: rgb(189, 189, 189);
@@ -1030,26 +1057,29 @@ form.add-todo-form label:nth-of-type(2) {
     color: rgb(0, 0, 0);
     font-size: 1.4rem;
     font-weight: 700;
+    cursor: pointer;
 }
 .profile-flex-container .titles .profile-email {
     color: rgb(189, 189, 189);
     font-size: .8rem;
     font-weight: 400;
+    cursor: pointer;
 }
 
 /* PROFILE EDIT MODE */
 .profile-flex-container .titles input {
-    width: 50%;
+    width: 100%;
 }
 
 .profile-flex-container .titles .profile-edit {
     position: absolute;
     top: 50%;
-    right: 10%;
+    left: 90%;
     transform: translate(-50%, -50%);
     font-size: 2rem;
     user-select: none;
     cursor: pointer;
+    background: white;
 }
 
 #editUsername {
@@ -1059,7 +1089,7 @@ form.add-todo-form label:nth-of-type(2) {
     color: rgb(0, 0, 0);
     font-size: 1.4rem;
     font-weight: 700;
-    background-color: var(--secondary-color);
+/*     background-color: var(--secondary-color); */
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -1071,7 +1101,7 @@ form.add-todo-form label:nth-of-type(2) {
     outline: none;
     border: none;
     text-align: center;
-    background-color: rgb(240, 240, 240);
+  /*   background-color: rgb(240, 240, 240); */
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     color: black;
@@ -1107,7 +1137,7 @@ form.add-todo-form label:nth-of-type(2) {
 
 .profile-dimmer .delete-prompt button {
     padding: 20px;
-    margin: 10px;
+    margin: 20px 10px;
     border-radius: 5px;
     border: none;
     outline: none;
@@ -1122,12 +1152,12 @@ form.add-todo-form label:nth-of-type(2) {
     width: 300px;
     background: rgb(255, 0, 0);
     text-align: center;
-    padding: 10px 30px;
+    padding: 20px 30px;
     border-radius: 5px;
     color: white;
     letter-spacing: 1px;
+    user-select: none;
 }
-
 
 /* PROFILE TOOLS */
 .profile-header-tools-container {
@@ -1215,5 +1245,25 @@ form.add-todo-form label:nth-of-type(2) {
 
     .add-list-form[data-isopen="true"] {
         padding: 20px 30px;
+    }
+    .profile-dimmer {
+        height: calc(100vh - 133px);
+    }
+    .profile-flex-container .info-dump {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "title1"
+            "state1"
+            "title2"
+            "state2"
+            "title3"
+            "state3";
+    }
+    .profile-flex-container .titles input {
+        width: 80%;
+    }
+    .material-symbols-rounded profile-edit,
+    .material-symbols-rounded profile-edit {
+        display: none;
     }
 }

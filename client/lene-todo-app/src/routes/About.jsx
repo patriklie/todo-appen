@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import maskottLiten from '../assets/images/Maskott-utklipp.png';
 import { easeIn, easeInOut, motion, spring } from 'framer-motion';
+import DraggableArrowMenu from '../components/DraggableArrowMenu';
 
 const About = () => {
 
@@ -26,7 +27,7 @@ const About = () => {
             }}
       className='container about'>
       <span id="idea-icon" className="material-symbols-rounded">emoji_objects</span>
-        <div>Ideen til denne appen kom da min samboer trengte en oversikt over todos og jeg trengte et MERN stack prosjekt hvor jeg kunne starte fra scratch og få litt praksis etter mye teori - <span>TODOappen!</span></div>
+        <div>Ideen til appen kom da min samboer trengte en oversikt over todos samtidig som jeg skulle starte på et nytt MERN stack prosjekt. Endelig kunne jeg starte fra scratch og få litt praksis etter mye teori - <span>TODOappen!</span></div>
       </motion.div>
       <motion.div
       initial={{
@@ -52,6 +53,8 @@ const About = () => {
       className='image-container-maskott'>
         <img className='liten-maskott' src={maskottLiten} />
       </motion.div>
+
+      <DraggableArrowMenu />
       
     </>
   )

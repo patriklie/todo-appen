@@ -171,9 +171,9 @@ const TodoListOverview = () => {
   
         
     </div> */}
-    
+    { listsFromState && listsFromState.length > 0 &&
         <div className='list-overview-grid'>
-            { listsFromState && listsFromState.length > 0 && 
+            { listsFromState && listsFromState.length > 0 && //kan fjerne denne la til ytre sjekk for css bug
                 listsFromState.map(liste => {
                     return (
                         editListId === liste._id ? 
@@ -213,6 +213,7 @@ const TodoListOverview = () => {
                 })
             }  
         </div>
+    }
         
             {isDragging && 
             <AnimatePresence>

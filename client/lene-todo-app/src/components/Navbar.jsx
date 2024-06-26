@@ -84,12 +84,12 @@ const handleNaviClick = () => {
 
             <NavLink onClick={handleNaviClick} to="/todos" className='sidebar-flex-container'>
               <div className="material-symbols-rounded sidebar-icons">checklist_rtl</div>
-              <div className='sidebar-text'>Todos</div>
+              <div className='sidebar-text'>Lister</div>
             </NavLink>
 
             <NavLink onClick={handleNaviClick} to="/profile" className='sidebar-flex-container'>
               <div className="material-symbols-rounded sidebar-icons">person</div>
-              <div className='sidebar-text'>Profile</div>
+              <div className='sidebar-text'>Profil</div>
             </NavLink>
 
             <NavLink onClick={handleNaviClick} to="/about" className='sidebar-flex-container'>

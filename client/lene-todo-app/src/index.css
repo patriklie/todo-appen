@@ -193,7 +193,7 @@ select:hover {
     justify-content: center;
     flex-direction: column;
     background-color: white;
-    margin: 60px auto;
+    margin: 30px auto;
     width: 100px;
     gap: 25px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -203,6 +203,7 @@ select:hover {
     width: clamp(200px, 60%, 600px);
     border-radius: 10px;
     padding: 20px 60px 20px 60px;
+    margin: 50px auto;
 }
 
 .add-list-form-title {
@@ -473,7 +474,6 @@ select:hover {
     background-color: #ff000015;
     text-align: center;
     font-size: 40px;
-    margin-top: 20px;
     border-radius: 10px;
 }
 
@@ -1250,4 +1250,9 @@ form.add-todo-form label:nth-of-type(2) {
         gap: 20px;
         margin: 30px;
         }
+    
+    .drag-container {
+        width: calc(100% - 60px);
+        margin: 30px auto;
+    }
 }

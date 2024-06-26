@@ -4,16 +4,6 @@ import { easeIn, easeInOut, motion, spring } from 'framer-motion';
 
 const About = () => {
 
-  const [triggerSecondAnimation, setTriggerSecondAnimation] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTriggerSecondAnimation(true);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <>
       <motion.div 
@@ -50,12 +40,12 @@ const About = () => {
         x: 0,
         y: 0,
         scale: 1,
-        rotate: triggerSecondAnimation ? [0, 20, -20, 0] : 0,
+        rotate: 0,
         opacity: 1,
       }}
       transition={{
         type: "spring",
-        damping: 5,
+        damping: 10,
         stiffness: 100,
       }}
 

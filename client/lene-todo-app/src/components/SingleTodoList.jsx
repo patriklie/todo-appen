@@ -39,6 +39,10 @@ const SingleTodoList = () => {
     }
   }
 
+  const handleToggleActive = () => {
+    setAddTodoActive(!addTodoActive);
+  }
+
   useEffect(() => {
     if (singleList) {
       const countDoneTodos = () => {
@@ -122,9 +126,10 @@ const SingleTodoList = () => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: -20, opacity: 0 }}
         layout
-        transition={{ duration: 0.2 }} 
+        transition={{ duration: 0.2 }}
+        style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
         >          
-          <AddTodo listId={id} /> 
+          <AddTodo listId={id} handleToggleActive={handleToggleActive} /> 
         </motion.div>
     
       }

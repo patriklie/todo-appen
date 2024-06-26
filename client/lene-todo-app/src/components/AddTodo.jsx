@@ -4,8 +4,9 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { addTodoToList } from '../features/list/listSlice';
 import maskott from '../assets/images/IMG_0336-removebg.png'
+import "../fancyFormTodo.css"
 
-const AddTodo = ({ listId }) => {
+const AddTodo = ({ listId, handleToggleActive }) => {
 
     const [todoName, setTodoName] = useState("");
     const [todoDescription, setTodoDescription] = useState("");
@@ -43,7 +44,7 @@ const AddTodo = ({ listId }) => {
     <>
 
 
-    <form onSubmit={handleSubmit} className='fancy-form'>
+    <form onSubmit={handleSubmit} className='fancy-form-todo'>
         <div className='fancy-form-title'>Legg til Todo</div>
 
       <div className='fancy-input-container'>
@@ -58,7 +59,7 @@ const AddTodo = ({ listId }) => {
       
       <button>Legg til</button>
       <img className="login-maskott-img" src={maskott}/>
-      
+      <span onClick={handleToggleActive} className="material-symbols-rounded add-todo-close-icon">close</span>
     </form>
     </>
     )

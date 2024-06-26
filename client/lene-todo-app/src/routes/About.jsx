@@ -26,7 +26,7 @@ const About = () => {
             }}
       className='container about'>
       <span id="idea-icon" className="material-symbols-rounded">emoji_objects</span>
-        <div>Ideen til denne appen kommer fra min samboer som trengte en oversikt over todos. Så hvorfor ikke lage <span>TODOappen!</span></div>
+        <div>Ideen til denne appen kom da min samboer trengte en oversikt over todos og jeg trengte et MERN stack prosjekt hvor jeg kunne starte fra scratch og få litt praksis etter mye teori - <span>TODOappen!</span></div>
       </motion.div>
       <motion.div
       initial={{

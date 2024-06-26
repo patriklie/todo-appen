@@ -55,7 +55,7 @@ const TodoListOverview = () => {
             try {
                 const response = await axios.put(`http://localhost:5000/lists/${listeId}`, {newListname});
                 dispatch(updateListname(response.data));
-                toast.success(`Endret listenavn til "${response.data.name}".`, {
+                toast.success(`Endret listenavn til "${response.data.name}"! 😎`, {
                     position: "bottom-left",
                     autoClose: 3000,
                   });
@@ -144,7 +144,7 @@ const TodoListOverview = () => {
     <>
  
     <h1 className='standard-h1'>Dine lister</h1>
-    <div className='select-wrapper'>
+{/*     <div className='select-wrapper'>
     
         <div className='custom-select'>
             <select onChange={handleSelect}>
@@ -170,7 +170,7 @@ const TodoListOverview = () => {
         }
   
         
-    </div>
+    </div> */}
     
         <div className='list-overview-grid'>
             { listsFromState && listsFromState.length > 0 && 

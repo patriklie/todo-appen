@@ -191,7 +191,7 @@ const TodoListOverview = () => {
                     <AnimatePresence key={ liste._id + 1 }>
                         <motion.div 
                         drag 
-                        layout
+                        /* layout */ // denne gjorde at de bugget sev ved retur til origin
                         dragSnapToOrigin 
                         onDragStart={(event, info) => setIsDragging(true)}
                         onDragEnd={(event, info) => {

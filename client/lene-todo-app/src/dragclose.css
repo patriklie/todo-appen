@@ -1,0 +1,74 @@
+.drawer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: aqua;
+}
+
+.drawer-container .open-button {
+    padding: 20px;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.outer-motion {
+    position: fixed;
+    z-index: 50;
+    background-color: rgba(255, 0, 43, 0.651);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.inner-motion {
+    position: absolute;
+    bottom: 0;
+    height: 75vh;
+    width: 100%;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: grey;
+}
+
+.modul-content {
+    position: relative;
+    z-index: 0;
+    height: 100%;
+/*     overflow-y: scroll; */
+    padding: 1rem;
+    padding-top: 3rem;
+}
+
+.dragContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    background-color: blueviolet;
+    padding: 20px;
+}
+
+.dragIcon {
+    height: 10px;
+    width: 80px;
+    cursor: grab;
+    touch-action: none;
+    -ms-touch-action: none;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+}
+
+.dragIcon:active {
+    cursor: grabbing;
+}

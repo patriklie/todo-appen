@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import maskottLiten from '../assets/images/Maskott-utklipp.png';
 import { easeIn, easeInOut, motion, spring } from 'framer-motion';
-import DraggableArrowMenu from '../components/DraggableArrowMenu';
 
 const About = () => {
 
@@ -53,8 +52,6 @@ const About = () => {
       className='image-container-maskott'>
         <img className='liten-maskott' src={maskottLiten} />
       </motion.div>
-
-      <DraggableArrowMenu />
       
     </>
   )

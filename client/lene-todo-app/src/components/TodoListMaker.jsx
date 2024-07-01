@@ -47,7 +47,7 @@ const TodoListMaker = () => {
       onSubmit={handleSubmit}
     >
         { !isOpen && 
-        <IconContainer onClick={() => setIsOpen(!isOpen)} iconName={"wired-outline-49-plus-circle"} reveal={"in-reveal"} hover={"hover-rotation"} size={100} />
+        <IconContainer onClick={() => setIsOpen(!isOpen)} iconName={"wired-outline-49-plus-circle"} reveal={"in-reveal"} hover={"hover-rotation"} size={90} />
         }
 
         { isOpen && <>
@@ -58,11 +58,14 @@ const TodoListMaker = () => {
             </div>
             <button>Legg til</button>
             <img className="login-maskott-img" src={maskott}/>
+
+            <div className='corner-bg-icon-add-list'></div>
+            <span onClick={() => setIsOpen(!isOpen)} className="material-symbols-rounded close-list">close</span>
             </>}
             
-            { isOpen && 
+{/*             { isOpen && 
         <IconContainer onClick={() => setIsOpen(!isOpen)} iconName={"wired-outline-50-minus-circle"} reveal={"in-reveal"} hover={"hover-rotation"} size={100} />
-        }
+        } */}
 
     </motion.form>
     </AnimatePresence>

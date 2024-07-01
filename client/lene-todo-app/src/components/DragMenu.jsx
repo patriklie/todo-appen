@@ -111,21 +111,55 @@ const DragMenu = () => {
 
           <div className='modul-content'>
             <NavLink to="/" >
-              <div className="material-symbols-rounded bottom-menu-icons">home</div>
+              <motion.div 
+              className="material-symbols-rounded bottom-menu-icons"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{
+                scale: 0.8,
+                borderRadius: "100%"
+              }}
+              >home</motion.div>
             </NavLink>
             
             <NavLink to="/todos">
-              <div className="material-symbols-rounded bottom-menu-icons">checklist_rtl</div>
+            <motion.div 
+              className="material-symbols-rounded bottom-menu-icons"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{
+                scale: 0.8,
+                borderRadius: "100%"
+              }}
+              >checklist_rtl</motion.div>
             </NavLink>
 
             <NavLink to="/profile">
-              <div className="material-symbols-rounded bottom-menu-icons">person</div>
+            <motion.div 
+              className="material-symbols-rounded bottom-menu-icons"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{
+                scale: 0.8,
+                borderRadius: "100%"
+              }}
+              >person</motion.div>
             </NavLink>
 
             <NavLink to="about">
-              <div className="material-symbols-rounded bottom-menu-icons">info</div>
+            <motion.div 
+              className="material-symbols-rounded bottom-menu-icons"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{
+                scale: 0.8,
+                borderRadius: "100%"
+              }}
+              >info</motion.div>
             </NavLink>
-            <div onClick={logoutUser} className="material-symbols-rounded bottom-menu-icons">logout</div>
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              whileTap={{
+                scale: 0.8,
+                borderRadius: "100%"
+                }}
+            onClick={logoutUser} className="material-symbols-rounded bottom-menu-icons">logout</motion.div>
             
           </div>
         </motion.div>

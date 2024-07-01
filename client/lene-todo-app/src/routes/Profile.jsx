@@ -17,6 +17,7 @@ const Profile = () => {
   const stateProfile = useSelector(state => state.auth);
   const stateLists = useSelector(state => state.list.lists);
   const usernameInputRef = useRef();
+  const emailInputRef = useRef();
 
   const [editMode, setEditMode] = useState(false);
   const [deletePrompt, setDeletePrompt] = useState(false);
@@ -243,17 +244,26 @@ const Profile = () => {
     }
   }
 
-  const handleEdit = () => {
+  const handleEdit = (e) => {
+
+
     setEditMode(true);
     setNewUsername(stateProfile.username);
     setNewEmail(stateProfile.email);
+    setTimeout(() => {
+      if (e.target.className === "profile-username") {
+        usernameInputRef.current.focus();
+      } else if (e.target.className === "profile-email") {
+        emailInputRef.current.focus();
+      }
+    }, 0);
   }
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (editMode) {
       usernameInputRef.current.focus();
     }
-  }, [editMode]);
+  }, [editMode]); */
 
   const handleDeleteProfile = async() => {
 
@@ -387,7 +397,7 @@ const Profile = () => {
         }
         </AnimatePresence>
             <input ref={usernameInputRef} onKeyDown={(e) => e.key === "Enter" ? handleSave() : ""} onChange={(e) => setNewUsername(e.target.value)} id="editUsername" type="text" value={newUsername}/>
-            <input onKeyDown={(e) => e.key === "Enter" ? handleSave() : ""} onChange={(e) => setNewEmail(e.target.value)} id="editEmail" type="text" value={newEmail}/>
+            <input ref={emailInputRef} onKeyDown={(e) => e.key === "Enter" ? handleSave() : ""} onChange={(e) => setNewEmail(e.target.value)} id="editEmail" type="text" value={newEmail}/>
         </>
         )
         :
@@ -403,8 +413,8 @@ const Profile = () => {
           className="material-symbols-rounded profile-edit" onClick={handleEdit}>edit</motion.div>
           }
         </AnimatePresence>  
-          <div onClick={handleEdit} className='profile-username'>{stateProfile.username}</div>
-          <div onClick={handleEdit}  className='profile-email'>{stateProfile.email}</div>
+          <div onClick={(e) => handleEdit(e)} className='profile-username'>{stateProfile.username}</div>
+          <div onClick={(e) => handleEdit(e)}  className='profile-email'>{stateProfile.email}</div>
         </>
         )
         }

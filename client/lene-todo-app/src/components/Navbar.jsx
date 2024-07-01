@@ -5,6 +5,7 @@ import { logout } from '../features/auth/authSlice';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Squash as Hamburger } from 'hamburger-react'
 import { toast } from 'react-toastify';
+import maskott from '../assets/images/IMG_0336-removebg.png'
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -100,6 +101,10 @@ const handleNaviClick = () => {
             <div className='sidebar-flex-container'>
               <div className="material-symbols-rounded sidebar-icons">logout</div>
               <div className='sidebar-text logout' onClick={logoutUser}>Logg ut</div>
+            </div>
+
+            <div className='navbar-maskott-container'>
+              <img className='navbar-maskott' src={maskott} />
             </div>
 
             </>

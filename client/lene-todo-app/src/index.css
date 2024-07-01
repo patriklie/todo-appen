@@ -606,12 +606,26 @@ select:hover {
 
 /* SIDEBAR CSS */
 
+.navbar-maskott-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+}
+
+.navbar-maskott {
+    width: 75%;
+}
+
 .nav-menu {
     background: var(--primary-color);
     width: clamp(300px, 50%, 400px);
     position: fixed;
     height: 100%;
     z-index: 1000;
+    top: 87px;
 }
 
 .overlay-bg {
@@ -626,10 +640,12 @@ select:hover {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
-    align-items: center;
-    justify-items: start;
+    align-items: start;
+    justify-items: center;
     width: 75%;
     margin: 40px auto;
+    height: calc(100vh - 87px);
+    grid-auto-rows: 60px 60px 60px 60px 60px 1fr;
 }
 
 .sidebar-flex-container {

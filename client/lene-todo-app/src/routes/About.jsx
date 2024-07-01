@@ -21,9 +21,6 @@ const About = () => {
               rotate: 0,
               opacity: 1,
             }}
-            transition={{
-              delay: 0.4,
-            }}
       className='container about'>
       <span id="idea-icon" className="material-symbols-rounded">emoji_objects</span>
         <div>Ideen til appen kom da min samboer trengte en oversikt over todos samtidig som jeg skulle starte på et nytt MERN stack prosjekt. En god mulighet til å kunne starte et prosjekt fra scratch og få praksis erfaring etter mye teori - <span>TODOappen!</span></div>
@@ -43,12 +40,6 @@ const About = () => {
         rotate: 0,
         opacity: 1,
       }}
-      transition={{
-        type: "spring",
-        damping: 10,
-        stiffness: 100,
-      }}
-
       className='image-container-maskott'>
         <img className='liten-maskott' src={maskottLiten} />
       </motion.div>

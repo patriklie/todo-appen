@@ -616,7 +616,7 @@ select:hover {
 }
 
 .navbar-maskott {
-    width: 75%;
+    width: clamp(150px, 50%, 250px);
 }
 
 .nav-menu {
@@ -643,8 +643,8 @@ select:hover {
     align-items: start;
     justify-items: center;
     width: 75%;
-    margin: 40px auto;
-    height: calc(100vh - 87px);
+    margin: 20px auto;
+    height: calc(100vh - 127px);
     grid-auto-rows: 60px 60px 60px 60px 60px 1fr;
 }
 

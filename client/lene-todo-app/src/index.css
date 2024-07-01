@@ -36,8 +36,7 @@ input:-webkit-autofill:active{
 
 body {
     position: relative;
-    top: 88px;
-    padding-bottom: 100px;
+    top:88px;
 }
 
 :root {
@@ -1116,8 +1115,7 @@ form.add-todo-form label:nth-of-type(2) {
     top: -30px;
     left: 0;
     width: 100%;
-    /* height: calc(100vh - 88px); */
-    height: calc(100vh);
+    height: calc(100vh - 88px);
     background: rgba(0, 0, 0, 0.8);
     z-index: 1000;
     display: flex;
@@ -1125,6 +1123,7 @@ form.add-todo-form label:nth-of-type(2) {
     align-items: center;
     display: flex;
     flex-direction: column;
+    padding-top: 20px;
 }
 
 .profile-dimmer .delete-prompt {
@@ -1210,24 +1209,23 @@ form.add-todo-form label:nth-of-type(2) {
 
 @media screen and (max-width: 500px) { 
 
-    body {
-        top: 131px;
-    }
-
     .standard-h1 {
         font-size: 50px;
     }
 
-    .navbar-header {
-        grid-template-columns: 1fr;
+     .navbar-header {
+        grid-template-columns: 1fr 1fr;
         gap: 5px;
-        padding: 10px 0;
     }
 
-    .navbar-header .logo,
+/*     .navbar-header .logo,
     .navbar-header .navbar-ham,
     .navbar-header .profile-link {
         justify-self: center;
+    }  */
+
+    .profile-link {
+        display: none;
     }
 
     .nav-menu {
@@ -1249,9 +1247,7 @@ form.add-todo-form label:nth-of-type(2) {
     .add-list-form[data-isopen="true"] {
         padding: 20px 30px;
     }
-    .profile-dimmer {
-        height: calc(100vh);
-    }
+
     .profile-flex-container .info-dump {
         grid-template-columns: 1fr;
         grid-template-areas: 

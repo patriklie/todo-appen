@@ -1,49 +1,29 @@
-.drawer-container {
+/* .drawer-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
-    background-color: aqua;
-}
-
-.drawer-container .open-button {
-    padding: 20px;
-    border-radius: 5px;
-    outline: 0;
-    border: 0;
-    font-size: 20px;
-    cursor: pointer;
-}
+    height: 210px;
+    background-color: rgba(255, 255, 255, 0);
+} */
 
 .outer-motion {
     position: fixed;
     z-index: 50;
-    background-color: rgba(255, 0, 43, 0.651);
-    top: 0;
+    background-color: rgba(0, 0, 0, 0);
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
 }
 
 .inner-motion {
     position: absolute;
     bottom: 0;
-    height: 75vh;
+    height: 160px;
     width: 100%;
     overflow: hidden;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    background: grey;
-}
-
-.modul-content {
-    position: relative;
-    z-index: 0;
-    height: 100%;
-/*     overflow-y: scroll; */
-    padding: 1rem;
-    padding-top: 3rem;
+    background: rgba(255, 255, 255, 0);
 }
 
 .dragContainer {
@@ -54,21 +34,101 @@
     z-index: 10;
     display: flex;
     justify-content: center;
-    background-color: blueviolet;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
     padding: 20px;
 }
 
 .dragIcon {
     height: 10px;
-    width: 80px;
+    width: 120px;
     cursor: grab;
     touch-action: none;
     -ms-touch-action: none;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
     border: none;
     border-radius: 10px;
+    transition: all .2s ease;
 }
 
 .dragIcon:active {
     cursor: grabbing;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.dragIcon:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modul-content {
+    position: relative;
+    margin-top: 50px;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 110px;
+}
+
+.bottom-menu-icons {
+    font-size: 60px;
+    color: rgb(0, 0, 0);
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    background-color: rgba(255, 255, 255, 0.75);
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    cursor: pointer;
+    transition: all .2s ease-out;
+    user-select: none;
+}
+
+.modul-content a {
+    line-height: 0;
+}
+
+.modul-content a.active .bottom-menu-icons {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.bottom-menu-icons:hover {
+    transform: scale(1.3);
+    color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.drawer-small-bg {
+    position: absolute;
+    top: 50px;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 300px;
+    display: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+@media screen and (max-width: 500px) {
+    .bottom-menu-icons {
+        font-size: 60px;
+        margin: 0px;
+        padding: 0;
+        box-shadow: none;
+        text-decoration: none;
+        background-color: rgba(255, 255, 255, 0);
+        font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+    }
+    .bottom-menu-icons:hover {
+        transform: scale(1);
+        color: var(--primary-color);
+        background-color: rgba(255, 255, 255, 0);
+    }
+    .drawer-small-bg {
+      display: block;
+    }
+
+    .modul-content {
+        align-items: center;
+    }
 }

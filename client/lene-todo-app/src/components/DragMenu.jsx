@@ -2,44 +2,31 @@ import React, { useEffect, useState } from 'react';
 import '../dragclose.css';
 import { useAnimate, motion, useDragControls, useMotionValue } from 'framer-motion';
 import useMeasure from 'react-use-measure';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { logout } from '../features/auth/authSlice';
 
-const DragCloseDrawerExample = () => {
-
+const DragMenu = () => {
   const [open, setOpen] = useState(false);
-
-  return (
-    <div className='drawer-container'>
-      {/* <button className='open-button' onClick={() => setOpen(true)} >Open Drawer</button> */}
-      <DragCloseDrawer open={open} setOpen={setOpen}>
-      <h2 className="h2-drawer">
-            Drag the handle at the top of this modal downwards 100px to close it
-          </h2>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima
-            laboriosam quos deleniti veniam est culpa quis nihil enim suscipit
-            nulla aliquid iure optio quaerat deserunt, molestias quasi facere
-            aut quidem reprehenderit maiores.
-          </p>
-          <p>
-            Laudantium corrupti neque rerum labore tempore sapiente. Quos, nobis
-            dolores. Esse fuga, cupiditate rerum soluta magni numquam nemo
-            aliquid voluptate similique deserunt!
-          </p>
-      </DragCloseDrawer>
-
-    </div>
-  )
-}
-
-
-const DragCloseDrawer = ({ open, setOpen, children }) => {
-
   const [scope, animate] = useAnimate();
   const controls = useDragControls();
-  const y = useMotionValue(0);
+  const y = useMotionValue();
   const [drawerRef, { height }] = useMeasure();
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   console.log("elements HEIGHT: ", height)
+
+  const logoutUser = () => {  
+    localStorage.removeItem("token");
+    toast.warning(`Logget ut! 👋`, {
+      position: "bottom-left",
+      autoClose: 3000,
+    });
+    dispatch(logout());
+
+    navigate("/login")
+}
 
   const handleOpen = async () => {
     const yStart = typeof y.get() === "number" ? y.get() : 0;
@@ -65,14 +52,24 @@ const DragCloseDrawer = ({ open, setOpen, children }) => {
   };
 
   useEffect(() => {
-    y.set(height-50);
+    if (height > 0) {
+      y.set(height - 50);
+    } else {
+      y.set(110);
+    }
+    
   }, [height])
 
+
   return <>
+
+
+
     <motion.div 
     ref={scope}
     className='outer-motion'
     >
+      
         <motion.div
         ref={drawerRef}
         id="drawer"
@@ -107,14 +104,33 @@ const DragCloseDrawer = ({ open, setOpen, children }) => {
         
         className='inner-motion'
         >
+          <div className='drawer-small-bg'></div>
           <div className='dragContainer'>
             <button onPointerDown={(e) => {controls.start(e)}} className='dragIcon'></button>
           </div>
 
-          <div className='modul-content'>{children}</div>
+          <div className='modul-content'>
+            <NavLink to="/" >
+              <div className="material-symbols-rounded bottom-menu-icons">home</div>
+            </NavLink>
+            
+            <NavLink to="/todos">
+              <div className="material-symbols-rounded bottom-menu-icons">checklist_rtl</div>
+            </NavLink>
+
+            <NavLink to="/profile">
+              <div className="material-symbols-rounded bottom-menu-icons">person</div>
+            </NavLink>
+
+            <NavLink to="about">
+              <div className="material-symbols-rounded bottom-menu-icons">info</div>
+            </NavLink>
+            <div onClick={logoutUser} className="material-symbols-rounded bottom-menu-icons">logout</div>
+            
+          </div>
         </motion.div>
     </motion.div>
   </>
 }
 
-export default DragCloseDrawerExample;
+export default DragMenu;

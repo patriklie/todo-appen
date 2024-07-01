@@ -37,7 +37,7 @@ input:-webkit-autofill:active{
 body {
     position: relative;
     top: 88px;
-    padding-bottom: 1px;
+    padding-bottom: 100px;
 }
 
 :root {
@@ -1087,9 +1087,10 @@ form.add-todo-form label:nth-of-type(2) {
     top: -30px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 88px);
+    /* height: calc(100vh - 88px); */
+    height: calc(100vh);
     background: rgba(0, 0, 0, 0.8);
-    z-index: 3;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1181,7 +1182,7 @@ form.add-todo-form label:nth-of-type(2) {
 @media screen and (max-width: 500px) { 
 
     body {
-        top: 133px;
+        top: 131px;
     }
 
     .standard-h1 {
@@ -1220,7 +1221,7 @@ form.add-todo-form label:nth-of-type(2) {
         padding: 20px 30px;
     }
     .profile-dimmer {
-        height: calc(100vh - 133px);
+        height: calc(100vh);
     }
     .profile-flex-container .info-dump {
         grid-template-columns: 1fr;

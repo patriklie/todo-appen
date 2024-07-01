@@ -5,9 +5,9 @@
 
 .add-todo-close-icon {
     position: absolute;
-    color: red;
-    top: 8px;
-    right: 8px;
+    color: white;
+    top: 5px;
+    right: 5px;
     font-size: 30px;
     cursor: pointer;
     user-select: none;
@@ -110,4 +110,15 @@
 
 .fancy-form-todo button:focus {
     border: 2px solid black;
+}
+
+.corner-bg-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    top: 0;
+    right: 0;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 50px;
 }

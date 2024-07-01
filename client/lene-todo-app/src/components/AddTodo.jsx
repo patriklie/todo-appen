@@ -59,6 +59,7 @@ const AddTodo = ({ listId, handleToggleActive }) => {
       
       <button>Legg til</button>
       <img className="login-maskott-img" src={maskott}/>
+      <div className='corner-bg-icon'></div>
       <span onClick={handleToggleActive} className="material-symbols-rounded add-todo-close-icon">close</span>
     </form>
     </>

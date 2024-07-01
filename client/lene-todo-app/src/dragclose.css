@@ -49,6 +49,7 @@
     border: none;
     border-radius: 10px;
     transition: all .2s ease;
+    outline: none;
 }
 
 .dragIcon:active {

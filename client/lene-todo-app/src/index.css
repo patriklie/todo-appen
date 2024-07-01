@@ -201,7 +201,7 @@ select:hover {
 }
 
   .add-list-form[data-isopen="true"] {
-    width: clamp(200px, 60%, 600px);
+    width: clamp(300px, 60%, 600px);
     border-radius: 10px;
     padding: 20px 60px 20px 60px;
     margin: 50px auto;

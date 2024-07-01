@@ -51,7 +51,7 @@ const TodoListMaker = () => {
         }
 
         { isOpen && <>
-            <div className='add-list-form-title'>Opprett ny liste</div>
+            <div className='add-list-form-title'>Ny liste</div>
             <div className='add-list-form-container'>
             <input type="text" id="listName" value={listName} onChange={(e) => setListName(e.target.value)} required  />
             <label htmlFor="listName">Listenavn</label>

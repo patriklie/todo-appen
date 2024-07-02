@@ -48,7 +48,7 @@ const Register = () => {
   return (
     <>
     <Navbar />
-
+    <div className='login-register-padding'>
     <motion.form onSubmit={handleRegister} className='fancy-form'
           initial={{ scale: .9 }}
           animate={{ scale: 1 }}
@@ -80,7 +80,7 @@ const Register = () => {
       <p style={{ textAlign: "center", fontSize: "12px" }}>Har du allerede bruker? <Link to="/login">Logg på</Link></p>
       <img className="login-maskott-img" src={maskott}/>
     </motion.form>
-    
+    </div>
     </>
   )
 }

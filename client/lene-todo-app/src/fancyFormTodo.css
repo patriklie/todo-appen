@@ -21,7 +21,7 @@
 .fancy-form-todo {
     position: relative;
     border-radius: 10px;
-    margin: 30px;
+    margin: 30px auto;
     margin-bottom: 50px;
     padding: 20px 50px;
     display: flex;

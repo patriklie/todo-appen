@@ -128,7 +128,6 @@ const SingleTodoList = () => {
         exit={{ y: -20, opacity: 0 }}
         layout
         transition={{ duration: 0.2 }}
-        style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
         >          
           <AddTodo listId={id} handleToggleActive={handleToggleActive} /> 
         </motion.div>

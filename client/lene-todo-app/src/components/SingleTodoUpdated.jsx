@@ -47,7 +47,7 @@ const SingleTodoUpdated = memo(function SingleTodoUpdated({ todo }) {
     const tidspunktOpprettet = formatertDato.split(",")[1].trim().slice(0, 5);
 
   return (
-    <div>
+    <div className='inner-flex-single-todo'>
         <h3>{localTodo.name}</h3>
         <p>{localTodo.description}</p>
         <p className='date'>Opprettet: {datoOpprettet} klokken {tidspunktOpprettet}</p>

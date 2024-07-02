@@ -709,7 +709,8 @@ justify-items: center;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
     position: relative;
     border-bottom: 2px solid transparent;
-    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 #close {
@@ -724,7 +725,14 @@ justify-items: center;
     font-size: 14px;
     font-style: italic;
     font-weight: 300;
-    margin: 20px 0 0 0;
+    padding-top: 20px;
+    margin: auto 0 0 0;
+}
+
+.inner-flex-single-todo {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .single-todo-container.todo-active {
@@ -733,8 +741,8 @@ justify-items: center;
 
 .icons-container {
    position: absolute;
-   bottom: 20px;
-   right: 20px;
+   bottom: 10px;
+   right: 6px;
 }
 
 .icons-container .checkmark {
@@ -751,6 +759,11 @@ justify-items: center;
 }
 
 /* LOGIN & REGISTER FORMS */
+
+.login-register-padding {
+    padding: 0 30px;
+}
+
 .fancy-form {
     padding: 20px 60px 20px 60px;
     border-radius: 10px;
@@ -758,7 +771,8 @@ justify-items: center;
     flex-direction: column;
     background-color: white;
     margin: 60px auto;
-    width: clamp(300px, 60%, 800px);
+    /* width: clamp(300px, 60%, 800px); */
+    max-width: 500px;
     gap: 25px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }

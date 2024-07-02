@@ -65,17 +65,18 @@ const SingleTodoList = () => {
   }
 
   return (
-    <>
+    <div className='single-list-container'>
       <div className='list-info-container'>
-        <div>
+        <div className='single-todo-oppgaver'>
           <h1>{singleList && singleList.todos.length}</h1>
           <p className='under-text'>{singleList && singleList.todos.length > 1 ? "oppgaver" : singleList && singleList.todos.length === 1 ? "oppgave" : "Ingen oppgaver"}</p>
         </div>
-        <div>
+
+        <div className='single-todo-title'>
           <h1 className='list-title'>{singleList.name}</h1>
-        
         </div>
-        <div>
+
+        <div className='single-todo-ferdig'>
           <h1>{numberDone}</h1>
           <p className='under-text'>ferdig</p>
         </div>
@@ -134,7 +135,7 @@ const SingleTodoList = () => {
     
       }
       </AnimatePresence>
-    </>
+    </div>
   )
 }
 

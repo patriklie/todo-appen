@@ -34,22 +34,15 @@ input:-webkit-autofill:active{
     min-width: fit-content;
 } */
 
-body {
+#root {
     position: relative;
-    top:88px;
-    padding-bottom: 1px;
+    padding-top: 90px;
+    min-height: 100vh;
 }
 
 :root {
     --primary-color: #0abd6c;
     --secondary-color: #20d885;
-}
-
-
-.spacer {
-    height: 89px;
-    max-width: 100%;
-    margin-bottom: 30px;
 }
 
 .standard-h1 {
@@ -60,20 +53,19 @@ body {
 }
 
 /* HOME */
-.home-container {
+.home-container-div {
     position: relative;
-    padding: 30px;
-}
+    height: calc(100vh - 90px);
+    overflow: hidden;
+} 
 
-.home-bg img {
+.home-container-div .home-bg-img {
+    height: 100%;
     width: 100%;
-    position: absolute;
     object-fit: cover;
 }
 
-
 /* List styling */
-
 .single-list-container {
     padding: 0 30px;
 }
@@ -587,8 +579,9 @@ select:hover {
     width: 100%;
     position: fixed;
     top: 0;
+    left: 0;
+    height: 90px;
     background: var(--primary-color);
-/*     border-bottom: 2px solid rgb(220, 220, 220); */
     z-index: 2000;
 }
 
@@ -1166,10 +1159,10 @@ form.add-todo-form label:nth-of-type(2) {
 
 .profile-dimmer {
     position: absolute;
-    top: -30px;
+    top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 88px);
+    height: 100vh;
     background: rgba(0, 0, 0, 0.8);
     z-index: 1000;
     display: flex;
@@ -1177,7 +1170,6 @@ form.add-todo-form label:nth-of-type(2) {
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
 }
 
 .profile-dimmer .delete-prompt {

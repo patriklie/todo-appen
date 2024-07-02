@@ -53,9 +53,9 @@ const RouteProtector = ({ children }) => {
     console.log("Logged in:", stateLoggedIn);
 
     return (
-        <div>
+        <>
             {tokenCheck ? children : <p>Sjekker authtoken...</p>}
-        </div>
+        </>
     )
 }
 

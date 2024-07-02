@@ -1313,6 +1313,11 @@ form.add-todo-form label:nth-of-type(2) {
         margin-bottom: 30px;
     }
 
+    .profile-dimmer {
+        height: 100%;
+        top: 90px;
+    }
+
     .material-symbols-rounded profile-edit,
     .material-symbols-rounded profile-edit {
         display: none;

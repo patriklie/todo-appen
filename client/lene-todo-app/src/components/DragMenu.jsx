@@ -19,7 +19,7 @@ const DragMenu = () => {
 
   const logoutUser = () => {  
     localStorage.removeItem("token");
-    toast.warning(`Logget ut! 👋`, {
+    toast.success(`Logget ut! 👋`, {
       position: "bottom-left",
       autoClose: 3000,
     });

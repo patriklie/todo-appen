@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { logout, oppdaterProfil, removeHeaderImage, removeProfileImage } from '../features/auth/authSlice';
 import { addHeaderImage, addProfileImage } from '../features/auth/authSlice';
 import IconContainer from '../components/IconContainer';
-import KulTeller from '../components/KulTeller';
 import AnimatedCounter from '../components/AnimatedCounter';
 
 const Profile = () => {
@@ -18,6 +17,7 @@ const Profile = () => {
   const stateLists = useSelector(state => state.list.lists);
   const usernameInputRef = useRef();
   const emailInputRef = useRef();
+  const [primaryColor, setPrimaryColor] = useState("#0abd6c")
 
   const [editMode, setEditMode] = useState(false);
   const [deletePrompt, setDeletePrompt] = useState(false);
@@ -27,6 +27,12 @@ const Profile = () => {
   const [headerTools, setHeaderTools] = useState(false);
   const [profileImageTools, setProfileImageTools] = useState(false);
   const [editTools, setEditTools] = useState(false);
+
+  useEffect(() => {
+    const newPrimary = document.documentElement.style.getPropertyValue('--primary-color');
+    if (newPrimary) setPrimaryColor(newPrimary);
+    
+  },[])
 
   const countTodos = () => {
     return stateLists.reduce((total, list) => total + list.todos.length, 0);
@@ -299,6 +305,11 @@ const Profile = () => {
     setEditTools(false);
   }
 
+  const handleColorChange = (e) => {
+    setPrimaryColor(e.target.value);
+    document.documentElement.style.setProperty('--primary-color', primaryColor);
+  }
+
   return (
     <>
     <AnimatePresence>
@@ -429,6 +440,7 @@ const Profile = () => {
         <div className='info-state'><AnimatedCounter from={0} to={antallTodos}/></div>
         <div className='info-state'><AnimatedCounter from={0} to={doneTodos}/></div>
       </div>
+      <input onChange={handleColorChange} className='colorpicker' type="color" value={primaryColor} />
       <button className='delete-profile' onClick={() => setDeletePrompt(true)}>Slett profil</button>
 
 

@@ -34,7 +34,7 @@ const handleNaviClick = () => {
       <div className='navbar-header'>
 
         <div className="navbar-ham">
-          <Hamburger rounded color="#fff" toggled={sidebar} toggle={setSidebar} />
+          <Hamburger rounded color="#fff" toggled={sidebar} toggle={setSidebar} distance='sm' hideOutline={false} />
         </div>
 
         { loggedInUser && 

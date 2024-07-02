@@ -15,6 +15,7 @@ const DragMenu = () => {
   const [drawerRef, { height }] = useMeasure();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [lastScrollY, setLastScrollY] = useState(0);
   console.log("elements HEIGHT: ", height)
 
   const logoutUser = () => {  
@@ -27,6 +28,22 @@ const DragMenu = () => {
 
     navigate("/login")
 }
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY) {
+      handleMinimize();
+    }
+    setLastScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
 
   const handleOpen = async () => {
     const yStart = typeof y.get() === "number" ? y.get() : 0;

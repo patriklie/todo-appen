@@ -59,6 +59,19 @@ body {
     color: var(--primary-color);
 }
 
+/* HOME */
+.home-container {
+    position: relative;
+    padding: 30px;
+}
+
+.home-bg img {
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+}
+
+
 /* List styling */
 
 .single-list-container {

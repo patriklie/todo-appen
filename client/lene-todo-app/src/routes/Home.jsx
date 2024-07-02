@@ -1,12 +1,15 @@
-import React from 'react'
-import AddTodo from '../components/AddTodo'
-
+import React from 'react';
+import AddTodo from '../components/AddTodo';
+import BG from '../assets/images/BG_1.jpeg';
 
 const Home = () => {
   return (
-    <>
-    <div>HOME</div>
-    </>
+    <div className='home-container'>
+      <div className='home-bg'>
+        <img src={BG} />
+      </div>
+    </div>
+    
   )
 }
 

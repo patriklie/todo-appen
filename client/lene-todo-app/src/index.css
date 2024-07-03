@@ -118,39 +118,6 @@ input:-webkit-autofill:active{
     transform: translateX(-50%);
 }
 
-.home-container-div .bg-swapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 160px;
-
-}
-
-.home-container-div .bg-swapper-text {
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 40px;
-    padding: 2px 20px;
-    text-align: center;
-    user-select: none;
-    letter-spacing: 1px;
-    font-weight: 300;
-}
-
-.home-container-div .bg-swapper .arrows {
-    cursor: pointer;
-    transition: all .2s ease;
-    user-select: none;
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 40px;
-}
-
-.home-container-div .bg-swapper .arrows:hover {
-    cursor: pointer;
-    transform: scale(1.8);
-    color: black;
-}
-
 /* List styling */
 .single-list-container {
     padding: 0 30px;
@@ -1040,8 +1007,40 @@ form.add-todo-form label:nth-of-type(2) {
 
 /* TODO USER PROFILE */
 
+.bg-swapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-swapper-text {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 40px;
+    padding: 2px 20px;
+    text-align: center;
+    user-select: none;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.bg-swapper .arrows {
+    cursor: pointer;
+    transition: all .2s ease;
+    user-select: none;
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 40px;
+}
+
+.bg-swapper .arrows:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    color: black;
+}
+
 .colorpicker {
     margin-top: 30px;
+    margin-bottom: 30px;
     border: none;
     border-radius: 5px;
     width: 100px;

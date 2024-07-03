@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
 import { logout, oppdaterProfil, removeHeaderImage, removeProfileImage } from '../features/auth/authSlice';
-import { addHeaderImage, addProfileImage } from '../features/auth/authSlice';
+import { addHeaderImage, addProfileImage, changeBackground } from '../features/auth/authSlice';
 import IconContainer from '../components/IconContainer';
 import AnimatedCounter from '../components/AnimatedCounter';
 
@@ -14,6 +14,7 @@ const Profile = () => {
   const fileInputRef = useRef();
   const headerInputRef = useRef();
   const stateProfile = useSelector(state => state.auth);
+  const backgroundState = useSelector(state => state.auth.background);
   const stateLists = useSelector(state => state.list.lists);
   const usernameInputRef = useRef();
   const emailInputRef = useRef();
@@ -251,8 +252,6 @@ const Profile = () => {
   }
 
   const handleEdit = (e) => {
-
-
     setEditMode(true);
     setNewUsername(stateProfile.username);
     setNewEmail(stateProfile.email);
@@ -308,6 +307,22 @@ const Profile = () => {
   const handleColorChange = (e) => {
     setPrimaryColor(e.target.value);
     document.documentElement.style.setProperty('--primary-color', primaryColor);
+  }
+
+  const handleBGSwapIncrement = () => {
+    if(backgroundState < 21) {
+      dispatch(changeBackground(backgroundState + 1));
+    } else {
+      dispatch(changeBackground(1));
+    }
+  }
+
+  const handleBGSwapDecrement = () => {
+    if(backgroundState > 1 ) {
+      dispatch(changeBackground(backgroundState - 1));
+    } else {
+      dispatch(changeBackground(21));
+    }
   }
 
   return (
@@ -441,6 +456,11 @@ const Profile = () => {
         <div className='info-state'><AnimatedCounter from={0} to={doneTodos}/></div>
       </div>
       <input onChange={handleColorChange} className='colorpicker' type="color" value={primaryColor} />
+      <div className='bg-swapper'>
+            <div onClick={handleBGSwapDecrement} class="material-symbols-rounded arrows">chevron_left</div>
+            <div className='bg-swapper-text'>Bakgrunn</div>
+            <div onClick={handleBGSwapIncrement} class="material-symbols-rounded arrows">chevron_right</div>
+        </div>
       <button className='delete-profile' onClick={() => setDeletePrompt(true)}>Slett profil</button>
 
 

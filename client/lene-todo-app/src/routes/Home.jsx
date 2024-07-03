@@ -83,11 +83,6 @@ const Home = () => {
 
 
         </div>
-        <div className='bg-swapper'>
-            <div onClick={handleBGSwapDecrement} class="material-symbols-rounded arrows">chevron_left</div>
-            <div className='bg-swapper-text'>Bakgrunn</div>
-            <div onClick={handleBGSwapIncrement} class="material-symbols-rounded arrows">chevron_right</div>
-          </div>
       </div>
     </>
   )

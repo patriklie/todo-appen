@@ -55,7 +55,7 @@ const TodoListOverview = () => {
             try {
                 const response = await axios.put(`http://localhost:5000/lists/${listeId}`, {newListname});
                 dispatch(updateListname(response.data));
-                toast.success(`Endret listenavn til "${response.data.name}"! 😎`, {
+                toast.success(`Endret listenavn til ${response.data.name}! 😎`, {
                     position: "bottom-left",
                     autoClose: 3000,
                   });
@@ -71,7 +71,7 @@ const TodoListOverview = () => {
         try {
             const response = await axios.delete(`http://localhost:5000/lists/${listeId}`);
             dispatch(deleteListAndTodos(response.data))
-            toast.error(`Slettet liste "${response.data.name}".`, {
+            toast.error(`Slettet liste ${response.data.name} 🗑️`, {
                 position: "bottom-left",
                 autoClose: 3000,
               });
@@ -142,8 +142,18 @@ const TodoListOverview = () => {
 
   return (
     <div className='todo-list-page-padding'>
- 
-    <h1 className='standard-h1'>Dine lister</h1>
+    { listsFromState && listsFromState.length > 0 ?  
+    <>
+        <h1 className='standard-h1'>Dine lister</h1>
+        <p>Prøv drag and drop på listene 👇</p>
+    </>
+
+    :
+    <>
+        <h1 className='standard-h1'>Ingen lister!</h1>
+        <p>Trykk på ikonet for å lage en liste 👇</p>
+    </>
+    }
 {/*     <div className='select-wrapper'>
     
         <div className='custom-select'>

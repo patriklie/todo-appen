@@ -5,7 +5,7 @@ import { easeIn, easeInOut, motion, spring } from 'framer-motion';
 const About = () => {
 
   return (
-    <>
+    <div className='about-padding'>
       <motion.div 
             initial={{
               x: 0,
@@ -43,8 +43,7 @@ const About = () => {
       className='image-container-maskott'>
         <img className='liten-maskott' src={maskottLiten} />
       </motion.div>
-      
-    </>
+    </div>
   )
 }
 

@@ -79,7 +79,7 @@ input:-webkit-autofill:active{
 }
 
 .welcome-container:hover {
-    box-shadow: rgba(32, 216, 133, 0.369) 0 5px 10px;
+    box-shadow: var(--primary-color) 0 5px 100px;
 }
 
 .welcome-container h2 {
@@ -332,16 +332,16 @@ select:hover {
     letter-spacing: 1px;
     font-size: 16px;
     color: rgb(255, 255, 255);
-    background: var(--secondary-color);
+    background: var(--primary-color);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
     cursor: pointer;
     outline: none;
-    transition: box-shadow .4s ease;
+    transition: box-shadow .2s ease, background-color .2s ease, filter .2s ease;
 }
 
 .add-list-form button:hover {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 10px;
-    background: #0eb368;
+    filter: brightness(1.2);
 }
 
 .add-list-form button:focus {
@@ -522,7 +522,7 @@ select:hover {
 }
 
 .singlelist-overview-container:hover {
-    box-shadow: rgba(50, 93, 50, 0.25) 0px 6px 12px -2px, rgba(15, 255, 75, 0.3) 0px 3px 7px -3px;
+    box-shadow: rgba(50, 93, 50, 0.25) 0px 6px 12px -2px, var(--primary-color) 0px 3px 7px -3px;
 }
 
 .singlelist-overview-container input::placeholder {
@@ -600,7 +600,7 @@ select:hover {
     box-shadow: rgba(149, 157, 165, 0.5) 0px 2px 5px;
     border-radius: 10px;
     position: relative;
-    border-bottom: 2px solid rgb(0, 255, 81);
+    border-bottom: 2px solid var(--primary-color);
     display: flex;
     align-items: center;
 }

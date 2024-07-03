@@ -47,7 +47,7 @@ const TodoListMaker = () => {
       onSubmit={handleSubmit}
     >
         { !isOpen && 
-        <IconContainer onClick={() => setIsOpen(!isOpen)} iconName={"wired-outline-49-plus-circle"} reveal={"in-reveal"} hover={"hover-rotation"} size={90} />
+        <IconContainer onClick={() => setIsOpen(!isOpen)} iconName={"wired-outline-49-plus-circle-black"} reveal={"in-reveal"} hover={"hover-rotation"} size={90} />
         }
 
         { isOpen && <>

@@ -86,14 +86,15 @@ const Home = () => {
           className="material-symbols-rounded arrows left-arrow"
           whileHover={{ scale: 1.5, opacity: 1 }}
           initial={{ opacity: 0.2}}
-          style={{ color: "rgba(0, 0, 0, 1)" }}
+          style={{ color: "rgb(0, 0, 0)", userSelect: "none" }}
           >
           chevron_left</motion.div>
           <motion.div 
           onClick={handleBGSwapIncrement} 
           className="material-symbols-rounded arrows right-arrow"
-          whileHover={{ scale: 1.5, color: "rgba(0, 0, 0, 1)" }}
-          style={{ color: "rgba(0, 0, 0, 0.2)" }}
+          whileHover={{ scale: 1.5, opacity: 1 }}
+          initial={{ opacity: 0.2 }}
+          style={{ color: "rgb(0, 0, 0)", userSelect: "none" }}
           >
           chevron_right</motion.div>
         </div>

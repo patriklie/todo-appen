@@ -58,8 +58,9 @@ input:-webkit-autofill:active{
     height: calc(100vh - 90px);
     overflow: hidden;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 } 
 
 .home-container-div .home-bg-img {
@@ -115,6 +116,39 @@ input:-webkit-autofill:active{
     bottom: 160px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.home-container-div .bg-swapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 160px;
+
+}
+
+.home-container-div .bg-swapper-text {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 40px;
+    padding: 2px 20px;
+    text-align: center;
+    user-select: none;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.home-container-div .bg-swapper .arrows {
+    cursor: pointer;
+    transition: all .2s ease;
+    user-select: none;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 40px;
+}
+
+.home-container-div .bg-swapper .arrows:hover {
+    cursor: pointer;
+    transform: scale(1.8);
+    color: black;
 }
 
 /* List styling */

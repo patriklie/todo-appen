@@ -910,16 +910,16 @@ justify-items: center;
     letter-spacing: 1px;
     font-size: 16px;
     color: rgb(255, 255, 255);
-    background: var(--secondary-color);
+    background: var(--primary-color);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
     cursor: pointer;
     outline: none;
-    transition: box-shadow .4s ease;
+    transition: box-shadow .2s ease, background-color .2s ease, filter .2s ease;
 }
 
 .fancy-form button:hover {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 10px;
-    background: #0eb368;
+    filter: brightness(1.1);
 }
 
 .fancy-form button:focus {

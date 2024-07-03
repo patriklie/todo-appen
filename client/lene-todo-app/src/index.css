@@ -140,7 +140,7 @@ input:-webkit-autofill:active{
 
 .list-info-container .list-title  {
     background: var(--primary-color);
-    background: linear-gradient(to right, var(--primary-color) 50%, #44ffab 100%);
+    background: linear-gradient(to right, var(--primary-color) 50%, #000000 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -14,7 +14,7 @@ const Home = () => {
         <img className='home-bg-img' src={BG} />
         <div className='welcome-container'>
         <h2>Hei {firstName}! 👋</h2>
-        <p>Velkommen til <span>TODO</span>appen, et MERN portefølje prosjekt hvor jeg har brukt: Mongo, Express, React, Node, React Router, Redux, Mongoose, Framer-Motion samt en rekke andre npm's og middlewares til å lage en interaktiv app front/backend. I appen har du full CRUD funksjonalitet på brukere, lister, todos og profil.</p>
+        <p>Velkommen til <span>TODO</span>appen, et MERN-porteføljeprosjekt hvor jeg har brukt: MongoDB, Express, React, Node, React Router, Redux, Mongoose, Framer Motion samt en rekke andre npm-pakker og middlewares for å lage en interaktiv app (front- og backend). I appen har du full CRUD-funksjonalitet for brukere, lister, oppgaver (todos) og profil.</p>
         <h4>Utforsk Appen! 🕵️</h4>
         </div>
 

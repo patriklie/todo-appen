@@ -28,7 +28,7 @@ const SingleTodoUpdated = memo(function SingleTodoUpdated({ todo }) {
 
             dispatch(deleteTodoFromList(localTodo))
 
-            toast.error(`Slettet "${localTodo.name}"`, {
+            toast.error(`Slettet ${localTodo.name} 🗑️`, {
                 position: "bottom-left",
                 autoClose: 2000,
             });

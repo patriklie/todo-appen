@@ -28,7 +28,7 @@ const AddTodo = ({ listId, handleToggleActive }) => {
 
         dispatch(addTodoToList(savedTodo)) 
         
-        toast.success(`Lagt til "${todoName}"`, { 
+        toast.success(`Lagt til ${todoName}`, { 
             position: "bottom-left",
             autoClose: 2000,
         })

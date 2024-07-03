@@ -309,22 +309,6 @@ const Profile = () => {
     document.documentElement.style.setProperty('--primary-color', primaryColor);
   }
 
-  const handleBGSwapIncrement = () => {
-    if(backgroundState < 21) {
-      dispatch(changeBackground(backgroundState + 1));
-    } else {
-      dispatch(changeBackground(1));
-    }
-  }
-
-  const handleBGSwapDecrement = () => {
-    if(backgroundState > 1 ) {
-      dispatch(changeBackground(backgroundState - 1));
-    } else {
-      dispatch(changeBackground(21));
-    }
-  }
-
   return (
     <>
     <AnimatePresence>
@@ -456,11 +440,6 @@ const Profile = () => {
         <div className='info-state'><AnimatedCounter from={0} to={doneTodos}/></div>
       </div>
       <input onChange={handleColorChange} className='colorpicker' type="color" value={primaryColor} />
-      <div className='bg-swapper'>
-            <div onClick={handleBGSwapDecrement} class="material-symbols-rounded arrows">chevron_left</div>
-            <div className='bg-swapper-text'>Bakgrunn</div>
-            <div onClick={handleBGSwapIncrement} class="material-symbols-rounded arrows">chevron_right</div>
-        </div>
       <button className='delete-profile' onClick={() => setDeletePrompt(true)}>Slett profil</button>
 
 

@@ -16,7 +16,6 @@ const DragMenu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [lastScrollY, setLastScrollY] = useState(0);
-  console.log("elements HEIGHT: ", height)
 
   const logoutUser = () => {  
     localStorage.removeItem("token");
@@ -25,7 +24,6 @@ const DragMenu = () => {
       autoClose: 3000,
     });
     dispatch(logout());
-
     navigate("/login")
 }
 
@@ -48,8 +46,9 @@ const DragMenu = () => {
   const handleOpen = async () => {
     const yStart = typeof y.get() === "number" ? y.get() : 0;
 
-    console.log("Handle Open yStart", yStart)
-    console.log("Handle Open Height", height)
+    // console.log("Handle Open yStart", yStart)
+    // console.log("Handle Open Height", height) 
+
     await animate("#drawer", {
       y: [yStart, 0]
     });
@@ -78,15 +77,12 @@ const DragMenu = () => {
   }, [height])
 
 
-  return <>
-
-
-
+  return (
+    <>
     <motion.div 
     ref={scope}
     className='outer-motion'
     >
-      
         <motion.div
         ref={drawerRef}
         id="drawer"
@@ -96,10 +92,9 @@ const DragMenu = () => {
           ease: "easeInOut"
         }}
         onDragEnd={() => {
-            console.log("Y.get: ", y.get())
-            console.log("Height: ", height)
-            console.log(height - y.get())
-
+            // console.log("Y.get: ", y.get())
+            // console.log("Height: ", height)
+            // console.log(height - y.get())
             if (y.get() >= height / 2) {
                 handleMinimize();
             } else {
@@ -118,7 +113,6 @@ const DragMenu = () => {
           top: 0.2,
           bottom: 1,
         }}
-        
         className='inner-motion'
         >
           <div className='drawer-small-bg'></div>
@@ -182,6 +176,7 @@ const DragMenu = () => {
         </motion.div>
     </motion.div>
   </>
+  )
 }
 
 export default DragMenu;

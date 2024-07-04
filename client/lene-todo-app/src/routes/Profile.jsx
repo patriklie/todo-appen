@@ -9,17 +9,16 @@ import IconContainer from '../components/IconContainer';
 import AnimatedCounter from '../components/AnimatedCounter';
 
 const Profile = () => {
+
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const fileInputRef = useRef();
   const headerInputRef = useRef();
   const stateProfile = useSelector(state => state.auth);
-  const backgroundState = useSelector(state => state.auth.background);
   const stateLists = useSelector(state => state.list.lists);
   const usernameInputRef = useRef();
   const emailInputRef = useRef();
-  const [primaryColor, setPrimaryColor] = useState("#0abd6c")
-
+  const [primaryColor, setPrimaryColor] = useState("#0abd6c");
   const [editMode, setEditMode] = useState(false);
   const [deletePrompt, setDeletePrompt] = useState(false);
   const [newUsername, setNewUsername] = useState("");
@@ -32,12 +31,11 @@ const Profile = () => {
   useEffect(() => {
     const newPrimary = document.documentElement.style.getPropertyValue('--primary-color');
     if (newPrimary) setPrimaryColor(newPrimary);
-    
-  },[])
+  },[]);
 
   const countTodos = () => {
     return stateLists.reduce((total, list) => total + list.todos.length, 0);
-  }
+  };
 
   const countCompletedTodos = () => {
    return stateLists.reduce((total, list) => total + list.todos.filter(todo => todo.completed).length, 0);
@@ -47,8 +45,8 @@ const Profile = () => {
   const doneTodos = countCompletedTodos();
 
   const handleDeleteProfileImg = async () => {
-    try {
 
+    try {
     const response = await axios.delete('http://localhost:5000/uploads/deleteProfileImage', {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -69,8 +67,8 @@ const Profile = () => {
   }
 
   const handleDeleteProfileHeader = async () => {
-    try {
 
+    try {
     const response = await axios.delete('http://localhost:5000/uploads/deleteProfileHeader', {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -112,7 +110,6 @@ const Profile = () => {
     formData.append('image', selectedFile);
 
     try {
-
       const response = await axios.post('http://localhost:5000/uploads/profileImage', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -155,7 +152,6 @@ const Profile = () => {
     formData.append('image', selectedFile);
 
     try {
-
       const response = await axios.post('http://localhost:5000/uploads/headerImage', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -183,37 +179,15 @@ const Profile = () => {
       fileInputRef.current.value = "";
       setHeaderTools(false);
     }
-  }
+  };
 
   const handleProfileInputClick = () => {
     fileInputRef.current.click();
-  }
+  };
 
   const handleHeaderInputClick = () => {
     headerInputRef.current.click();
-  }
-
-/*   const fetchProfile = async () => {
-    try {
-      if (token) {
-        console.log("Token inside profile: ", token);
-        const response = await axios.get('http://localhost:5000/users/profile', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
-        setProfileData(response.data);
-        console.log('Dette er info som kom tilbake fra API: ', response)
-      }
-    } catch(error) {
-      console.log("Error fetching profile: ", error);
-    }
-  }
-
-  useEffect(() => {
-  fetchProfile();
-    
-  },[token]) */
+  };
 
   const handleSave = async () => {
     setEditMode(false);
@@ -249,7 +223,7 @@ const Profile = () => {
         });
       }
     }
-  }
+  };
 
   const handleEdit = (e) => {
     setEditMode(true);
@@ -262,14 +236,9 @@ const Profile = () => {
         emailInputRef.current.focus();
       }
     }, 0);
-  }
+  };
 
-/*   useEffect(() => {
-    if (editMode) {
-      usernameInputRef.current.focus();
-    }
-  }, [editMode]); */
-
+  // Ikke bundet opp FN under:
   const handleDeleteProfile = async() => {
 
     if (token) {
@@ -282,8 +251,8 @@ const Profile = () => {
           }
         )
         
-        console.log("Delete response: ", response);
-        console.log("Brukernavnet er her: ", response.data.username);
+        // console.log("Delete response: ", response);
+        // console.log("Brukernavnet er her: ", response.data.username);
         dispatch(logout());
         toast.success(`Slettet bruker: ${response.data.username}`, {
           position: "bottom-left",
@@ -295,54 +264,52 @@ const Profile = () => {
         console.log(error);
       }
     }
-  }
+  };
 
   const editToolsEnter = () => {
     setEditTools(true);
-  }
+  };
+
   const editToolsLeave = () => {
     setEditTools(false);
-  }
+  };
 
   const handleColorChange = (e) => {
     setPrimaryColor(e.target.value);
     document.documentElement.style.setProperty('--primary-color', primaryColor);
-  }
+  };
 
   return (
     <>
     <AnimatePresence>
       { deletePrompt && 
-      <motion.div className="profile-dimmer"
+      <motion.div 
+      className="profile-dimmer"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       >
         <div className='delete-prompt-text'>Vil du slette profilen? 😐</div>
+
         <div className='delete-prompt'>
           <motion.button
             whileHover={{ scale: 1.2 }}
-            whileTap={{
-              scale: 0.8,
-              borderRadius: "100%"
-            }}
-          >Ja</motion.button>
+            whileTap={{ scale: 0.8, borderRadius: "100%" }}
+            >Ja
+          </motion.button>
+
           <motion.button
-          onClick={() => setDeletePrompt(false)}
-          whileHover={{ scale: 1.2 }}
-          whileTap={{
-            scale: 0.8,
-            borderRadius: "100%"
-          }}
-          >Nei</motion.button>
+            onClick={() => setDeletePrompt(false)}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8, borderRadius: "100%" }}
+            >Nei
+          </motion.button>
         </div>
       </motion.div>
       }
-      </AnimatePresence>
+    </AnimatePresence>
       
     <div className='todo-profile-container' >
-
-    
 
     {stateProfile && stateProfile.profileHeaderUrl ?
       <img onClick={toggleHeaderTools} className='header-image' src={stateProfile.profileHeaderUrl} />
@@ -357,7 +324,6 @@ const Profile = () => {
     }
 
       <div className="white-circle-cutout"></div>
-
       <input style={{ display: "none" }} ref={fileInputRef} type="file" onChange={handleProfileUpload} accept='image/*' />
       <input style={{ display: "none" }} ref={headerInputRef} type="file" onChange={handleHeaderUpload} accept='image/*' />
     
@@ -382,7 +348,8 @@ const Profile = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className='profile-image-tools-container'>
+      className='profile-image-tools-container'
+      >
         <IconContainer onClick={handleProfileInputClick} iconName={"wired-outline-35-edit"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
         <IconContainer onClick={handleDeleteProfileImg} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
       </motion.div>
@@ -400,10 +367,13 @@ const Profile = () => {
         <AnimatePresence>
         { editTools && 
             <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="material-symbols-rounded profile-edit" onClick={handleSave}>save</motion.div>
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="material-symbols-rounded profile-edit" 
+              onClick={handleSave}
+              >save
+            </motion.div>
         }
         </AnimatePresence>
             <input ref={usernameInputRef} onKeyDown={(e) => e.key === "Enter" ? handleSave() : ""} onChange={(e) => setNewUsername(e.target.value)} id="editUsername" type="text" value={newUsername}/>
@@ -416,11 +386,13 @@ const Profile = () => {
         <AnimatePresence>
           { editTools && 
           <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="material-symbols-rounded profile-edit" onClick={handleEdit}>edit</motion.div>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="material-symbols-rounded profile-edit" onClick={handleEdit}
+            >edit
+          </motion.div>
           }
         </AnimatePresence>  
           <div onClick={(e) => handleEdit(e)} className='profile-username'>{stateProfile.username}</div>
@@ -441,14 +413,10 @@ const Profile = () => {
       </div>
       <input onChange={handleColorChange} className='colorpicker' type="color" value={primaryColor} />
       <button className='delete-profile' onClick={() => setDeletePrompt(true)}>Slett profil</button>
-
-
-
       
     </div>
-
     </>
   )
 }
 
-export default Profile
+export default Profile;

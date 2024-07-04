@@ -7,9 +7,9 @@ const Layout = () => {
 
   return (
     <>
-    <Navbar />
-    <Outlet />
-    <DragMenu />
+      <Navbar />
+      <Outlet />
+      <DragMenu />
     </>
   )
 }

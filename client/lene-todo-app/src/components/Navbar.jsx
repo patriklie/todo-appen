@@ -21,7 +21,6 @@ const Navbar = () => {
       autoClose: 3000,
     });
     dispatch(logout());
-
     navigate("/login")
 }
 
@@ -46,6 +45,7 @@ const handleNaviClick = () => {
         <div style={{ justifySelf: !loggedInUser ? "center" : "" }} className='logo'>
           <Link to="/"><span>TODO</span>appen</Link>
         </div>
+
       </div>
 
       <AnimatePresence>
@@ -56,12 +56,13 @@ const handleNaviClick = () => {
        animate={{ x: 0, opacity: 1 }}
        exit={{ x: -200, opacity: 0 }}
        transition={{ type: "tween" }}
-       className='nav-menu'>
+       className='nav-menu'
+       >
 
             <div className='sidebar-grid'>
             {!isAuthenticated && 
-            <>
 
+            <>
             <NavLink onClick={handleNaviClick} to="/login" className='sidebar-flex-container'>
               <div className="material-symbols-rounded sidebar-icons">login</div>
               <div className='sidebar-text'>LOGIN</div>
@@ -71,13 +72,11 @@ const handleNaviClick = () => {
               <div className="material-symbols-rounded sidebar-icons">person_add</div>
               <div className='sidebar-text'>REGISTRER</div>
             </NavLink>
-              
             </>
             }
 
             {isAuthenticated &&
             <>
-
             <NavLink onClick={handleNaviClick} to="/" className='sidebar-flex-container'>
               <div className="material-symbols-rounded sidebar-icons">home</div>
               <div className='sidebar-text'>Hjem</div>
@@ -106,24 +105,24 @@ const handleNaviClick = () => {
             <div className='navbar-maskott-container'>
               <img className='navbar-maskott' src={maskott} />
             </div>
-
             </>
             }
             </div>
 
-
       </motion.nav>
+
       <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className='overlay-bg' onClick={() => setSidebar(!sidebar)} ></motion.div>
+      className='overlay-bg' onClick={() => setSidebar(!sidebar)}>
+      </motion.div>
+
       </>
       }
-      </AnimatePresence>    
-
+      </AnimatePresence>
     </nav>
   )
 }
 
-export default Navbar
+export default Navbar;

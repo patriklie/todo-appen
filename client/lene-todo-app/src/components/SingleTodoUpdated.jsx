@@ -59,4 +59,4 @@ const SingleTodoUpdated = memo(function SingleTodoUpdated({ todo }) {
   )
 });
 
-export default SingleTodoUpdated
+export default SingleTodoUpdated;

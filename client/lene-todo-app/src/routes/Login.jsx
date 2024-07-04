@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { loginUser } from '../features/auth/authSlice';
 import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
 import { loadLists } from '../features/list/listSlice';
+import { loginUser } from '../features/auth/authSlice';
 import { motion } from "framer-motion";
 import maskott from "../assets/images/IMG_0336-removebg.png"
 
@@ -63,35 +63,34 @@ const Login = () => {
 
   return (
     <>
-    <Navbar />
-    <div className='login-register-padding'>
-    <motion.form onSubmit={handleLogin} className='fancy-form'
+      <Navbar />
+      <div className='login-register-padding'>
+        <motion.form 
+          onSubmit={handleLogin} 
+          className='fancy-form'
           initial={{ scale: .9 }}
           animate={{ scale: 1 }}
-          transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20
-          }}
+          transition={{ type: "spring", stiffness: 260, damping: 20 }}
           >
-      <div className='fancy-form-title'>Login</div>
-      <div className='fancy-input-container'>
-        <input type="text" id="email" autoComplete='email' value={email} onChange={(e) => setEmail(e.target.value)} required  />
-        <label htmlFor="email">Epost</label>
+          <div className='fancy-form-title'>Login</div>
+
+          <div className='fancy-input-container'>
+            <input type="text" id="email" autoComplete='email' value={email} onChange={(e) => setEmail(e.target.value)} required  />
+            <label htmlFor="email">Epost</label>
+          </div>
+
+          <div className='fancy-input-container'>
+            <input type="password" id="passord" autoComplete='current-password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <label htmlFor="passord">Passord</label> 
+          </div>
+
+          <button>Login</button>
+          <p style={{ textAlign: "center", fontSize: "12px" }}>Har du ikke bruker? <Link to="/register">Registrer deg her</Link></p>
+          <img className="login-maskott-img" src={maskott}/>
+        </motion.form>
       </div>
-      <div className='fancy-input-container'>
-        <input type="password" id="passord" autoComplete='current-password' value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <label htmlFor="passord">Passord</label>
-        
-      </div>
-      <button>Login</button>
-      <p style={{ textAlign: "center", fontSize: "12px" }}>Har du ikke bruker? <Link to="/register">Registrer deg her</Link></p>
-      <img className="login-maskott-img" src={maskott}/>
-    </motion.form>
-    </div>
-    
     </>
   )
 }
 
-export default Login
+export default Login;

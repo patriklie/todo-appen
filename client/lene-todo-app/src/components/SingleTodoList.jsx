@@ -61,7 +61,7 @@ const SingleTodoList = () => {
       <IconContainer iconName={"wired-outline-212-arrow-1-rounded"} reveal={"loop-cycle"} hover={"hover-rotation"} size={50}  />
       Loading...
     </div>
-  )
+    )
   }
 
   return (
@@ -112,8 +112,8 @@ const SingleTodoList = () => {
                 exit={{ y: -20, opacity: 0 }} 
                 layout
                 transition={{ duration: 0.2 }}
-              >          
-                <SingleTodoUpdated todo={todo} />
+                >          
+                  <SingleTodoUpdated todo={todo} />
               </motion.div>
             )
         })}
@@ -131,11 +131,10 @@ const SingleTodoList = () => {
         >          
           <AddTodo listId={id} handleToggleActive={handleToggleActive} /> 
         </motion.div>
-    
       }
       </AnimatePresence>
     </div>
   )
 }
 
-export default SingleTodoList
+export default SingleTodoList;

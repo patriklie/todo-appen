@@ -59,4 +59,4 @@ const RouteProtector = ({ children }) => {
     )
 }
 
-export default RouteProtector
+export default RouteProtector;

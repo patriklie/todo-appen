@@ -6,10 +6,10 @@ import { ReactComponent as NotFound } from "../assets/images/404_notfound.svg";
 const ErrorPage = () => {
 
     let error = useRouteError();
-     console.error(error);
+    console.error(error);
 
     return (
-        <>
+    <>
         <Navbar />
         <div style={{ marginTop: "120px" }}></div>
 
@@ -17,8 +17,8 @@ const ErrorPage = () => {
             {error.status === 404 && <div style={{ padding: "20px", fontSize: "30px", fontWeight: 700, textAlign: "center" }}>Å nei, denne siden finnes ikke!</div>}
             <NotFound className="errorpage" />
         </div>
-        </>
+    </>
     )
 }
 
-export default ErrorPage
+export default ErrorPage;

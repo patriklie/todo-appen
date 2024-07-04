@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteListAndTodos, loadLists, updateListname } from '../features/list/listSlice';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import TodoListMaker from './TodoListMaker';
@@ -201,7 +201,7 @@ const TodoListOverview = () => {
                     <AnimatePresence key={ liste._id + 1 }>
                         <motion.div 
                         drag 
-                        /* layout */ // denne gjorde at de bugget sev ved retur til origin
+                        /* layout */ // Layout gjorde at elementene bugget ved retur til origin
                         dragSnapToOrigin 
                         onDragStart={(event, info) => setIsDragging(true)}
                         onDragEnd={(event, info) => {
@@ -240,9 +240,9 @@ const TodoListOverview = () => {
         </AnimatePresence>
         }
 
-    <TodoListMaker />
+        <TodoListMaker />
     </div>
   )
 }
 
-export default TodoListOverview
+export default TodoListOverview;

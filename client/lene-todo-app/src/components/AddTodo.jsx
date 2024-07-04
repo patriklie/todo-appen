@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState} from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { addTodoToList } from '../features/list/listSlice';
@@ -25,9 +25,7 @@ const AddTodo = ({ listId, handleToggleActive }) => {
     )
         console.log(response)
         const savedTodo = response.data;
-
         dispatch(addTodoToList(savedTodo)) 
-        
         toast.success(`Lagt til ${todoName}`, { 
             position: "bottom-left",
             autoClose: 2000,
@@ -42,8 +40,6 @@ const AddTodo = ({ listId, handleToggleActive }) => {
 
     return (
     <>
-
-
     <form onSubmit={handleSubmit} className='fancy-form-todo'>
         <div className='fancy-form-title'>Legg til Todo</div>
 

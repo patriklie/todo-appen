@@ -1,4 +1,4 @@
-import { KeyFrameOptions, animate, useInView, useIsomorphicLayoutEffect } from "framer-motion";
+import { animate, useInView, useIsomorphicLayoutEffect } from "framer-motion";
 import React, { useRef } from 'react';
 
 const AnimatedCounter = ({ from , to, animationOptions }) => {
@@ -24,7 +24,7 @@ const AnimatedCounter = ({ from , to, animationOptions }) => {
         }
     }, [ref, from, to, inView])
 
-    return <span ref={ref}>Hei</span>
+    return <span ref={ref}></span>
     
 }
 

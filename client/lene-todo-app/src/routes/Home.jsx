@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeBackground } from '../features/auth/authSlice';
 import { motion } from 'framer-motion';
+
 import BG_1 from '../assets/images/BG_1.jpeg';
 import BG_2 from '../assets/images/BG_2.jpeg';
 import BG_3 from '../assets/images/BG_3.jpeg';
@@ -81,26 +82,31 @@ const Home = () => {
           <h2>Hei {firstName}! 👋</h2>
           <p>Velkommen til <span>TODO</span>appen, et MERN-porteføljeprosjekt hvor jeg har brukt: MongoDB, Express, React, Node, React Router, Redux, Mongoose, Framer Motion samt en rekke andre npm-pakker og middlewares for å lage en interaktiv app (front- og backend). I appen har du full CRUD-funksjonalitet for brukere, lister, oppgaver (todos) og profil.</p>
           <h4>Utforsk Appen! 🕵️</h4>
+
           <motion.div 
-          onClick={handleBGSwapDecrement} 
-          className="material-symbols-rounded arrows left-arrow"
-          whileHover={{ scale: 1.5, opacity: 1 }}
-          initial={{ opacity: 0.2}}
-          style={{ color: "rgb(0, 0, 0)", userSelect: "none" }}
+            onClick={handleBGSwapDecrement} 
+            className="material-symbols-rounded arrows left-arrow"
+            whileHover={{ scale: 1.5, opacity: 1 }}
+            initial={{ opacity: 0.2}}
+            style={{ color: "rgb(0, 0, 0)", userSelect: "none" }}
           >
-          chevron_left</motion.div>
+          chevron_left
+          </motion.div>
+
           <motion.div 
-          onClick={handleBGSwapIncrement} 
-          className="material-symbols-rounded arrows right-arrow"
-          whileHover={{ scale: 1.5, opacity: 1 }}
-          initial={{ opacity: 0.2 }}
-          style={{ color: "rgb(0, 0, 0)", userSelect: "none" }}
+            onClick={handleBGSwapIncrement} 
+            className="material-symbols-rounded arrows right-arrow"
+            whileHover={{ scale: 1.5, opacity: 1 }}
+            initial={{ opacity: 0.2 }}
+            style={{ color: "rgb(0, 0, 0)", userSelect: "none" }}
           >
-          chevron_right</motion.div>
+          chevron_right
+          </motion.div>
+
         </div>
       </div>
     </>
   )
 }
 
-export default Home
+export default Home;

@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "~@flaticon/flaticon-uicons/css/all/all";
 
-
 * {
     margin: 0;
     padding: 0;
@@ -21,7 +20,6 @@ body::-webkit-scrollbar {
     box-sizing: border-box;
 }
 
-
 /* Dette fjerner chrome sin bakgrunnsfarge på autocomplete valg for inputs */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
@@ -29,10 +27,6 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
-
-/* html, body, #root {
-    min-width: fit-content;
-} */
 
 #root {
     position: relative;
@@ -84,10 +78,6 @@ input:-webkit-autofill:active{
     position: relative;
 }
 
-/* .welcome-container:hover {
-    box-shadow: var(--primary-color) 0 5px 100px;
-} */
-
 .welcome-container .arrows {
     cursor: pointer;
     font-size: 40px;
@@ -121,18 +111,6 @@ input:-webkit-autofill:active{
 
 .welcome-container span {
     font-weight: 700;
-}
-
-.motion-home-intro {
-    padding: 20px;
-    border-radius: 100px;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    font-weight: 400;
-    position: absolute;
-    bottom: 160px;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 /* List styling */
@@ -169,7 +147,6 @@ input:-webkit-autofill:active{
 }
 
 /* Custom Dropdown */
-
 .select-wrapper {
     display: grid;
     place-items: center;
@@ -397,7 +374,6 @@ select:hover {
 }
 
 /* Icons */
-
 .buttons-container {
     display: flex;
     width: 100%;
@@ -430,9 +406,9 @@ select:hover {
 }
 
 .button-container-text {
-    white-space: nowrap; /* Forhindre at teksten går over to linjer */
-    overflow: hidden; /* Skjul eventuell tekst som går utenfor konteineren */
-    text-overflow: ellipsis; /* Vis "..." hvis teksten går utenfor konteineren */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .material-symbols-rounded {
@@ -459,8 +435,7 @@ select:hover {
     user-select: none;
     transition: transform .2s ease-in-out;
     display: block;
-    -webkit-tap-highlight-color: transparent;
-    
+    -webkit-tap-highlight-color: transparent;  
 }
 
 .todo-form-icon:hover {
@@ -494,7 +469,7 @@ select:hover {
     border-bottom: 1px solid rgba(216, 216, 216, 0.396);
 }
 
-/* Button Styling */
+/* Common Button Styling */
 .button {
     width: 250px;
     padding: 10px;
@@ -503,7 +478,6 @@ select:hover {
 }
 
 /* List Overview */
-
 .todo-list-page-padding {
     padding: 0 30px;
 }
@@ -579,7 +553,6 @@ select:hover {
 }
 
 /* Liste drag and delete */ 
-
 .drag-container {
     display: flex;
     justify-content: center;
@@ -602,7 +575,6 @@ select:hover {
 } 
 
 /* About */ /* Profile */
-
 .headline {
     font-size: 25px;
     font-weight: 600;
@@ -652,7 +624,6 @@ select:hover {
 }
 
 /* Navbar */
-
 .navbar {
     width: 100%;
     position: fixed;
@@ -699,14 +670,12 @@ select:hover {
 }
 
 /* SIDEBAR CSS */
-
 .navbar-maskott-container {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    
 }
 
 .navbar-maskott {
@@ -776,7 +745,6 @@ select:hover {
 }
 
 /* TODO */
-
 .todos-container {
 display: grid;
 max-width: 1000px;
@@ -838,14 +806,12 @@ justify-items: center;
 }
 
 /* Todo/Login/Register FORMS */ 
-
 .login-maskott-img {
     width: clamp(100px, 40%, 200px);
     margin: auto;
 }
 
 /* LOGIN & REGISTER FORMS */
-
 .login-register-padding {
     padding: 0 30px;
 }
@@ -867,8 +833,7 @@ justify-items: center;
     text-align: center;
     font-weight: 700;
     font-size: 30px;
-    color: var(--primary-color)
-
+    color: var(--primary-color);
 }
 
 .fancy-input-container {
@@ -1023,7 +988,6 @@ form.add-todo-form label:nth-of-type(2) {
 }
 
 /* TODO USER PROFILE */
-
 .colorpicker {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -1144,12 +1108,29 @@ form.add-todo-form label:nth-of-type(2) {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.info-title.one { grid-area: title1; }
-.info-title.two { grid-area: title2; }
-.info-title.three { grid-area: title3; }
-.info-state:nth-of-type(1) { grid-area: state1; }
-.info-state:nth-of-type(2) { grid-area: state2; }
-.info-state:nth-of-type(3) { grid-area: state3; }
+.info-title.one {
+    grid-area: title1;
+}
+
+.info-title.two {
+    grid-area: title2;
+}
+
+.info-title.three {
+    grid-area: title3;
+}
+
+.info-state:nth-of-type(1) {
+    grid-area: state1;
+}
+
+.info-state:nth-of-type(2) {
+    grid-area: state2;
+}
+
+.info-state:nth-of-type(3) {
+    grid-area: state3;
+}
 
 .info-dump .info-title {
     color: rgb(189, 189, 189);
@@ -1226,7 +1207,6 @@ form.add-todo-form label:nth-of-type(2) {
     color: rgb(0, 0, 0);
     font-size: 1.4rem;
     font-weight: 700;
-/*     background-color: var(--secondary-color); */
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -1238,14 +1218,12 @@ form.add-todo-form label:nth-of-type(2) {
     outline: none;
     border: none;
     text-align: center;
-  /*   background-color: rgb(240, 240, 240); */
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     color: black;
 }
 
 /* PROFILE DELETE PROMPT */
-
 .profile-dimmer {
     position: absolute;
     top: 0;
@@ -1278,12 +1256,9 @@ form.add-todo-form label:nth-of-type(2) {
     border-radius: 5px;
     border: none;
     outline: none;
-/*     transition: all .2s ease; */
     cursor: pointer;
 }
-/* .profile-dimmer .delete-prompt button:hover {
-    transform: scale(1.2);
-} */
+
 
 .profile-dimmer .delete-prompt-text {
     width: 300px;
@@ -1352,12 +1327,6 @@ form.add-todo-form label:nth-of-type(2) {
         grid-template-columns: 1fr 1fr;
         gap: 5px;
     }
-
-/*     .navbar-header .logo,
-    .navbar-header .navbar-ham,
-    .navbar-header .profile-link {
-        justify-self: center;
-    }  */
 
     .profile-link {
         display: none;

@@ -9,7 +9,6 @@ const validateUserLogin = require('../../utils/validateUserLogin');
 const validateUserEdit = require('../../utils/validateUserEdit');
 
 router.post("/register", async (req, res) => {
-    
     const { error } = validateUser(req.body);
 
     if (error) {
@@ -18,9 +17,7 @@ router.post("/register", async (req, res) => {
     }
 
     try {
-
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
         const newUser = await User.create({
             username: req.body.username,
             email: req.body.email,
@@ -28,7 +25,6 @@ router.post("/register", async (req, res) => {
         });
 
         const token = jwt.sign({ userId: newUser._id }, process.env.SECRET_KEY, { expiresIn: '30d' })
-
         res.status(200).send(token)
 
     } catch(error) {
@@ -38,7 +34,6 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-
     const { error } = validateUserLogin(req.body);
 
     if (error) {
@@ -48,7 +43,6 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        
         const foundUser = await User.findOne({ email });
         if (!foundUser) {
             res.status(401).send("Fant ikke bruker i databasen...");
@@ -60,9 +54,7 @@ router.post("/login", async (req, res) => {
         }
     
         if (match) {
-
             const token = jwt.sign({ userId: foundUser._id }, process.env.SECRET_KEY, { expiresIn: '30d' })
-            
             const userData  = {
                 token,
                 username: foundUser.username,
@@ -106,7 +98,6 @@ router.get("/profile", authenticateToken, async (req, res) => {
 })
 
 router.get("/authtoken", authenticateToken, async (req, res) => {
-
     const userId = req.userId
     const foundUser = await User.findById(userId);
     const userData = {
@@ -127,7 +118,6 @@ router.get("/authtoken", authenticateToken, async (req, res) => {
 })
 
 router.put("/edit", authenticateToken, async (req, res) => {
-
     const { error } = validateUserEdit(req.body);
 
     if (error) {
@@ -137,9 +127,7 @@ router.put("/edit", authenticateToken, async (req, res) => {
 
     const { userId } = req;
     const { username, email } = req.body;
-
     const foundUser = await User.findById(userId);
-
     const usernameUpdated = foundUser.username !== username;
     const emailUpdated = foundUser.email !== email;
     const existingUsername = await User.findOne({ username: username });
@@ -169,9 +157,7 @@ router.put("/edit", authenticateToken, async (req, res) => {
 
 
 router.delete("/delete", authenticateToken, async (req, res) => {
-
     try {
-
         console.log(req.userId)
         const { userId } = req
         const deletedUser = await User.findByIdAndDelete({ _id: userId });

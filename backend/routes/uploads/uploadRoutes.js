@@ -9,7 +9,7 @@ const getUserId = require('../../utils/getUserId');
 router.post('/profileImage', upload.single('image'), getUserId, async (req, res) => {
 
     try {
-        // Finner bruker og publicid profilbilde før vi oppdaterer og laster opp nye:
+        // Finner bruker og publicid profilbilde før vi oppdaterer og laster opp nye
         const findUserOldImage = await User.findById(req.userId);
         if(findUserOldImage.profileImagePublicId) {
             const deleteOldImage = await cloudinary.uploader.destroy(findUserOldImage.profileImagePublicId)

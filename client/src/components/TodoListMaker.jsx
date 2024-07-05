@@ -18,7 +18,7 @@ const TodoListMaker = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:5000/lists/add", {
+            const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/lists/add`, {
                 name: listName,
             },
             {

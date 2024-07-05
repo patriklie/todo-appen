@@ -20,7 +20,7 @@ const RouteProtector = ({ children }) => {
         const fetchData = async () => {
             if (token) {
                 try {
-                    const response = await axios.get("http://localhost:5000/users/authtoken", {
+                    const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/users/authtoken`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

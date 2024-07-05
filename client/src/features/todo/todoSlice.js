@@ -10,7 +10,7 @@ const initialState = {
 export const loadListTodos = createAsyncThunk(
     'todo/loadListTodos',
     async (listId) => {
-        const response = await axios.get(`http://localhost:5000/todos/listtodos/${listId}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/todos/listtodos/${listId}`);
         return response.data;
     }
 );

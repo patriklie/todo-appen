@@ -53,7 +53,7 @@ const TodoListOverview = () => {
         const foundList = listsFromState.find(list => list._id === listeId)
         if(foundList && newListname && newListname !== foundList.name) {
             try {
-                const response = await axios.put(`http://localhost:5000/lists/${listeId}`, {newListname});
+                const response = await axios.put(`${process.env.REACT_APP_API_BASE_URL}/lists/${listeId}`, {newListname});
                 dispatch(updateListname(response.data));
                 toast.success(`Endret listenavn til ${response.data.name}! 😎`, {
                     position: "bottom-left",
@@ -69,7 +69,7 @@ const TodoListOverview = () => {
     const handleDeleteList = async (listeId) => {
         setEditListId(null);
         try {
-            const response = await axios.delete(`http://localhost:5000/lists/${listeId}`);
+            const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/lists/${listeId}`);
             dispatch(deleteListAndTodos(response.data))
             toast.error(`Slettet liste ${response.data.name} 🗑️`, {
                 position: "bottom-left",

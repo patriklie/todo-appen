@@ -16,7 +16,7 @@ const AddTodo = ({ listId, handleToggleActive }) => {
         event.preventDefault();
 
     try {
-        const response = await axios.post('http://localhost:5000/todos', {
+        const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/todos`, {
             name: todoName,
             description: todoDescription,
             completed: false,

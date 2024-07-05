@@ -22,7 +22,7 @@ const SingleTodoList = () => {
   const handleDeleteList = async () => {
     try {
       setLoading(true);
-      const response = await axios.delete(`http://localhost:5000/lists/${id}`)
+      const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/lists/${id}`)
       dispatch(deleteListAndTodos(response.data));
       navigate("/todos")
     } catch(error) {
@@ -32,7 +32,7 @@ const SingleTodoList = () => {
 
   const handleDeleteAllTodos = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/lists/${id}/todos`)
+      const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/lists/${id}/todos`)
       dispatch(deleteAllTodosFromlist(id))
     } catch(error) {
       console.log(error)

@@ -11,7 +11,7 @@ export const loadLists = createAsyncThunk(
     'list/loadLists',
     async () => {
         const token = localStorage.getItem("token")
-        const response = await axios.get("http://localhost:5000/lists/", {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/lists/`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }

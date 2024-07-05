@@ -10,6 +10,8 @@ import AnimatedCounter from '../components/AnimatedCounter';
 
 const Profile = () => {
 
+ 
+
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const fileInputRef = useRef();
@@ -47,7 +49,7 @@ const Profile = () => {
   const handleDeleteProfileImg = async () => {
 
     try {
-    const response = await axios.delete('http://localhost:5000/uploads/deleteProfileImage', {
+    const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/uploads/deleteProfileImage`, {
       headers: {
         Authorization: `Bearer ${token}`,
       }
@@ -69,7 +71,7 @@ const Profile = () => {
   const handleDeleteProfileHeader = async () => {
 
     try {
-    const response = await axios.delete('http://localhost:5000/uploads/deleteProfileHeader', {
+    const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/uploads/deleteProfileHeader`, {
       headers: {
         Authorization: `Bearer ${token}`,
       }
@@ -110,7 +112,7 @@ const Profile = () => {
     formData.append('image', selectedFile);
 
     try {
-      const response = await axios.post('http://localhost:5000/uploads/profileImage', formData, {
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/uploads/profileImage`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -152,7 +154,7 @@ const Profile = () => {
     formData.append('image', selectedFile);
 
     try {
-      const response = await axios.post('http://localhost:5000/uploads/headerImage', formData, {
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/uploads/headerImage`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -197,7 +199,7 @@ const Profile = () => {
 
       try {
         const response = await axios.put(
-          "http://localhost:5000/users/edit", 
+          `${process.env.REACT_APP_API_BASE_URL}/users/edit`, 
           {
           username: newUsername,
           email: newEmail,
@@ -243,7 +245,7 @@ const Profile = () => {
 
     if (token) {
       try { 
-        const response = await axios.delete("http://localhost:5000/users/delete",
+        const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/users/delete`,
           {
             headers: {
               Authorization: `Bearer ${token}`

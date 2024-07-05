@@ -13,7 +13,7 @@ const SingleTodoUpdated = memo(function SingleTodoUpdated({ todo }) {
     const handleToggle = async () => { 
         console.log("Dette sender jeg i body til API toggle: ", localTodo)
         try {
-            const response = await axios.put(`http://localhost:5000/todos/${localTodo._id}/toggle`, {
+            const response = await axios.put(`${process.env.REACT_APP_API_BASE_URL}/todos/${localTodo._id}/toggle`, {
                 localTodo
             })
             dispatch(toggleTodo(response.data))
@@ -24,7 +24,7 @@ const SingleTodoUpdated = memo(function SingleTodoUpdated({ todo }) {
     }
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:5000/todos/${localTodo._id}`)
+            await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/todos/${localTodo._id}`)
 
             dispatch(deleteTodoFromList(localTodo))
 

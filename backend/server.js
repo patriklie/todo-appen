@@ -1,5 +1,5 @@
 const express = require('express');
-require('dotenv').config()
+require('dotenv').config();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
@@ -25,9 +25,9 @@ mongoose.connect(uri)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
     res.send('Nå er vi live!');
-  });
+  }); */
 
 app.use("/lists", listRoutes);
 app.use("/todos", todoRoutes);

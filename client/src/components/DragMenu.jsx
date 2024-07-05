@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../features/auth/authSlice';
 
 const DragMenu = () => {
-  const [open, setOpen] = useState(false);
+/*   const [open, setOpen] = useState(false); */
   const [scope, animate] = useAnimate();
   const controls = useDragControls();
   const y = useMotionValue();
@@ -52,7 +52,7 @@ const DragMenu = () => {
     await animate("#drawer", {
       y: [yStart, 0]
     });
-    setOpen(true);
+   /*  setOpen(true); */
   };
 
   const handleMinimize = async () => {
@@ -64,7 +64,7 @@ const DragMenu = () => {
     await animate("#drawer", {
       y: [yStart, height - 50]
     });
-    setOpen(false);
+    /* setOpen(false); */
   };
 
   useEffect(() => {
@@ -115,11 +115,15 @@ const DragMenu = () => {
         }}
         className='inner-motion'
         >
-          <div className='drawer-small-bg'></div>
-          <div className='dragContainer'>
-            <button onPointerDown={(e) => {controls.start(e)}} className='dragIcon'></button>
+         
+          <div 
+          onPointerDown={(e) => {
+            controls.start(e);
+            }}
+            className='dragContainer'>
+            <div className='dragIcon'></div>
           </div>
-
+          {/* <div className='drawer-small-bg'></div> */}
           <div className='modul-content'>
             <NavLink to="/" >
               <motion.div 

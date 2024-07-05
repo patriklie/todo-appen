@@ -37,14 +37,15 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0);
     padding: 20px;
+    cursor: grab;
+    touch-action: none;
+    -ms-touch-action: none;
+    user-select: none;
 }
 
 .dragIcon {
     height: 10px;
     width: 120px;
-    cursor: grab;
-    touch-action: none;
-    -ms-touch-action: none;
     background-color: rgba(0, 0, 0, 0.2);
     border: none;
     border-radius: 10px;
@@ -132,5 +133,6 @@
     .modul-content {
         align-items: center;
         justify-content: space-evenly;
+        background-color: white;
     }
 }

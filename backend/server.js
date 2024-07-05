@@ -29,13 +29,13 @@ app.use(express.urlencoded({ extended: true }));
     res.send('Nå er vi live!');
   }); */
 
+  // Statisk filservering fra React-bygget
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+
 app.use("/lists", listRoutes);
 app.use("/todos", todoRoutes);
 app.use("/users", userRoutes);
 app.use("/uploads", uploadRoutes);
-
-// Statisk filservering fra React-bygget
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
 // "Catch-all" handler for alle andre ruter
 app.get('/*', (req, res) => {

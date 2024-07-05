@@ -23,7 +23,6 @@ import BG_17 from '../assets/images/BG_17.jpeg';
 import BG_18 from '../assets/images/BG_18.jpeg';
 import BG_19 from '../assets/images/BG_19.jpeg';
 import BG_20 from '../assets/images/BG_20.jpeg';
-import BG_21 from '../assets/images/BG_21.jpeg';
 
 const Home = () => {
 
@@ -53,13 +52,12 @@ const Home = () => {
     18: BG_18,
     19: BG_19,
     20: BG_20,
-    21: BG_21
   };
 
   const currentBackground = backgrounds[backgroundState];
 
   const handleBGSwapIncrement = () => {
-    if(backgroundState < 21) {
+    if(backgroundState < 20) {
       dispatch(changeBackground(backgroundState + 1));
     } else {
       dispatch(changeBackground(1));
@@ -70,7 +68,7 @@ const Home = () => {
     if(backgroundState > 1 ) {
       dispatch(changeBackground(backgroundState - 1));
     } else {
-      dispatch(changeBackground(21));
+      dispatch(changeBackground(20));
     }
   }
   

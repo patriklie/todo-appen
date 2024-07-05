@@ -8,7 +8,7 @@ const initialState = {
     profileImageUrl: null,
     profileHeaderUrl: null,
     status: "",
-    background: 18,
+    background: 17,
 }
 
 const authSlice = createSlice({

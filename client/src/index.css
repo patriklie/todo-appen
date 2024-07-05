@@ -516,7 +516,6 @@ select:hover {
     font-size: 20px;
     letter-spacing: 1px;
     user-select: none;
-    transition: .2s;
 }
 
 .singlelist-overview-container input {

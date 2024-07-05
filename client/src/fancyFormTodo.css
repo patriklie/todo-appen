@@ -100,7 +100,7 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
     cursor: pointer;
     outline: none;
-    transition: .2s ease;
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
 }
 
 .fancy-form-todo button:hover {

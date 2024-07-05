@@ -3,9 +3,24 @@
   "name": "TODOappen",
   "icons": [
     {
-      "src": "Maskott-utklipp.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "apple-touch-icon-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon-120x120.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon-76x76.png",
+      "sizes": "76x76",
+      "type": "image/png"
     }
   ],
   "start_url": ".",

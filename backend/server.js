@@ -24,6 +24,10 @@ mongoose.connect(uri)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => {
+    res.send('Nå er vi live!');
+  });
+
 app.use("/lists", listRoutes);
 app.use("/todos", todoRoutes);
 app.use("/users", userRoutes);

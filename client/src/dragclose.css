@@ -142,6 +142,7 @@
 
     .dragIcon {
         width: 70%;
+        transition: none;
     }
 
     .dragIcon:hover {

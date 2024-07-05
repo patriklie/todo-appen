@@ -832,7 +832,7 @@ justify-items: center;
     display: flex;
     flex-direction: column;
     background-color: white;
-    margin: 60px auto;
+    margin: 30px auto;
     /* width: clamp(300px, 60%, 800px); */
     max-width: 500px;
     gap: 25px;

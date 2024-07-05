@@ -56,6 +56,7 @@ input:-webkit-autofill:active{
 .home-container-div {
     position: relative;
     height: calc(100vh - 90px);
+    height: calc(100dvh - 90px);
     overflow: hidden;
     display: flex;
     flex-direction: column;

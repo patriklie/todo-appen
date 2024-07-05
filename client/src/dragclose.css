@@ -41,7 +41,6 @@
     touch-action: none;
     -ms-touch-action: none;
     user-select: none;
-    background-color: red;
 }
 
 .dragContainer:active {
@@ -140,6 +139,11 @@
         justify-content: space-evenly;
         background-color: white;
     }
+
+    .dragIcon {
+        width: 70%;
+    }
+
     .dragIcon:hover {
         background-color: rgba(0, 0, 0, 0.2);
     }

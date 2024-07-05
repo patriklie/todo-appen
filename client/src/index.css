@@ -503,13 +503,13 @@ select:hover {
 }
 
 .singlelist-overview-container {
-    background: rgb(255, 14, 14);
+    background: rgb(255, 255, 255);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 20px;
     border-radius: 10px;
-/*     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 300;
@@ -529,7 +529,7 @@ select:hover {
 }
 
 .singlelist-overview-container:hover {
- /*    box-shadow: rgba(50, 93, 50, 0.25) 0px 6px 12px -2px, var(--primary-color) 0px 3px 7px -3px; */
+    box-shadow: rgba(50, 93, 50, 0.25) 0px 6px 12px -2px, var(--primary-color) 0px 3px 7px -3px;
 }
 
 .singlelist-overview-container input::placeholder {

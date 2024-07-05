@@ -277,8 +277,9 @@ const Profile = () => {
   };
 
   const handleColorChange = (e) => {
+    console.log("e.target.value inni fn: ", e.target.value);
     setPrimaryColor(e.target.value);
-    document.documentElement.style.setProperty('--primary-color', primaryColor);
+    document.documentElement.style.setProperty('--primary-color', e.target.value);
   };
 
   return (
@@ -413,7 +414,7 @@ const Profile = () => {
         <div className='info-state'><AnimatedCounter from={0} to={antallTodos}/></div>
         <div className='info-state'><AnimatedCounter from={0} to={doneTodos}/></div>
       </div>
-      <input onChange={handleColorChange} className='colorpicker' type="color" value={primaryColor} />
+      <input onChange={(e) => handleColorChange(e)} className='colorpicker' type="color" value={primaryColor} />
       <button className='delete-profile' onClick={() => setDeletePrompt(true)}>Slett profil</button>
       
     </div>

@@ -1345,6 +1345,13 @@ form.add-todo-form label:nth-of-type(2) {
         gap: 5px;
     }
 
+    .todo-profile-container .header-image:hover,
+    .todo-profile-container .header-placeholder:hover,
+    .todo-profile-container .profile-image:hover,
+    .todo-profile-container .profile-placeholder:hover {
+        opacity: 1;
+    }
+
     .profile-link {
         display: none;
     }

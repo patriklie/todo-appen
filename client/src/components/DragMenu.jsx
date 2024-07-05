@@ -62,16 +62,16 @@ const DragMenu = () => {
     console.log("Minimize Height", height)
 
     await animate("#drawer", {
-      y: [yStart, height - 50]
+      y: [yStart, height - 90] // denne stod på 50 før jeg increase dragcontainer med 40px
     });
     /* setOpen(false); */
   };
 
   useEffect(() => {
     if (height > 0) {
-      y.set(height - 50);
+      y.set(height - 90); // denne stod på 50
     } else {
-      y.set(110);
+      y.set(150); // denne stod på 110
     }
     
   }, [height])

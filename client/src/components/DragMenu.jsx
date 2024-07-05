@@ -118,6 +118,7 @@ const DragMenu = () => {
          
           <div 
           onPointerDown={(e) => {
+            e.stopPropagation();
             controls.start(e);
             }}
             className='dragContainer'>

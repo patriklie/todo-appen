@@ -69,7 +69,7 @@
 
 .modul-content {
     position: relative;
-    margin-top: 90px;
+    top: 90px;
     z-index: 0;
     display: flex;
     justify-content: center;

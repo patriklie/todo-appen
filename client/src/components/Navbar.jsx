@@ -82,7 +82,7 @@ const handleNaviClick = () => {
               <div className='sidebar-text'>Hjem</div>
             </NavLink>
 
-            <NavLink onClick={handleNaviClick} to="/todos" className='sidebar-flex-container'>
+            <NavLink onClick={handleNaviClick} to="/lists" className='sidebar-flex-container'>
               <div className="material-symbols-rounded sidebar-icons">checklist_rtl</div>
               <div className='sidebar-text'>Lister</div>
             </NavLink>

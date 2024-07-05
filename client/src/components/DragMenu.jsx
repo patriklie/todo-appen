@@ -132,7 +132,7 @@ const DragMenu = () => {
               >home</motion.div>
             </NavLink>
             
-            <NavLink to="/todos">
+            <NavLink to="/lists">
             <motion.div 
               className="material-symbols-rounded bottom-menu-icons"
               whileHover={{ scale: 1.2 }}

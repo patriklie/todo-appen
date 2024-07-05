@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         element: <About />
       },
       {
-        path: "todos",
+        path: "lists",
         element: <TodosStart />
       },
       {

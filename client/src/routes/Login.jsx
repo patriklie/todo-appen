@@ -84,7 +84,7 @@ const Login = () => {
             <label htmlFor="passord">Passord</label> 
           </div>
 
-          <button>Login</button>
+          <button>Logins</button>
           <p style={{ textAlign: "center", fontSize: "12px" }}>Har du ikke bruker? <Link to="/register">Registrer deg her</Link></p>
           <img className="login-maskott-img" src={maskott}/>
         </motion.form>

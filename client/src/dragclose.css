@@ -47,6 +47,10 @@
     cursor: grabbing;
 }
 
+.dragContainer:active > .dragIcon {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
 .dragIcon {
     height: 10px;
     width: 120px;
@@ -57,10 +61,10 @@
     outline: none;
 }
 
-.dragIcon:active {
+/* .dragIcon:active {
     cursor: grabbing;
     background-color: rgba(0, 0, 0, 0.75);
-}
+} */
 
 .dragIcon:hover {
     background-color: rgba(0, 0, 0, 0.75);

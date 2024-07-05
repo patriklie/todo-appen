@@ -331,7 +331,7 @@ select:hover {
 .add-list-form button {
     width: 100%;
     border-radius: 30px;
-    border: 2px solid transparent;
+    border: none;
     padding: 10px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -341,7 +341,7 @@ select:hover {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
     cursor: pointer;
     outline: none;
-    transition: box-shadow .2s ease, background-color .2s ease, filter .2s ease;
+    transition: all .2s ease;
 }
 
 .add-list-form button:hover {
@@ -349,8 +349,14 @@ select:hover {
     filter: brightness(1.2);
 }
 
+.add-list-form button:active {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 10px;
+    filter: brightness(1.2);
+    transform: scale(0.95);
+}
+
 .add-list-form button:focus {
-    border: 2px solid black;
+    outline: 3px solid black;
 }
 
 .material-symbols-rounded.close-list {
@@ -903,7 +909,7 @@ justify-items: center;
 .fancy-form button {
     width: 100%;
     border-radius: 30px;
-    border: 2px solid transparent;
+    border: none;
     padding: 10px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -913,7 +919,7 @@ justify-items: center;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
     cursor: pointer;
     outline: none;
-    transition: box-shadow .2s ease, background-color .2s ease, filter .2s ease;
+    transition: transform .2s ease, filter .2s ease, box-shadow .2 ease;
 }
 
 .fancy-form button:hover {
@@ -921,8 +927,12 @@ justify-items: center;
     filter: brightness(1.1);
 }
 
+.fancy-form button:active {
+    transform: scale(0.95);
+}
+
 .fancy-form button:focus {
-    border: 2px solid black;
+    outline: 3px solid rgb(0, 0, 0);
 }
 
 .login-container {
@@ -1372,12 +1382,26 @@ form.add-todo-form label:nth-of-type(2) {
         box-shadow: none;
     }
 
+    .fancy-form button:hover {
+        filter: none;
+        box-shadow: none;
+    }
+
     .login-register-padding {
         padding: 0;
     }
 
     .add-list-form[data-isopen="true"] {
         padding: 20px 30px;
+    }
+
+    .add-list-form button:hover {
+        box-shadow: none;
+        filter: none;
+    }
+
+    .add-list-form button:focus {
+        outline: none;
     }
 
     .profile-flex-container .info-dump {

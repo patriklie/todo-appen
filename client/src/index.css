@@ -48,7 +48,6 @@ input:-webkit-autofill:active{
 .standard-h1 {
     font-size: 50px;
     text-align: center;
-    margin: 20px 0 0 0;
     color: var(--primary-color);
 }
 
@@ -486,7 +485,9 @@ select:hover {
 
 /* List Overview */
 .todo-list-page-padding {
-    padding: 0 30px;
+    padding: 30px 30px;
+    min-height: calc(100vh - 90px);
+    min-height: calc(100dvh - 90px);
 }
 
 .todo-list-page-padding p {
@@ -599,12 +600,18 @@ select:hover {
 }
 
 .about-padding {
-    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 0px;
+    justify-content: flex-start;
+    min-height: calc(100vh - 90px);
+    min-height: calc(100dvh - 90px);
 }
 
 .container.about {
     max-width: 1000px;
-    margin: 30px auto;
+    margin: 0 auto;
     padding: 20px;
     box-shadow: rgba(149, 157, 165, 0.5) 0px 2px 5px;
     border-radius: 10px;
@@ -626,7 +633,7 @@ select:hover {
 }
 
 .liten-maskott {
-    height: 100%;
+    max-width: 100px;
     display: block;
 }
 

@@ -211,7 +211,7 @@ const TodoListOverview = () => {
                         onDrag={(event, info) => {
                             handleOverElement(event, info);
                         }}
-                        whileDrag={{opacity: 0.5 }}
+                        /* whileDrag={{opacity: 0.5 }} */
                         onClick={() => handleNavigation(liste._id)} 
                         className='singlelist-overview-container'  
                         key={liste._id} style={{ cursor: "pointer"}}>

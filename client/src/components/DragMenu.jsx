@@ -58,8 +58,8 @@ const DragMenu = () => {
   const handleMinimize = async () => {
     const yStart = typeof y.get() === "number" ? y.get() : 0;
 
-    console.log("Minimize yStart", yStart)
-    console.log("Minimize Height", height)
+/*     console.log("Minimize yStart", yStart)
+    console.log("Minimize Height", height) */
 
     await animate("#drawer", {
       y: [yStart, height - 90] // denne stod på 50 før jeg increase dragcontainer med 40px

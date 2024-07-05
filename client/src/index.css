@@ -28,6 +28,10 @@ input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
+html {
+    height: -webkit-fill-available;
+}
+
 #root {
     position: relative;
     padding-top: 90px;

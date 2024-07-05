@@ -117,6 +117,7 @@ const DragMenu = () => {
         >
          
           <div 
+          onClick={(e) => e.stopPropagation()}
           onPointerDown={(e) => {
             e.stopPropagation();
             controls.start(e);

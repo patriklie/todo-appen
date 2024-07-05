@@ -140,4 +140,7 @@
         justify-content: space-evenly;
         background-color: white;
     }
+    .dragIcon:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
 }

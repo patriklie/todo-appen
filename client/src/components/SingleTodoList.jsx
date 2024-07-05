@@ -24,7 +24,7 @@ const SingleTodoList = () => {
       setLoading(true);
       const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/lists/${id}`)
       dispatch(deleteListAndTodos(response.data));
-      navigate("/todos")
+      navigate("/lists")
     } catch(error) {
       console.log(error)
     }

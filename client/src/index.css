@@ -28,15 +28,16 @@ input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-html {
+/* html {
     height: -webkit-fill-available;
-}
+} */
 
 #root {
     position: relative;
     padding-top: 90px;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
+    min-height:100vh;
+    min-height:100dvh;
+/*     min-height: -webkit-fill-available; */
 }
 
 :root {

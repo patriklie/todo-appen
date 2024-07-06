@@ -10,8 +10,6 @@ import AnimatedCounter from '../components/AnimatedCounter';
 
 const Profile = () => {
 
- 
-
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const fileInputRef = useRef();
@@ -101,6 +99,16 @@ const Profile = () => {
 
   const handleProfileUpload = async (e) => {
     const selectedFile = e.target.files[0];
+    const maxFileSize = 5 * 1024 * 1024;
+
+    if (selectedFile.size > maxFileSize) {
+      toast.error("Bilde er for stort! Maks 5mb 👀", {
+        position: "bottom-left",
+        autoClose: 3000,
+      });
+      fileInputRef.current.value = "";
+      return
+    }
 
     if (!selectedFile) {
       alert("Vennligst velg en fil!");
@@ -127,7 +135,7 @@ const Profile = () => {
       });
 
     } catch (error) {
-
+      console.log("Her er error objektet når for stort bilde: ", error)
       console.error('Feil ved opplasting av bilde: ', error);
       toast.error("Feil ved opplasting! 👀", {
         position: "bottom-left",
@@ -143,10 +151,20 @@ const Profile = () => {
 
   const handleHeaderUpload = async (e) => {
     const selectedFile = e.target.files[0];
+    const maxFileSize = 5 * 1024 * 1024;
 
     if (!selectedFile) {
       alert("Vennligst velg en fil!");
       return;
+    }
+
+    if (selectedFile.size > maxFileSize) {
+      toast.error("Headerbilde er for stort! Maks 5mb 👀", {
+        position: "bottom-left",
+        autoClose: 3000,
+      });
+      headerInputRef.current.value = "";
+      return
     }
 
     setUploading(true);
@@ -178,7 +196,7 @@ const Profile = () => {
 
     } finally {
       setUploading(false);
-      fileInputRef.current.value = "";
+      headerInputRef.current.value = "";
       setHeaderTools(false);
     }
   };

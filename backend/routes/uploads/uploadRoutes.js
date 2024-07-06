@@ -36,13 +36,9 @@ router.post('/profileImage', upload.single('image'), getUserId, async (req, res)
             })
 
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            success: false,
-            message: "Error"
-        })
+            console.log(error);
+            return res.status(500).json({ error: "Server error" });
     }
-
 });
 
 router.post('/headerImage', upload.single('image'), getUserId, async (req, res) => {

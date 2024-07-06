@@ -18,17 +18,19 @@ router.post("/register", async (req, res) => {
 
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const lowerCaseEmail = req.body.email.toLowerCase();
+
         const newUser = await User.create({
             username: req.body.username,
-            email: req.body.email,
+            email: lowerCaseEmail,
             password: hashedPassword,
         });
 
         const token = jwt.sign({ userId: newUser._id }, process.env.SECRET_KEY, { expiresIn: '30d' })
-        res.status(200).send(token)
+        return res.status(200).send(token)
 
     } catch(error) {
-        res.status(500).send(error)
+        return res.status(500).send(error)
     }
 
 });
@@ -40,7 +42,9 @@ router.post("/login", async (req, res) => {
         return res.status(400).send("Ugyldig epost eller passord.");
     }
 
-    const { email, password } = req.body;
+    let { email, password } = req.body;
+
+    email = email.toLowerCase();
 
     try {
         const foundUser = await User.findOne({ email });
@@ -173,7 +177,7 @@ router.delete("/delete", authenticateToken, async (req, res) => {
         }
 
     } catch(error) {
-        res.status(500).send({ message: "Internal server error i try delete try blocken", error});
+        return res.status(500).send({ message: "Internal server error i try delete try blocken", error});
     }
 })
 

@@ -29,7 +29,7 @@ router.post('/profileImage', upload.single('image'), getUserId, async (req, res)
         fs.unlinkSync(req.file.path)
         console.log("Midlertidig fil slettet fra uploads mappa backend!", req.file.path)
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             message: "Uploaded!",
             url: result.secure_url,
@@ -68,7 +68,7 @@ router.post('/headerImage', upload.single('image'), getUserId, async (req, res) 
         fs.unlinkSync(req.file.path)
         console.log("Midlertidig fil slettet fra uploads mappa backend!", req.file.path)
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             message: "Uploaded!",
             url: result.secure_url,
@@ -101,11 +101,11 @@ router.delete('/deleteProfileImage', getUserId, async (req, res) => {
             }
         }, { new: true });
         
-        res.status(200).json({ message: "Deleted profile image!", user: oppdatertBruker })
+        return res.status(200).json({ message: "Deleted profile image!", user: oppdatertBruker })
 
     } catch(error) {
         console.error("Error deleting profile image:", error);
-        res.status(500).json({ error: "Failed to delete profile image" });
+        return res.status(500).json({ error: "Failed to delete profile image" });
     }
 })
 
@@ -126,7 +126,7 @@ router.delete('/deleteProfileHeader', getUserId, async (req, res) => {
             }
         }, { new: true });
         
-        res.status(200).json({ message: "Deleted profile header!", user: oppdatertBruker })
+        return res.status(200).json({ message: "Deleted profile header!", user: oppdatertBruker })
 
     } catch(error) {
         console.error("Error deleting profile header:", error);

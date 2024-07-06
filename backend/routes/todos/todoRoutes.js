@@ -8,9 +8,9 @@ const List = require('../../models/List');
 router.get("/", async (req, res) => {
     try {
         const todos = await Todo.find();
-        res.json(todos);
+        return res.json(todos);
     } catch(error) {
-        res.status(500).json({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
 })
 
@@ -20,14 +20,14 @@ router.get("/listtodos/:id", async (req, res) => {
 
     // finne alle todos som hører til listeID
     const foundTodos = await Todo.find({ list: id })
-    res.status(200).send(foundTodos);
+    return res.status(200).send(foundTodos);
 })
 
 // Henter en spesifikk todo
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
     const foundTodo = await Todo.findById(id);
-    res.status(200).send(foundTodo);
+    return res.status(200).send(foundTodo);
 })
 
 // Legger til en ny TODO i liste:
@@ -59,9 +59,9 @@ router.post("/", async (req, res) => {
             { new: true }
         )
 
-        res.send(savedTodo);
+        return res.send(savedTodo);
     } catch(err) {
-        res.status(400).send(err);
+        return res.status(400).send(err);
     }
 
 })
@@ -79,11 +79,11 @@ router.delete("/:id", async (req, res) => {
             { $pull: { todos: deletedTodo._id} }
         );
 
-        res.json(deletedTodo);
+        return res.json(deletedTodo);
 
     } catch(error) {
         console.error("Feil ved sletting av Todo: ", error)
-        res.status(400).send(error);
+        return res.status(400).send(error);
     }
 })
 
@@ -96,11 +96,11 @@ router.put("/:id/toggle", async (req, res) => {
             return res.status(404).json({ error: "Todo not found" });
         }
         console.log("oppdaterte TODO server: ",updatedTodo)
-        res.status(200).send(updatedTodo);
+        return res.status(200).send(updatedTodo);
 
     } catch(error) {
         console.error("Feil ved oppdatering a complete toggle backend: ", error);
-        res.status(500).json({ error: "Feil ved oppdatering av Todo" });
+        return res.status(500).json({ error: "Feil ved oppdatering av Todo" });
     }
 })
 

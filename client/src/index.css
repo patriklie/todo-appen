@@ -1173,6 +1173,7 @@ form.add-todo-form label:nth-of-type(2) {
     padding: 10px;
     border-radius: 10px;
     margin: 30px;
+    margin-bottom: 70px;
     border: none;
     outline: none;
     background-color: rgb(209, 209, 209);

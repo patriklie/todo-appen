@@ -50,8 +50,8 @@ const RouteProtector = ({ children }) => {
 
     }, [tokenCheck]);
 
-    console.log("Token check:", tokenCheck);
-    console.log("Logged in:", stateLoggedIn);
+/*     console.log("Token check:", tokenCheck);
+    console.log("Logged in:", stateLoggedIn); */
 
     return (
         <>

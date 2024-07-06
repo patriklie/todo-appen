@@ -10,7 +10,7 @@ const User = require('../../models/User');
 router.get("/", getUserId, async (req, res) => {
     try {
         const lists = await List.find({ owner: req.userId }).populate('todos')
-        console.log("Alle lister fra mongodb logga fra API: ", lists)
+        // console.log("Alle lister fra mongodb logga fra API: ", lists)
         res.send(lists)
 
     } catch(error) {

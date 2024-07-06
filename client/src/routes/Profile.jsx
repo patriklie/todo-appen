@@ -338,8 +338,8 @@ const Profile = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className='profile-header-tools-container'>
-          <IconContainer onClick={handleHeaderInputClick} iconName={"wired-outline-35-edit"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
-          <IconContainer onClick={handleDeleteProfileHeader} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
+          <IconContainer onClick={handleHeaderInputClick} iconName={"wired-outline-35-edit-black"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
+          <IconContainer onClick={handleDeleteProfileHeader} iconName={"wired-outline-185-trash-bin-black"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
         </motion.div>
     }
     </AnimatePresence>
@@ -353,8 +353,8 @@ const Profile = () => {
       exit={{ opacity: 0 }}
       className='profile-image-tools-container'
       >
-        <IconContainer onClick={handleProfileInputClick} iconName={"wired-outline-35-edit"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
-        <IconContainer onClick={handleDeleteProfileImg} iconName={"wired-outline-185-trash-bin"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
+        <IconContainer onClick={handleProfileInputClick} iconName={"wired-outline-35-edit-black"} reveal={"in-reveal"} hover={"hover-circle"} size={40} />
+        <IconContainer onClick={handleDeleteProfileImg} iconName={"wired-outline-185-trash-bin-black"} reveal={"in-reveal"} hover={"hover-empty"} size={40} />
       </motion.div>
     }
     </AnimatePresence>

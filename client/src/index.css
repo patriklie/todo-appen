@@ -1343,6 +1343,21 @@ form.add-todo-form label:nth-of-type(2) {
     grid-template-rows: auto 1fr;
 }
 
+.loader-list-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-list-container .load-list-text {
+    font-weight: 700;
+    margin-top: 20px;
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
 @media screen and (max-width: 500px) { 
 
     .standard-h1 {

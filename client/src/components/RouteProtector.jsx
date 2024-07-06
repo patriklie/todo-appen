@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { logout, loginWithToken } from '../features/auth/authSlice';
 import { loadLists } from '../features/list/listSlice';
+import AuthenticateLoader from './AuthenticateLoader';
 
 const RouteProtector = ({ children }) => {
 
@@ -54,7 +55,7 @@ const RouteProtector = ({ children }) => {
 
     return (
         <>
-            {tokenCheck ? children : <p>Sjekker authtoken...</p>}
+            {tokenCheck ? children : <AuthenticateLoader />}
         </>
     )
 }

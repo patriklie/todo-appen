@@ -57,9 +57,9 @@ const SingleTodoList = () => {
 
   if (loading) {
     return (
-    <div>
-      <IconContainer iconName={"wired-outline-212-arrow-1-rounded"} reveal={"loop-cycle"} hover={"hover-rotation"} size={50}  />
-      Loading...
+    <div className='loader-list-container'>
+      <IconContainer iconName={"wired-outline-213-arrow-2-rounded-black"} reveal={"loop-cycle"} hover={"hover-rotation"} size={50}  />
+      <div className='load-list-text'>Oppdaterer lister...</div>
     </div>
     )
   }

@@ -45,12 +45,12 @@ router.post("/login", async (req, res) => {
     try {
         const foundUser = await User.findOne({ email });
         if (!foundUser) {
-            res.status(401).send("Fant ikke bruker i databasen...");
+            return res.status(401).send("Fant ikke bruker i databasen...");
         }
 
         const match = await bcrypt.compare(password, foundUser.password);
         if(!match) {
-            res.status(401).send("Feil passord...")
+            return res.status(401).send("Feil passord...")
         }
     
         if (match) {
@@ -69,11 +69,11 @@ router.post("/login", async (req, res) => {
                 userData.profileHeaderUrl = foundUser.profileHeaderUrl;
             }
             
-            res.status(200).send(userData);    
+            return res.status(200).send(userData);    
         }
     } catch (error) {
         console.error("Feil ved innlogging: ", error);
-        res.status(400).send("Innlogging feilet.")
+        return res.status(400).send("Innlogging feilet.")
     }
 })
 

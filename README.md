@@ -3,6 +3,9 @@
 ## Beskrivelse
 Velkommen til TODOappen, et MERN-porteføljeprosjekt hvor jeg har brukt: MongoDB, Express, React, Node, Render, React Router, Redux, Mongoose, Framer Motion samt en rekke andre npm-pakker og middlewares for å lage en interaktiv app (front- og backend). I appen har du full CRUD-funksjonalitet for brukere, lister, oppgaver (todos) og profil.
 
+## Demo
+Du kan se appen i aksjon her: [www.todoappen.no](http://www.todoappen.no)
+
 ## Teknologier frontend
 - **React**
 - **Redux Store**

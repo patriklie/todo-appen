@@ -47,8 +47,10 @@ REACT_APP_API_BASE_URL=http://localhost:5000
 7. Så starter du opp serveren lokalt fra backend mappen med "nodemon server.js"
 8. Så kjører du 'npm start' i frontend
 
-## Screenshot av forsiden
-![Forside av prosjektet](images/IMG_2391.PNG)
+## Screenshot fra Appen vist på en iphone 11:
+![Todoappen Bilde 1-4](images/Bilde1_crop.png)
+![Todoappen Bilde 5-8](images/Bilde2_crop.png)
+![Todoappen Bilde 9-12](images/Bilde3_crop.png)
 
 ## Bidrag
 Åpen for bidrag. Vennligst lag en pull request hvis du har forbedringer

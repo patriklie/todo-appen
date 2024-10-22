@@ -5,6 +5,7 @@ Velkommen til TODOappen, et MERN-porteføljeprosjekt hvor jeg har brukt: MongoDB
 
 ## Demo
 Du kan se appen i aksjon her: [www.todoappen.no](http://www.todoappen.no)
+![Todo Maskotten](client/public/apple-touch-icon-152x152.png)
 
 ## Teknologier frontend
 - **React**

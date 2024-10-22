@@ -6,7 +6,7 @@ Velkommen til TODOappen, et MERN-porteføljeprosjekt hvor jeg har brukt: MongoDB
 Jeg lagde denne appen fordi man lærer best når man lager noe selv! Dette ga meg muligheten til å teste ut kunnskapen min rundt alle teknologiene jeg har lært om, og sette den ut i praksis i en app.
 
 ## Demo
-Du kan se appen i aksjon her: [www.todoappen.no](http://www.todoappen.no)
+Du kan se appen i aksjon her: [www.todoappen.no](http://www.todoappen.no) Legg den gjerne inn som en Progressive Web App (PWA) telefonen, eller test appen rett i nettleseren. 
 
 ![Todo Maskotten](client/public/apple-touch-icon-152x152.png)
 

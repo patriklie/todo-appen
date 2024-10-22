@@ -1,7 +1,7 @@
 # TODOappen
 
 ## Beskrivelse
-Dette prosjektet er 
+Velkommen til TODOappen, et MERN-porteføljeprosjekt hvor jeg har brukt: MongoDB, Express, React, Node, Render, React Router, Redux, Mongoose, Framer Motion samt en rekke andre npm-pakker og middlewares for å lage en interaktiv app (front- og backend). I appen har du full CRUD-funksjonalitet for brukere, lister, oppgaver (todos) og profil.
 
 ## Teknologier frontend
 - **React**
@@ -46,9 +46,6 @@ CLOUDINARY_API_SECRET=
 REACT_APP_API_BASE_URL=http://localhost:5000
 7. Så starter du opp serveren lokalt fra backend mappen med "nodemon server.js"
 8. Så kjører du 'npm start' i frontend
-
-## Bruk
-Dersom ikke VS-code (eller editoren du bruker) automatisk åpner browseren så gå til `localhost:3000`.
 
 ## Screenshot av forsiden
 ![Forside av prosjektet](images/IMG_2391.PNG)

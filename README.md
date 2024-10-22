@@ -32,7 +32,7 @@ Velkommen til TODOappen, et MERN-porteføljeprosjekt hvor jeg har brukt: MongoDB
 ## Installasjon
 1. Klon repoen: `git clone https://github.com/patriklie/todo-appen.git`
 2. Naviger inn i både client mappen og backend mappen 
-3. Installer avhengigheter med: `npm install` eller 'npm i'
+3. Installer avhengigheter med: `npm install` eller `npm i`
 4. Etter at alle avhengigheter er installert front og backend må du lage egne enviromentals filer
 
 5. ENV backend må inneholde: 

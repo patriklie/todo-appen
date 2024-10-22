@@ -49,7 +49,9 @@ REACT_APP_API_BASE_URL=http://localhost:5000
 
 ## Screenshot fra Appen vist på en iphone 11:
 ![Todoappen Bilde 1-4](images/Bilde1_crop.png)
+
 ![Todoappen Bilde 5-8](images/Bilde2_crop.png)
+
 ![Todoappen Bilde 9-12](images/Bilde3_crop.png)
 
 ## Bidrag

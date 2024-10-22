@@ -26,5 +26,7 @@ Dersom ikke VS-code (eller editoren du bruker) automatisk åpner browseren så g
 ## Screenshot av forsiden
 ![Forside av prosjektet](images/IMG_2391.PNG)
 
+<img src="images/bilde1.jpg" alt="Bilde 1" width="300"/>
+
 ## Bidrag
 Åpen for bidrag. Vennligst lag en pull request hvis du har forbedringer :)

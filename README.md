@@ -51,4 +51,4 @@ REACT_APP_API_BASE_URL=http://localhost:5000
 ![Forside av prosjektet](images/IMG_2391.PNG)
 
 ## Bidrag
-Åpen for bidrag. Vennligst lag en pull request hvis du har forbedringer :)
+Åpen for bidrag. Vennligst lag en pull request hvis du har forbedringer

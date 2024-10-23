@@ -7,7 +7,7 @@ Jeg lagde denne appen fordi man lærer best når man lager noe selv! Dette ga me
 ## Demo
 Appen ligger ute på: 
 [www.todoappen.no](http://www.todoappen.no)    
-Legg den inn som en Progressive Web App (PWA) telefonen, eller test appen rett i nettleseren.    
+Legg den inn som en Progressive Web App (PWA) på mobilen, eller test appen rett i nettleseren.    
 **NB. Appen bruker ca. 30 sekunder på oppstart etter første forespørsel da serveren er i dvale.**
 
 ![Todo Maskotten](client/public/apple-touch-icon-152x152.png)

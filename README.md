@@ -7,7 +7,7 @@ I created this app because you learn best when you build something yourself! Thi
 ## Demo
 The app is available at:
 [www.todoappen.no](http://www.todoappen.no)    
-Add it as a Progressive Web App (PWA) on your mobile or test the app directly in your browser.
+Add it as a Progressive Web App (PWA) on your mobile or test the app directly in your browser.   
 **Note: The app takes about 30 seconds to start up after the first request since the server is in sleep mode.**
 
 ![Todo Maskotten](client/public/apple-touch-icon-152x152.png)

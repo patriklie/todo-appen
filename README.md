@@ -64,4 +64,4 @@ REACT_APP_API_BASE_URL=http://localhost:5000
 ![Todoappen Bilde 9-12](images/Bilde3_crop.png)
 
 ## Bidrag
-Åpen for bidrag. Vennligst lag en pull request hvis du har forbedringer
+Jeg er åpen for bidrag.Bare lag en pull request hvis du har forbedringer 🙌

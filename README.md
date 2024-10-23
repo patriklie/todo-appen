@@ -1,14 +1,14 @@
 # TODOappen
 
-Velkommen til TODOappen, et MERN-porteføljeprosjekt hvor jeg har brukt: MongoDB, Express, React, Node, Render, React Router, Redux, Mongoose, Framer Motion samt en rekke andre npm-pakker og middlewares for å lage en interaktiv app (front- og backend). I appen har du full CRUD-funksjonalitet for brukere, lister, oppgaver (todos) og profil.
+Welcome to TODOappen, a MERN portfolio project where I used MongoDB, Express, React, Node, Render, React Router, Redux, Mongoose, Framer Motion, and a variety of other npm packages and middlewares to create an interactive app (frontend and backend). The app features full CRUD functionality for users, lists, tasks (todos), and profiles.
 
-Jeg lagde denne appen fordi man lærer best når man lager noe selv! Dette ga meg muligheten til å teste ut kunnskapen min rundt alle teknologiene jeg har lært om, og sette den ut i praksis i en app.
+I created this app because you learn best when you build something yourself! This gave me the opportunity to test my knowledge of all the technologies I’ve learned about and put it into practice in an app.
 
 ## Demo
-Appen ligger ute på: 
+The app is available at:
 [www.todoappen.no](http://www.todoappen.no)    
-Legg den inn som en Progressive Web App (PWA) på mobilen, eller test appen rett i nettleseren.    
-**NB. Appen bruker ca. 30 sekunder på oppstart etter første forespørsel da serveren er i dvale.**
+Add it as a Progressive Web App (PWA) on your mobile or test the app directly in your browser.
+**Note: The app takes about 30 seconds to start up after the first request since the server is in sleep mode.**
 
 ![Todo Maskotten](client/public/apple-touch-icon-152x152.png)
 
@@ -38,30 +38,30 @@ Legg den inn som en Progressive Web App (PWA) på mobilen, eller test appen rett
 - **mongodb**
 - **multer**
 
-## Installasjon
-1. Klon repoen: `git clone https://github.com/patriklie/todo-appen.git`
-2. Naviger inn i både client mappen og backend mappen 
-3. Installer avhengigheter med: `npm install` eller `npm i`
-4. Etter at alle avhengigheter er installert front og backend må du lage egne enviromentals filer
+## Installation
+1. Clone the repository: `git clone https://github.com/patriklie/todo-appen.git`
+2. Navigate into both the client and backend folders.
+3. Install dependencies with: `npm install` or `npm i`
+4. After all dependencies are installed for both frontend and backend, you need to create your own environment files.
 
-5. ENV backend må inneholde: 
+5. The backend ENV file must contain:
 PORT=5000
 MONGODB_URI=
 SECRET_KEY=
 CLOUDINARY_CLOUD_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
-6. ENV frontend må innholde:
+6. The frontend ENV file must contain:
 REACT_APP_API_BASE_URL=http://localhost:5000
-7. Så starter du opp serveren lokalt fra backend mappen med "nodemon server.js"
-8. Så kjører du 'npm start' i frontend
+7. Then start the server locally from the backend folder with "nodemon server.js"
+8. Finally, run 'npm start' in the frontend folder.
 
-## Screenshot fra Appen vist på en iphone 11:
+## Screenshots from the TODOappen shown on an iPhone 11:
 ![Todoappen Bilde 1-4](images/Bilde1_crop.png)
 
 ![Todoappen Bilde 5-8](images/Bilde2_crop.png)
 
 ![Todoappen Bilde 9-12](images/Bilde3_crop.png)
 
-## Bidrag
-Jeg er åpen for bidrag. Bare lag en pull request hvis du har forbedringer 🙌
+## Contribution
+I am open to contributions. Just create a pull request if you have improvements 🙌

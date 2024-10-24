@@ -56,7 +56,7 @@ REACT_APP_API_BASE_URL=http://localhost:5000
 7. Then start the server locally from the backend folder with "nodemon server.js"
 8. Finally, run 'npm start' in the frontend folder.
 
-## Screenshots from the TODOappen shown on an iPhone 11:
+## Screenshots from the app shown on an iPhone 11:
 ![Todoappen Bilde 1-4](images/Bilde1_crop.png)
 
 ![Todoappen Bilde 5-8](images/Bilde2_crop.png)

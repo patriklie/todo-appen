@@ -20,7 +20,7 @@ Add it as a Progressive Web App (PWA) on your mobile or test the app directly in
 - **Customize UI:** Dynamically change the app’s color scheme by modifying CSS variables. Choose from 20 AI-generated images to customize the background on the front page.
 - **Drag & Drop:** Easily delete lists and toggle the visibility of the bottom toolbar through drag-and-drop interactions.
 
-## Teknologier frontend
+## Technologies frontend
 - **React**
 - **Redux Store**
 - **JavaScript (ES6+)**
@@ -34,7 +34,7 @@ Add it as a Progressive Web App (PWA) on your mobile or test the app directly in
 - **hamburger-react**
 - **react-toastify**
 
-## Teknologier backend
+## Technologies backend
 - **bcrypt**
 - **cloudinary**
 - **cors**

@@ -12,6 +12,14 @@ Add it as a Progressive Web App (PWA) on your mobile or test the app directly in
 
 ![Todo Maskotten](client/public/apple-touch-icon-152x152.png)
 
+## Functionality:
+- **User authentication:** Register, login, and manage profiles.
+- **Task management:** Create, edit, and delete tasks.
+- **List functionality:** Organize tasks into custom lists.
+- **Profile management:** Update user profile details, profile and banner image.
+- **Customize UI:** Dynamically change color of the application and elements. Change background on the frontpage of the app choosing among 15 AI generated images.
+- **Drag & Drop:** To delete lists and show/hide bottom toolbar.
+
 ## Teknologier frontend
 - **React**
 - **Redux Store**

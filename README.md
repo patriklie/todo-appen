@@ -17,8 +17,8 @@ Add it as a Progressive Web App (PWA) on your mobile or test the app directly in
 - **Task management:** Create, edit, and delete tasks.
 - **List functionality:** Organize tasks into custom lists.
 - **Profile management:** Update user profile details, profile and banner image.
-- **Customize UI:** Dynamically change color of the application and elements. Change background on the frontpage of the app choosing among 15 AI generated images.
-- **Drag & Drop:** To delete lists and show/hide bottom toolbar.
+- **Customize UI:** Dynamically change the app’s color scheme by modifying CSS variables. Choose from 20 AI-generated images to customize the background on the front page.
+- **Drag & Drop:** Easily delete lists and toggle the visibility of the bottom toolbar through drag-and-drop interactions.
 
 ## Teknologier frontend
 - **React**

@@ -1,6 +1,6 @@
 # TODOappen
 
-Welcome to TODOappen, a MERN portfolio project where I used MongoDB, Express, React, Node, Render, React Router, Redux, Mongoose, Framer Motion, and a variety of other npm packages and middlewares to create an interactive app (frontend and backend). The app features full CRUD functionality for users, lists, tasks (todos), and profiles.
+Welcome to TODOappen, a MERN portfolio project where I used MongoDB, Express, React, Node, Render, React Router, Redux, Mongoose, Framer Motion, and a variety of other npm packages and middlewares to create an interactive app (frontend and backend). The app features full CRUD functionality for users, lists, tasks (todos), and profiles. I built the REST API from scratch, ensuring that it adheres to best practices for creating scalable and maintainable web services.
 
 I created this app because you learn best when you build something yourself! This gave me the opportunity to test my knowledge of all the technologies I’ve learned about and put it into practice in an app.
 

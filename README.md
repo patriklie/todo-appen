@@ -6,7 +6,7 @@ I created this app because you learn best when you build something yourself! Thi
 
 ## Demo
 The app is available at:
-[www.todoappen.no](http://www.todoappen.no)    
+https://todo-frontend-7w23.onrender.com/  
 Add it as a Progressive Web App (PWA) on your mobile or test the app directly in your browser.   
 **Note: The app takes about 30 seconds to start up after the first request since the server is in sleep mode.**
 

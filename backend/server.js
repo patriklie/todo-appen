@@ -29,6 +29,10 @@ app.use(express.urlencoded({ extended: true }));
     res.send('Nå er vi live!');
   }); */
 
+app.get("/api/hello", (req, res) => {
+    res.status(200).json({ message: "I'm awake, I'm awake" });  // pinger denne fra cronjobs 
+});
+
 app.use("/lists", listRoutes);
 app.use("/todos", todoRoutes);
 app.use("/users", userRoutes);
